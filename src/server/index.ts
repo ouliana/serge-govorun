@@ -1,16 +1,19 @@
 import express from 'express';
 import cors from 'cors';
 import { config } from './utils/config';
+import { api } from './api';
 // import ProjectRouter from './routes/projects';
 
 const app = express();
+
+app.use(api);
 
 app.use(express.json());
 app.use(cors());
 app.use(express.static('dist'));
 
 // app.use(api);
-app.get('/api/pingi', (_req, res) => res.send('pong'));
+app.get('/api/ping', (_req, res) => res.send('pong'));
 
 // app.use('/api/projects', ProjectRouter);
 
