@@ -1,26 +1,14 @@
-import YouTube, { YouTubeProps } from 'react-youtube';
+import Short from "./components/Short"
+import VideoPlayer from "./components/VideoPlayer"
 
 
   const App = () => {
   
-    const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-      // access to player in all event handlers via event.target
-      event.target.pauseVideo();
-    }
-  
-    const opts: YouTubeProps['opts'] = {
-      height: '390',
-      width: '640',
-      playerVars: {
-        // https://developers.google.com/youtube/player_parameters
-        // autoplay: 0,
-      },
-    };
-
   return (
     <>
       <h1 className="text-3l font-bold text-red-500">Serg Govorun</h1>
-      <YouTube videoId="_pGj9Mz2dI0" opts={opts} onReady={onPlayerReady} />
+      <VideoPlayer videoId="ZHsh8LnlebM"  />
+      <Short videoId="_pGj9Mz2dI0"  />
     </>
   )
 }

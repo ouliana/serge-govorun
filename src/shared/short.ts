@@ -1,9 +1,9 @@
 import { Entity, Fields } from 'remult';
 
-@Entity('videos', {
+@Entity('short', {
   allowApiCrud: true,
 })
-export class Video {
+export class Short {
   @Fields.autoIncrement()
   id = 0;
 
