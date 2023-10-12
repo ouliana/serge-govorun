@@ -17,5 +17,8 @@ export class Video {
   description = '';
 
   @Fields.date()
-  created = new Date();
+  createdOn = new Date();
+
+  @Fields.boolean()
+  isShort = false;
 }
