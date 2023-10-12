@@ -1,22 +1,21 @@
-import express from 'express';
-import cors from 'cors';
-import { config } from './utils/config';
-import { api } from './api';
+import express from 'express'
+// import cors from 'cors'
+import { api } from './api'
 // import ProjectRouter from './routes/projects';
 
-const app = express();
+const app = express()
 
-app.use(api);
+app.use(api)
 
-app.use(express.json());
-app.use(cors());
-app.use(express.static('dist'));
+// app.use(express.json())
+// app.use(cors())
+app.use(express.static(process.cwd() + '/dist'))
 
 // app.use(api);
-app.get('/api/ping', (_req, res) => res.send('pong'));
+app.get('/api/ping', (_req, res) => res.send('pong'))
 
 // app.use('/api/projects', ProjectRouter);
 
-const PORT = config.PORT || 3001;
+const PORT = process.env.PORT || 3001
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

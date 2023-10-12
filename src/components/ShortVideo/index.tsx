@@ -1,6 +1,6 @@
-import Container from "./Container";
+import Container from "./StyledContainer";
 
-const Short = ({videoId}: {videoId:string}) => {
+const ShortVideo = ({videoId}: {videoId:string}) => {
   const src = `http://www.youtube.com/embed/${videoId}`;
   return <Container>
     <iframe className="w-full h-full" allowFullScreen={true} src={src}></iframe>
@@ -8,4 +8,4 @@ const Short = ({videoId}: {videoId:string}) => {
   
 }
 
-export default Short;
+export default ShortVideo;

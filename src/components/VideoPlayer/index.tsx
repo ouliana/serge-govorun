@@ -1,4 +1,4 @@
-import Container from "./Container";
+import Container from "./StyledContainer";
 
 const VideoPlayer = ({videoId}: {videoId:string}) => {
   const src = `http://www.youtube.com/embed/${videoId}`;

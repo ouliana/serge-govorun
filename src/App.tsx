@@ -1,4 +1,4 @@
-import Short from "./components/Short"
+import ShortVideoList from "./components/ShortVideoList"
 import VideoPlayer from "./components/VideoPlayer"
 
 
@@ -6,9 +6,9 @@ import VideoPlayer from "./components/VideoPlayer"
   
   return (
     <>
-      <h1 className="text-3l font-bold text-red-500">Serg Govorun</h1>
+      <h1 className="text-3l font-bold text-red-500">Serge Govorun</h1>
       <VideoPlayer videoId="ZHsh8LnlebM"  />
-      <Short videoId="_pGj9Mz2dI0"  />
+      <ShortVideoList  />
     </>
   )
 }
