@@ -1,68 +1,94 @@
-import * as Yup from 'yup';
-import {
-  Formik,
-  //  FormikHelpers,
-  //  FormikProps,
-  Form,
-  //  FieldProps,
-} from 'formik';
-import { StyledInput, StyledInputContainer } from '../theme';
+import { useState } from 'react'
+import { useFormik } from 'formik';
+import { Input, InputContainer, Error, Button, FormContainer, Label, ErrorInputStyle, StyledEye, StyledEyeOff, LabelWithIcon } from '../theme';
+
 
 interface SignInValues {
   email: string;
   password: string;
 }
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+const validate = (values: SignInValues) => {
+  const errors: SignInValues = { email: '', password: '' };
+  
+  const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+  
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address';
+  }
 
-const SigninSchema = Yup.object().shape({
-  email: Yup.string().email().required('Обязательное поле'),
-  password: Yup.string().required('No password provided.') 
-    .min(8, 'Password is too short - should be 8 chars minimum.')
-    .matches(passwordRules, 'min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.')
-});
+  if (!values.password) {
+    errors.password = 'Required';
+  } else if (!values.password.match(passwordRules)) {
+    errors.password = 'min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.';
+  }
 
-const SignIn = () => {
-  const initialValues: SignInValues = { email: '', password: '' };
+  return errors;
+};
+
+const SignInForm = () => {
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+  
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validate,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
-    <div>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={SigninSchema}
-        onSubmit={(values, actions) => {
-          console.log({ values, actions });
-          alert(JSON.stringify(values, null, 2));
-          actions.setSubmitting(false);
-        }}
-      >
-        {({ errors, touched }) => (
-          <Form>
-            <StyledInputContainer>
-            {errors.email && touched.email
-                ? (<div>{errors.email}</div>)
-                : null}
-              <StyledInput
-                id='email'
-                name='email'
-                placeholder='email'
-              />
-            </StyledInputContainer>
-            <StyledInputContainer>
-              {errors.password && touched.password
-                ? (<div>{errors.password}</div>)
-                : null}
-              <StyledInput
-                id='password'
-                name='password'
-                placeholder='password'
-              />
-            </StyledInputContainer>
-          <button type='submit'>Submit</button>
-        </Form>
-        )}
-      </Formik>
-    </div>
+    <form onSubmit={formik.handleSubmit}>
+
+      <FormContainer>
+        <InputContainer>
+          <Label>E-Mail:
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="name@gmail.com"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            className={formik.errors.email ? ErrorInputStyle : ""}
+
+          />
+          {formik.errors.email ? <Error>{formik.errors.email}</Error> : null}
+          </Label>
+
+        </InputContainer>
+        <InputContainer>
+        <LabelWithIcon>Пароль:
+          <Input
+            id="password"
+            name="password"
+            type={isPasswordHidden ? "password" : "text"}
+            placeholder="password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            className={formik.errors.password ? ErrorInputStyle : ""}
+          />
+        {formik.errors.password ? <Error>{formik.errors.password}</Error> : null}
+            {isPasswordHidden &&
+              <StyledEye
+                onClick={()=> setIsPasswordHidden(!isPasswordHidden)}
+                className="cursor-pointer w-6 h-6 absolute top-1/2  right-4" />}
+            {!isPasswordHidden &&
+              <StyledEyeOff
+              onClick={()=> setIsPasswordHidden(!isPasswordHidden)}
+                className="cursor-pointer w-6 h-6 absolute top-1/2  right-4" />}
+        </LabelWithIcon>
+        </InputContainer>
+        <Button type="submit">Войти</Button>
+      </FormContainer>
+    </form>
   );
 };
 
-export default SignIn;
+export default SignInForm;
