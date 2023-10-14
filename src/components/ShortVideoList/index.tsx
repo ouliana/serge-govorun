@@ -1,27 +1,32 @@
 import { useState, useEffect } from 'react';
 import { remult } from 'remult';
-import { Video } from '../../shared/video';
+import { Video } from '../../shared/Video';
 import  ShortVideo from '../ShortVideo';
 import Container from "./StyledContainer";
+import { Format } from '../../shared/Format';
 
-const shortsRepo = remult.repo(Video)
-
-const ShortVideoList = () => {
+  const ShortVideoList = () => {
+  
   const [shorts, setShorts] = useState<Video[]>([]);
-
   useEffect(() => {
-  (async () => {
-    try {
-      const videos = await shortsRepo.find();
-      setShorts(videos.filter(v => v.isShort))
-    } catch (e) {
-      throw new Error('Could not fetch data')
-    }
-  })();
-  }, []);
+    (async () => {
+       const data = await remult.repo(Video).find({
+        where: {
+          format: await remult.repo(Format).find({
+            where: {
+              format_name: '9:16'
+            }
+          })
+        }
+      });
+      console.table(data);
+      setShorts(data)
+    })();
+  }, [])
+    
 
   return <Container>
-    {shorts.map((short: Video) => <ShortVideo videoId={short.videoId} key={short.videoId} />)}
+    {shorts.map((short: Video) => <ShortVideo videoId={short.youtube_video_id} key={short.id} />)}
   </Container>
 };
 

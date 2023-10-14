@@ -1,24 +1,41 @@
-import { Entity, Fields } from 'remult';
-
+import { Entity, IdEntity, Field, Fields } from 'remult';
+import { Brand } from './Brand';
+import { Format } from './Format';
+import { Category } from './Category';
 @Entity('videos', {
   allowApiCrud: true,
 })
-export class Video {
-  @Fields.autoIncrement()
-  id = 0;
+export class Video extends IdEntity {
+  @Fields.cuid()
+  id = '';
 
   @Fields.string()
-  videoId = '';
+  youtube_video_id = '';
+
+  @Field(() => Format)
+  format?: Format;
 
   @Fields.string()
-  title = '';
+  title_ru = '';
 
   @Fields.string()
-  description = '';
+  title_en = '';
+
+  @Fields.string()
+  description_ru = '';
+
+  @Fields.string()
+  description_en = '';
+
+  @Field(() => Brand)
+  brand?: Brand;
+
+  @Field(() => Category)
+  category?: Category;
 
   @Fields.date()
   createdOn = new Date();
 
   @Fields.boolean()
-  isShort = false;
+  featured = false;
 }

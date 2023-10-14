@@ -5,12 +5,16 @@ import ShortVideoList from "./components/ShortVideoList"
 import VideoPlayer from "./components/VideoPlayer"
 import { useEffect } from 'react';
 import SignIn from './components/SignIn';
+import useBrand from './hooks/useBrands';
 
 
 const App = () => {
   const { t } = useTranslation();
 
   useEffect(() => { document.title = t('title') }, []);
+
+  const {brands} = useBrand();
+  console.log(brands);
   
   return (
     <>
