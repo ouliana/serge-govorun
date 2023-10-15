@@ -8,8 +8,5 @@ export class Brand extends IdEntity {
   id = '';
 
   @Fields.string()
-  brand_name_ru = '';
-
-  @Fields.string()
-  brand_name_en = '';
+  brand_name = '';
 }

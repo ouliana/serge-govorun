@@ -1,18 +1,24 @@
-import tw from "tailwind-styled-components"
+import tw from 'tailwind-styled-components';
 
-import {Eye, EyeOff} from '@styled-icons/ionicons-outline'
+import { Eye, EyeOff } from '@styled-icons/ionicons-outline';
 
-export const ErrorInputStyle = "border-rose-500 dark:border-rose-400"
+export const Page = tw.div`
+flex-col
+bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500
+
+`;
+
+export const ErrorInputStyle = 'border-rose-500 dark:border-rose-400';
 
 export const StyledEye = tw(Eye)`
   text-stone-600
   dark:text-stone-200
-`
+`;
 export const StyledEyeOff = tw(EyeOff)`
   text-stone-600
   dark:text-stone-200
  
-`
+`;
 
 export const Input = tw.input`
   appearance-none 
@@ -35,7 +41,7 @@ export const Input = tw.input`
   duration-300 
   ease-in-out
 
-`
+`;
 export const InputContainer = tw.div`
 flex-col 
   items-center 
@@ -43,12 +49,12 @@ flex-col
   md:w-2/5
   lg:w-3/12
 
-`
+`;
 export const Error = tw.div`
   text-rose-600
   dark:text-rose-400
   text-xs
-`
+`;
 
 export const Button = tw.button`
   bg-indigo-500
@@ -61,23 +67,21 @@ export const Button = tw.button`
   transition 
   duration-300 
   ease-in-out
-`
+`;
 
 export const FormContainer = tw.div`
   flex-col 
   items-center 
   mb-6
   space-y-4
-`
+`;
 
 export const Label = tw.label`
    text-stone-700 
    mb-2
-`
+`;
 export const LabelWithIcon = tw.label`
 text-stone-700 
    mb-2
    relative
-`
-
-
+`;

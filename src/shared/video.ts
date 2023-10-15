@@ -16,16 +16,10 @@ export class Video extends IdEntity {
   format?: Format;
 
   @Fields.string()
-  title_ru = '';
+  title = '';
 
   @Fields.string()
-  title_en = '';
-
-  @Fields.string()
-  description_ru = '';
-
-  @Fields.string()
-  description_en = '';
+  description = '';
 
   @Field(() => Brand)
   brand?: Brand;

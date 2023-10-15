@@ -8,8 +8,5 @@ export class Category extends IdEntity {
   id = '';
 
   @Fields.string()
-  category_name_ru = '';
-
-  @Fields.string()
-  category_name_en = '';
+  category_name = '';
 }
