@@ -5,6 +5,9 @@ export default {
     fontFamily: {
       sans: ['Comfortaa'],
     },
+    backgroundImage: {
+      profile: "url('src/img/profile.jpg')",
+    },
     extend: {
       aspectRatio: {
         '9/16': '9 / 16',
