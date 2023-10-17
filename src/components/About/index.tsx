@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { remult } from 'remult';
 import { AboutParagraph } from '../../shared/AboutParagraph';
-import ProfileImage from './ProfileImage';
+import { Container, ProfileImage, ProfileText } from './styles';
 
 const About = () => {
   const [text, setText] = useState<AboutParagraph[]>([]);
@@ -13,14 +13,15 @@ const About = () => {
   }, []);
 
   return (
-    <>
+    <Container>
       <ProfileImage />
-      <div>
+      <h2>Serge Govorun</h2>
+      <ProfileText>
         {text.map((row: AboutParagraph) => (
           <p key={row.id}>{row.paragraph}</p>
         ))}
-      </div>
-    </>
+      </ProfileText>
+    </Container>
   );
 };
 

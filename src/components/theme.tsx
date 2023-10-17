@@ -3,9 +3,14 @@ import tw from 'tailwind-styled-components';
 import { Eye, EyeOff } from '@styled-icons/ionicons-outline';
 
 export const Page = tw.div`
+py-8
+px-4
+flex
 flex-col
-bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500
-
+items-start
+gap-16
+text-indigo-900
+bg-gradient-to-br from-teal-300 via-purple-400 to-rose-500
 `;
 
 export const ErrorInputStyle = 'border-rose-500 dark:border-rose-400';
