@@ -9,4 +9,7 @@ export class Category extends IdEntity {
 
   @Fields.string()
   category_name = '';
+
+  @Fields.string()
+  icon = '';
 }

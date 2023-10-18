@@ -1,13 +1,13 @@
 // import { Outlet } from 'react-router-dom';
 import About from '../About';
-import Videos from '../Videos';
+import CategoryList from '../CategoryList';
 import { Page } from '../theme';
 
 const HomePage = () => {
   return (
     <Page>
       <About />
-      <Videos />
+      <CategoryList />
     </Page>
   );
 };

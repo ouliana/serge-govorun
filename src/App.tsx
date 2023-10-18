@@ -5,34 +5,14 @@ import ProtectedLayout from './components/ProtectedLayout';
 import Dashboard from './components/Dashboard';
 import SingleVideo from './components/SingleVideo';
 import VideoList from './components/VideoList';
+import Advertisement from './components/Advertisement';
+import Movies from './components/Movies';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
     children: [
-      {
-        path: 'videos',
-        element: <VideoList />,
-        loader: ({ params }) => {
-          return {
-            category: params?.category ? params.category : 'all',
-            brand: params?.brand ? params.brand : 'all',
-          };
-        },
-      },
-      {
-        path: ':id',
-        element: <SingleVideo />,
-        loader: ({ params }) => {
-          console.log('params: ', params);
-          return {
-            src: `https://www.youtube.com/embed/${params.id}`,
-            targetId: params.id,
-          };
-        },
-      },
-
       {
         element: <ProtectedLayout />,
         children: [
@@ -48,18 +28,33 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: '/video',
-  //   element: <VideoPage />,
-  //   children: [
-  //     {
-  //       path: ':id',
-  //       element: <SingleVideo />,
-  //     },
-  //   ],
-  //   // loader: ({ params }) => {
-  //   //   console.log('params: ', params);
-  //   //   return `https://www.youtube.com/embed/${params.id}`;
-  //   // },
-  // },
+  {
+    path: '/adv',
+    element: <Advertisement />,
+    children: [
+      {
+        path: ':brand',
+        element: <VideoList category='Advertising' />,
+        loader: ({ params }) => {
+          return {
+            brand: params.brand,
+          };
+        },
+      },
+    ],
+  },
+  {
+    path: '/movies',
+    element: <Movies />,
+  },
+  {
+    path: ':id',
+    element: <SingleVideo />,
+    loader: ({ params }) => {
+      return {
+        src: `https://www.youtube.com/embed/${params.id}`,
+        targetId: params.id,
+      };
+    },
+  },
 ]);
