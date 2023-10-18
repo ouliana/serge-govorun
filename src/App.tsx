@@ -1,24 +1,62 @@
-import { Route, Routes } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import SignIn from './components/SignIn';
+import ProtectedLayout from './components/ProtectedLayout';
+import Dashboard from './components/Dashboard';
+import SingleVideo from './components/SingleVideo';
+import VideoList from './components/VideoList';
 
-import { Page } from './components/theme';
-import Home from './components/Home';
-import VideoPage from './components/VideoPage';
-
-const App = () => {
-  return (
-    <Page>
-      <Routes>
-        <Route
-          path='/videos/:id'
-          element={<VideoPage />}
-        />
-        <Route
-          path='/'
-          element={<Home />}
-        />
-      </Routes>
-    </Page>
-  );
-};
-
-export default App;
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomePage />,
+    children: [
+      {
+        path: 'videos',
+        element: <VideoList />,
+      },
+      {
+        path: ':id',
+        element: <SingleVideo />,
+        loader: ({ params }) => {
+          console.log('params: ', params);
+          return {
+            src: `https://www.youtube.com/embed/${params.id}`,
+            targetId: params.id,
+          };
+        },
+      },
+      {
+        path: ':brand',
+        element: <VideoList />,
+      },
+      {
+        element: <ProtectedLayout />,
+        children: [
+          {
+            path: '/signin',
+            element: <SignIn />,
+          },
+          {
+            path: '/dashboard',
+            element: <Dashboard />,
+          },
+        ],
+      },
+    ],
+  },
+  // {
+  //   path: '/video',
+  //   element: <VideoPage />,
+  //   children: [
+  //     {
+  //       path: ':id',
+  //       element: <SingleVideo />,
+  //     },
+  //   ],
+  //   // loader: ({ params }) => {
+  //   //   console.log('params: ', params);
+  //   //   return `https://www.youtube.com/embed/${params.id}`;
+  //   // },
+  // },
+]);

@@ -18,15 +18,20 @@ const VideoList = () => {
     console.log('useEffect');
     console.log('targetId: ', targetId);
 
-    const el = document.getElementById(targetId);
-    console.log(el);
-    if (el) {
-      setTimeout(() => el.scrollIntoView(), 1000);
-    }
+    setTimeout(() => {
+      const el = document.getElementById(targetId);
+      console.log(el);
+      if (el) {
+        // el.scrollIntoView({ behavior: 'smooth' });
+        el.scrollIntoView({ behavior: 'instant' });
+      }
+    }, 100);
   }, [targetId]);
 
   const handleClick = (id: string): void => {
-    navigate(`/videos/${id}`);
+    console.log(id);
+    navigate(`/${id}`);
+    // navigate(`/videos/${id}`);
   };
 
   useEffect(() => {
