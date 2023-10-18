@@ -14,6 +14,12 @@ export const router = createBrowserRouter([
       {
         path: 'videos',
         element: <VideoList />,
+        loader: ({ params }) => {
+          return {
+            category: params?.category ? params.category : 'all',
+            brand: params?.brand ? params.brand : 'all',
+          };
+        },
       },
       {
         path: ':id',
@@ -26,10 +32,7 @@ export const router = createBrowserRouter([
           };
         },
       },
-      {
-        path: ':brand',
-        element: <VideoList />,
-      },
+
       {
         element: <ProtectedLayout />,
         children: [

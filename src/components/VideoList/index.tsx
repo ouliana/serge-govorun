@@ -1,50 +1,80 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useLoaderData } from 'react-router-dom';
 
 import { remult } from 'remult';
 import { Video } from '../../shared/Video';
 import { Category } from '../../shared/Category';
 import VideoListItem from '../VideoListItem';
 import { Container } from './styled';
+import { Brand } from '../../shared/Brand';
+
+interface Params {
+  brand: string;
+  category: string;
+}
 
 const VideoList = () => {
-  const [videos, setVideos] = useState<Video[]>([]);
-  const navigate = useNavigate();
+  const params = useLoaderData() as Params;
 
+  const [videos, setVideos] = useState<Video[]>([]);
+
+  const navigate = useNavigate();
   const { state } = useLocation();
   const { targetId } = state || {};
 
   useEffect(() => {
-    console.log('useEffect');
-    console.log('targetId: ', targetId);
-
     setTimeout(() => {
       const el = document.getElementById(targetId);
       console.log(el);
       if (el) {
-        // el.scrollIntoView({ behavior: 'smooth' });
         el.scrollIntoView({ behavior: 'instant' });
       }
     }, 100);
   }, [targetId]);
 
-  const handleClick = (id: string): void => {
-    console.log(id);
-    navigate(`/${id}`);
-    // navigate(`/videos/${id}`);
-  };
+  const handleClick = (id: string): void => navigate(`/${id}`);
 
-  useEffect(() => {
-    (async () => {
-      const data = await remult.repo(Video).find({
+  const fetchData = async (): Promise<Video[]> => {
+    let result: Video[] = [];
+
+    if (params.category === 'all') {
+      result = await remult.repo(Video).find();
+      return result;
+    }
+
+    if (params.brand === 'all') {
+      result = await remult.repo(Video).find({
         where: {
           category: await remult.repo(Category).find({
             where: {
-              category_name: 'Promotion',
+              category_name: params.category,
             },
           }),
         },
       });
+      return result;
+    }
+
+    result = await remult.repo(Video).find({
+      where: {
+        category: await remult.repo(Category).find({
+          where: {
+            category_name: params.category,
+          },
+        }),
+        brand: await remult.repo(Brand).find({
+          where: {
+            brand_name: params.brand,
+          },
+        }),
+      },
+    });
+    return result;
+  };
+
+  useEffect(() => {
+    (async () => {
+      const data = await fetchData();
       // console.table(data);
       setVideos(data);
     })();
