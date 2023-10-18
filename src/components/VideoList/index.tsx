@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useLocation, useLoaderData } from 'react-router-dom';
 
 import { Video } from '../../shared/Video';
@@ -44,7 +44,10 @@ const VideoList = ({ category }: Params) => {
       {videos && (
         <Container>
           {videos
-            .filter(v => v.brand?.brand_name === params.brand)
+            .filter(
+              v =>
+                params.brand === 'All' || v.brand?.brand_name === params.brand
+            )
             .map((v: Video) => (
               <VideoListItem
                 id={v.youtube_video_id}
