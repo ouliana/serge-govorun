@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useLoaderData } from 'react-router-dom';
 
-import { Video } from '../../shared/Video';
 import VideoListItem from '../VideoListItem';
 import { Container } from './styles';
 import useVideo from '../../hooks/useVideo';
@@ -10,6 +9,7 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
 import ReactPlayer from 'react-player/youtube';
+import { Video } from '../../shared/Video';
 
 interface Params {
   category: string;
