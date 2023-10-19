@@ -8,7 +8,7 @@ px-4
 flex
 flex-col
 items-start
-gap-16
+gap-8
 text-indigo-900
 bg-gradient-to-br from-teal-300 via-purple-400 to-rose-500
 `;

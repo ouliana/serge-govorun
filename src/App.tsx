@@ -3,7 +3,6 @@ import HomePage from './components/HomePage';
 import SignIn from './components/SignIn';
 import ProtectedLayout from './components/ProtectedLayout';
 import Dashboard from './components/Dashboard';
-import SingleVideo from './components/SingleVideo';
 import VideoList from './components/VideoList';
 import Advertisement from './components/Advertisement';
 import Movies from './components/Movies';
@@ -46,15 +45,5 @@ export const router = createBrowserRouter([
   {
     path: '/movies',
     element: <Movies />,
-  },
-  {
-    path: ':id',
-    element: <SingleVideo />,
-    loader: ({ params }) => {
-      return {
-        src: `https://www.youtube.com/embed/${params.id}`,
-        targetId: params.id,
-      };
-    },
   },
 ]);

@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
-import { useNavigate, useLocation, useLoaderData } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useLoaderData } from 'react-router-dom';
 
 import { Video } from '../../shared/Video';
 import VideoListItem from '../VideoListItem';
-import { Container } from './styled';
-// import { BrandActionKind, useBrandDispatch } from '../../context/helpers';
+import {
+  Container,
+  Player,
+  VideoModal,
+  VideoModalBody,
+  VideoModalHeader,
+} from './styles';
 import useVideo from '../../hooks/useVideo';
 
 interface Params {
@@ -17,15 +22,17 @@ interface RouteParams {
 
 const VideoList = ({ category }: Params) => {
   const params = useLoaderData() as RouteParams;
-  // const dispatch = useBrandDispatch();
 
-  const { videos, loading } = useVideo(category);
-  console.log('loading: ', loading);
-  console.log('videos: ', videos);
+  const [openModal, setOpenModal] = useState<string | undefined>();
+  const props = { openModal, setOpenModal };
 
-  const navigate = useNavigate();
+  const { videos } = useVideo(category);
+
+  // const navigate = useNavigate();
   const { state } = useLocation();
   const { targetId } = state || {};
+
+  const [videoToPlay, setVideoToPlay] = useState<Video | null>(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,7 +44,11 @@ const VideoList = ({ category }: Params) => {
     }, 100);
   }, [targetId]);
 
-  const handleClick = (id: string): void => navigate(`/${id}`);
+  const handleClick = (video: Video): void => {
+    setVideoToPlay(video);
+    props.setOpenModal('dismissible');
+  };
+  // const handleClick = (id: string): void => navigate(`/${id}`);
 
   return (
     <>
@@ -53,11 +64,24 @@ const VideoList = ({ category }: Params) => {
                 id={v.youtube_video_id}
                 key={v.id}
                 videoId={v.youtube_video_id}
-                handleClick={handleClick}
+                handleClick={() => handleClick(v)}
               />
             ))}
         </Container>
       )}
+      <VideoModal
+        dismissible
+        show={props.openModal === 'dismissible'}
+        onClose={() => props.setOpenModal(undefined)}
+      >
+        <VideoModalHeader>{videoToPlay?.title}</VideoModalHeader>
+        <VideoModalBody>
+          <Player
+            allowFullScreen={true}
+            src={`https://www.youtube.com/embed/${videoToPlay?.youtube_video_id}`}
+          />
+        </VideoModalBody>
+      </VideoModal>
     </>
   );
 };
