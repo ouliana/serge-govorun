@@ -4,6 +4,9 @@ import { Modal } from 'flowbite-react';
 export const Container = tw.div`
   grid
   grid-cols-2
+  sm:grid-cols-2
+  md:grid-cols-3
+  lg:grid-cols-4
   grid-flow-row 
   gap-4
 `;

@@ -15,16 +15,14 @@ const Brands = () => {
   }, []);
 
   return (
-    <>
-      <Chips>
-        {brands.map(b => (
-          <Chip
-            key={b.id}
-            brand={b.brand_name}
-          />
-        ))}
-      </Chips>
-    </>
+    <Chips>
+      {brands.map(b => (
+        <Chip
+          key={b.id}
+          brand={b.brand_name}
+        />
+      ))}
+    </Chips>
   );
 };
 
