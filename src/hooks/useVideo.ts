@@ -3,7 +3,7 @@ import { Video } from '../shared/Video';
 import { useEffect, useState } from 'react';
 import { Category } from '../shared/Category';
 
-const useVideo = (category: string) => {
+const useVideo = (categoryName: string) => {
   const [videos, setVideos] = useState<Video[]>([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const useVideo = (category: string) => {
         where: {
           category: await remult.repo(Category).find({
             where: {
-              category_name: category,
+              category_name: categoryName,
             },
           }),
         },

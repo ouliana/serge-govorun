@@ -1,11 +1,11 @@
-import { Entity, IdEntity, Field, Fields } from 'remult';
+import { Entity, Field, Fields } from 'remult';
 import { Brand } from './Brand';
 import { Format } from './Format';
 import { Category } from './Category';
 @Entity('videos', {
   allowApiCrud: true,
 })
-export class Video extends IdEntity {
+export class Video {
   @Fields.cuid()
   id = '';
 
