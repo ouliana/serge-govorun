@@ -9,7 +9,8 @@ import { AboutParagraph } from '../shared/AboutParagraph';
 export const api = remultExpress({
   entities: [Video, Format, Brand, Category, AboutParagraph],
   dataProvider: createPostgresConnection({
-    connectionString:
-      process.env.CONNECTION_STRING,
+    connectionString: process.env.CONNECTION_STRING,
+    // process.env.CONNECTION_STRING,
+    // process.env.CONNECTION_STRING,
   }),
 });
