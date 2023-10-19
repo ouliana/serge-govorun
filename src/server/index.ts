@@ -1,16 +1,17 @@
 import 'dotenv/config';
 import express from 'express';
-// import cors from 'cors'
+import helmet from 'helmet';
+import compression from 'compression';
 import { api } from './api';
 
 const app = express();
 
+app.use(helmet());
+app.use(compression());
+
 app.use(api);
 
-// app.use(cors())
 app.use(express.static(process.cwd() + '/dist'));
-
-app.get('/api/ping', (_req, res) => res.send('pong'));
 
 const PORT = process.env.PORT;
 
