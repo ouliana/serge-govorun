@@ -5,7 +5,7 @@ export default {
     fontFamily: {
       sans: ['Comfortaa'],
     },
-
+    // darkMode: 'class',
     extend: {
       aspectRatio: {
         '9/16': '9 / 16',

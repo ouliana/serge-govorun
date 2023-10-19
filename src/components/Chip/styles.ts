@@ -10,10 +10,13 @@ text-xs
 grow-0
 shrink-0
 bg-purple-200
+dark:bg-purple-500
 text-indigo-900
+dark:text-purple-100
 `;
 
 export const SelectedChipItem = tw(ChipItem)`
 border
 border-indigo-900
+dark:border-purple-200
 `;

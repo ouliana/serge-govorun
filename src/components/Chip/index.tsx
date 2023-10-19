@@ -10,7 +10,7 @@ const Chip = ({ brand }: Params) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/adv/${brand}`);
+    navigate(`/videos/adv/${brand}`);
   };
 
   if (params.brand === brand)

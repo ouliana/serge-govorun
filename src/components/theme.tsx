@@ -3,14 +3,21 @@ import tw from 'tailwind-styled-components';
 import { Eye, EyeOff } from '@styled-icons/ionicons-outline';
 
 export const Page = tw.div`
-py-8
-px-4
 flex
 flex-col
 items-center
-gap-8
+gap-14
 text-indigo-900
-bg-gradient-to-br from-teal-300 via-purple-400 to-rose-500
+dark:text-purple-100
+bg-gradient-to-br 
+from-teal-300 
+via-purple-400 
+to-rose-500
+dark:bg-gradient-to-br
+dark:from-slate-900
+dark:via-indigo-900 
+dark:to-rose-900
+
 `;
 
 export const ErrorInputStyle = 'border-rose-500 dark:border-rose-400';
@@ -89,4 +96,8 @@ export const LabelWithIcon = tw.label`
 text-stone-700 
    mb-2
    relative
+`;
+
+export const IconButton = tw.div`
+cursor-pointer
 `;
