@@ -3,14 +3,13 @@ import { useLocation, useLoaderData } from 'react-router-dom';
 
 import { Video } from '../../shared/Video';
 import VideoListItem from '../VideoListItem';
-import {
-  Container,
-  Player,
-  VideoModal,
-  VideoModalBody,
-  VideoModalHeader,
-} from './styles';
+import { Container } from './styles';
 import useVideo from '../../hooks/useVideo';
+
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+
+import ReactPlayer from 'react-player/youtube';
 
 interface Params {
   category: string;
@@ -23,21 +22,25 @@ interface RouteParams {
 const VideoList = ({ category }: Params) => {
   const params = useLoaderData() as RouteParams;
 
-  const [openModal, setOpenModal] = useState<string | undefined>();
-  const props = { openModal, setOpenModal };
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const { videos } = useVideo(category);
 
-  // const navigate = useNavigate();
   const { state } = useLocation();
   const { targetId } = state || {};
 
   const [videoToPlay, setVideoToPlay] = useState<Video | null>(null);
+  const [isVideoFormat, setIsVideoFormat] = useState<boolean>(true);
 
   useEffect(() => {
     setTimeout(() => {
       const el = document.getElementById(targetId);
-      console.log(el);
       if (el) {
         el.scrollIntoView({ behavior: 'instant' });
       }
@@ -46,9 +49,11 @@ const VideoList = ({ category }: Params) => {
 
   const handleClick = (video: Video): void => {
     setVideoToPlay(video);
-    props.setOpenModal('dismissible');
+    if (video.format) {
+      setIsVideoFormat(video.format?.format_name === '16:9');
+    }
+    handleOpen();
   };
-  // const handleClick = (id: string): void => navigate(`/${id}`);
 
   return (
     <>
@@ -69,19 +74,30 @@ const VideoList = ({ category }: Params) => {
             ))}
         </Container>
       )}
-      <VideoModal
-        dismissible
-        show={props.openModal === 'dismissible'}
-        onClose={() => props.setOpenModal(undefined)}
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
       >
-        <VideoModalHeader>{videoToPlay?.title}</VideoModalHeader>
-        <VideoModalBody>
-          <Player
-            allowFullScreen={true}
-            src={`https://www.youtube.com/embed/${videoToPlay?.youtube_video_id}`}
+        <Box
+          className={
+            isVideoFormat
+              ? 'w-10/12 aspect-video m-auto translate-y-24'
+              : 'h-4/5 aspect-[9/16] m-auto translate-y-24'
+          }
+        >
+          <ReactPlayer
+            url={`https://www.youtube.com/embed/${videoToPlay?.youtube_video_id}`}
+            width='100%'
+            height='100%'
+            playing={true}
+            allowFullScreen
+            controls
           />
-        </VideoModalBody>
-      </VideoModal>
+        </Box>
+      </Modal>
     </>
   );
 };

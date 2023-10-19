@@ -3,6 +3,8 @@ import tw from 'tailwind-styled-components';
 import { Eye, EyeOff } from '@styled-icons/ionicons-outline';
 
 export const Page = tw.div`
+relative
+min-h-screen
 flex
 flex-col
 items-center
@@ -17,7 +19,15 @@ dark:bg-gradient-to-br
 dark:from-slate-900
 dark:via-indigo-900 
 dark:to-rose-900
+`;
 
+export const Content = tw.div`
+px-4
+w-full
+flex
+flex-col
+gap-8
+items-center
 `;
 
 export const ErrorInputStyle = 'border-rose-500 dark:border-rose-400';

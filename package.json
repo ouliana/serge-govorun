@@ -12,6 +12,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.14",
     "@styled-icons/ionicons-outline": "^10.46.0",
     "cors": "^2.8.5",
     "cuid": "^3.0.0",
@@ -27,6 +30,7 @@
     "react-h5-audio-player": "^3.9.0",
     "react-i18next": "^13.2.2",
     "react-icons": "^4.11.0",
+    "react-player": "^2.13.0",
     "react-router": "^6.16.0",
     "react-router-dom": "^6.17.0",
     "react-youtube": "^10.1.0",

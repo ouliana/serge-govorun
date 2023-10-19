@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import { Modal } from 'flowbite-react';
+import Box from '@mui/material/Box';
 
 export const Container = tw.div`
   grid
@@ -11,26 +11,27 @@ export const Container = tw.div`
   gap-4
 `;
 
-export const VideoModal = tw(Modal)`
-bg-opacity-60
-bg-indigo-900
-p-2
-`;
-
-export const VideoModalHeader = tw(Modal.Header)`
-bg-slate-900
-text-slate-100
-flex
-flex-row
-justify-between
-p-4
-`;
-
-export const VideoModalBody = tw(Modal.Body)`
-bg-slate-900
-p-4
-`;
-
-export const Player = tw.iframe`
+export const VideoModal = tw.div`
+absolute
+top-0
+left-0
+h-full
 w-full
+bg-opacity-60
+bg-slate-900
+p-20
+flex
+flex-col
+justify-center
+items-center
+`;
+
+export const PlayerH = tw(Box)`
+w-11/12
+aspect-video 
+`;
+
+export const PlayerV = tw(Box)`
+h-4/5
+aspect-[9/16]
 `;

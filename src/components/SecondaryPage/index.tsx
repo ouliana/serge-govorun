@@ -1,15 +1,14 @@
 import { Outlet } from 'react-router';
-import { Page } from '../theme';
-import { Container } from './styles';
 import NavBar from '../NavBar';
+import { Content, Page } from '../theme';
 
 const SecondaryPage = () => {
   return (
     <Page>
       <NavBar />
-      <Container>
+      <Content>
         <Outlet />
-      </Container>
+      </Content>
     </Page>
   );
 };

@@ -2,17 +2,16 @@
 import About from '../About';
 import CategoryList from '../CategoryList';
 import NavBar from '../NavBar';
-import { Page } from '../theme';
-import { Container } from './styles';
+import { Content, Page } from '../theme';
 
 const HomePage = () => {
   return (
     <Page>
       <NavBar />
-      <Container>
+      <Content>
         <About />
         <CategoryList />
-      </Container>
+      </Content>
     </Page>
   );
 };

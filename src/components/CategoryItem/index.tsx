@@ -14,8 +14,8 @@ const CategoryItem = ({ name, icon }: Props) => {
 
   return (
     <Container onClick={() => navigate(adv ? 'videos/adv/All' : '/movies')}>
-      {adv && <FcAdvertising size='3rem' />}
-      {movie && <FcFilmReel size='3rem' />}
+      {adv && <FcAdvertising size='4rem' />}
+      {movie && <FcFilmReel size='4rem' />}
       {name}
     </Container>
   );

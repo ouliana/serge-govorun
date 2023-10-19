@@ -5,13 +5,14 @@ flex
 flex-col
 justify-center
 items-center
-gap-2
+gap-4
 rounded-3xl
 cursor-pointer
 font-bold
 py-2
 px-4
-text-lg
+text-2xl
+md:text-lg
 aspect-square
 w-5/12
 sm:w-48

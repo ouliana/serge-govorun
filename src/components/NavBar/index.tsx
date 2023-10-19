@@ -24,7 +24,7 @@ const NavBar = () => {
       <Navigation>
         <NavLink to='/videos/adv/All'>Advertisement</NavLink>
         <NavLink to='/videos/movies'>Movies</NavLink>
-        <NavLink to='/contacts'>Contacts</NavLink>
+        <NavLink to='/contacts'>Contact me</NavLink>
         <IconButton onClick={toggleMode}>
           <DarkIcon />
         </IconButton>

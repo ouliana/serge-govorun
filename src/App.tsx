@@ -1,27 +1,56 @@
-import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
+import ProtectedLayout from './components/ProtectedLayout';
+import SignIn from './components/SignIn';
+import Dashboard from './components/Dashboard';
+import SecondaryPage from './components/SecondaryPage';
+import Advertisement from './components/Advertisement';
+import VideoList from './components/VideoList';
+import Movies from './components/Movies';
+import HomePage from './components/HomePage';
 
-const App = () => {
-  // const lsMode = window.localStorage.getItem('mode');
-  // const [mode, setMode] = useState<string>(lsMode ? lsMode : 'dark');
-
-  // if (!mode) {
-  //   window.localStorage.getItem('mode');
-  // }
-  // if (
-  //   localStorage.theme === 'dark' ||
-  //   (!('theme' in localStorage) &&
-  //     window.matchMedia('(prefers-color-scheme: dark)').matches)
-  // ) {
-  //   document.documentElement.classList.add('dark');
-  // } else {
-  //   document.documentElement.classList.remove('dark');
-  // }
-
-  useEffect(() => {
-    // document.documentElement.classList.add('dark');
-  }, []);
-  return <Outlet />;
-};
-
-export default App;
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomePage />,
+    children: [
+      {
+        element: <ProtectedLayout />,
+        children: [
+          {
+            path: '/signin',
+            element: <SignIn />,
+          },
+          {
+            path: '/dashboard',
+            element: <Dashboard />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/videos',
+    element: <SecondaryPage />,
+    children: [
+      {
+        path: 'adv',
+        element: <Advertisement />,
+        children: [
+          {
+            path: ':brand',
+            element: <VideoList category='Advertising' />,
+            loader: ({ params }) => {
+              return {
+                brand: params.brand,
+              };
+            },
+          },
+        ],
+      },
+      {
+        path: 'movies',
+        element: <Movies />,
+      },
+    ],
+  },
+]);
