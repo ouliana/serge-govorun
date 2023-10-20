@@ -17,10 +17,16 @@ export class Video {
   format!: Format;
 
   @Fields.string()
-  title = '';
+  title_ru = '';
 
   @Fields.string()
-  description = '';
+  title_en = '';
+
+  @Fields.string()
+  description_ru = '';
+
+  @Fields.string()
+  description_en = '';
 
   @Field(() => Brand)
   brand!: Brand;

@@ -12,13 +12,14 @@ const useVideo = (categoryName: string) => {
         where: {
           category: await remult.repo(Category).find({
             where: {
-              category_name: categoryName,
+              category_name_en: categoryName,
             },
           }),
         },
       });
       setVideos(result);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return { videos, loading: !videos };

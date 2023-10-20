@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import { BrowserRouter as Router } from 'react-router-dom';
 import { Outlet, RouterProvider } from 'react-router-dom';
 import { router } from './App';
+import './i18n/config';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

@@ -11,5 +11,8 @@ export class AboutParagraph {
   paragraph_position = 1;
 
   @Fields.string()
-  paragraph = '';
+  paragraph_ru = '';
+
+  @Fields.string()
+  paragraph_en = '';
 }
