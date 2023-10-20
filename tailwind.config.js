@@ -11,7 +11,7 @@ export default {
         '9/16': '9 / 16',
       },
       backgroundImage: {
-        profile: "url('assets/profile.jpg')",
+        profile: "url('/profile.jpg')",
       },
     },
   },
