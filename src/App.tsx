@@ -1,32 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom';
-import ProtectedLayout from './components/ProtectedLayout';
-import SignIn from './components/SignIn';
-import Dashboard from './components/Dashboard';
 import SecondaryPage from './components/SecondaryPage';
 import Advertisement from './components/Advertisement';
 import VideoList from './components/VideoList';
 import Movies from './components/Movies';
 import HomePage from './components/HomePage';
+import Admin from './components/Admin';
+import Authorisation from './components/Authorisation';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
-    children: [
-      {
-        element: <ProtectedLayout />,
-        children: [
-          {
-            path: '/signin',
-            element: <SignIn />,
-          },
-          {
-            path: '/dashboard',
-            element: <Dashboard />,
-          },
-        ],
-      },
-    ],
   },
   {
     path: '/videos',
@@ -52,5 +36,13 @@ export const router = createBrowserRouter([
         element: <Movies />,
       },
     ],
+  },
+  {
+    path: '/admin',
+    element: <Admin />,
+  },
+  {
+    path: '/auth',
+    element: <Authorisation />,
   },
 ]);

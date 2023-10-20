@@ -32,16 +32,6 @@ items-center
 
 export const ErrorInputStyle = 'border-rose-500 dark:border-rose-400';
 
-export const StyledEye = tw(Eye)`
-  text-stone-600
-  dark:text-stone-200
-`;
-export const StyledEyeOff = tw(EyeOff)`
-  text-stone-600
-  dark:text-stone-200
- 
-`;
-
 export const Input = tw.input`
   appearance-none 
   block
@@ -65,17 +55,24 @@ export const Input = tw.input`
 
 `;
 export const InputContainer = tw.div`
-flex-col 
+  flex-col 
   items-center 
-  w-full
-  md:w-2/5
-  lg:w-3/12
-
 `;
+
+export const InputGroup = tw.div`
+ flex
+ flex-col
+ gap-4
+`;
+
 export const Error = tw.div`
   text-rose-600
   dark:text-rose-400
   text-xs
+`;
+
+export const ErrorPlaceholder = tw(Error)`
+  invisible 
 `;
 
 export const Button = tw.button`
@@ -91,11 +88,15 @@ export const Button = tw.button`
   ease-in-out
 `;
 
+export const IconButton = tw.div`
+cursor-pointer
+`;
+
 export const FormContainer = tw.div`
+  w-full
   flex-col 
   items-center 
-  mb-6
-  space-y-4
+  space-y-14
 `;
 
 export const Label = tw.label`
@@ -103,11 +104,32 @@ export const Label = tw.label`
    mb-2
 `;
 export const LabelWithIcon = tw.label`
-text-stone-700 
+   text-stone-700 
    mb-2
    relative
 `;
 
-export const IconButton = tw.div`
-cursor-pointer
+export const StyledEye = tw(Eye)`
+  text-stone-600
+  dark:text-stone-200
+  cursor-pointer 
+  w-6 
+  h-6 
+  absolute 
+  top-1/2 
+  transform 
+  -translate-y-1/2 
+  right-3
+`;
+export const StyledEyeOff = tw(EyeOff)`
+  text-stone-600
+  dark:text-stone-200
+  cursor-pointer 
+  w-6 
+  h-6 
+  absolute 
+  top-1/2 
+  transform 
+  -translate-y-1/2 
+  right-3
 `;
