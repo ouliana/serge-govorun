@@ -7,8 +7,11 @@ import {
   ProfileImage,
 } from './styles';
 import { IconButton } from '../theme';
+import { useTranslation } from 'react-i18next';
 
 const NavBar = () => {
+  const { t } = useTranslation();
+
   const toggleMode = () => {
     if (document.documentElement.classList.contains('dark')) {
       document.documentElement.classList.remove('dark');
@@ -22,9 +25,8 @@ const NavBar = () => {
     <Container>
       <ProfileImage onClick={() => navigate('/')} />
       <Navigation>
-        <NavLink to='/videos/adv/All'>Advertisement</NavLink>
-        <NavLink to='/videos/movies'>Movies</NavLink>
-        <NavLink to='/contacts'>Contact me</NavLink>
+        <NavLink to='/videos/adv/All'>{t('adv')}</NavLink>
+        <NavLink to='/videos/movies'>{t('movies')}</NavLink>
         <IconButton onClick={toggleMode}>
           <DarkIcon />
         </IconButton>

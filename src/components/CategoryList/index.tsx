@@ -3,8 +3,11 @@ import { remult } from 'remult';
 import { Category } from '../../shared/Category';
 import CategoryItem from '../CategoryItem';
 import { Container } from './styles';
+import useLocaleRu from '../../hooks/useLocaleRu';
 
 const CategoryList = () => {
+  const { isRu } = useLocaleRu();
+
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -19,7 +22,7 @@ const CategoryList = () => {
       {categories.map(c => (
         <CategoryItem
           key={c.id}
-          name={c.category_name}
+          name={isRu ? c.category_name_ru : c.category_name_en}
           icon={c.icon}
         />
       ))}

@@ -10,8 +10,9 @@ export const Container = tw.div`
   w-full
   h-20
   border-b
-  border-purple-200
-px-4
+  border-purple-100
+  dark:border-purple-200
+  px-4
 `;
 
 export const ProfileImage = tw.div`
@@ -19,17 +20,22 @@ bg-profile
 rounded-full
 bg-cover
 border
-border-purple-200
+border-purple-100
+dark:border-purple-200
 w-12
 h-12
 grow-0
 shrink-0
+cursor-pointer
 `;
 
 export const NavLink = tw(Link)`
 text-bold
-text-purple-200
-hover:text-purple-50
+text-purple-50
+font-bold
+hover:text-white
+dark:text-purple-200
+dark:hover:text-purple-50
 text-sm
 `;
 
