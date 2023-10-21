@@ -21,6 +21,19 @@ dark:via-indigo-900
 dark:to-rose-900
 `;
 
+export const PageAdmin = tw.div`
+relative
+min-h-screen
+flex
+flex-col
+items-center
+gap-14
+text-slate-700
+dark:text-slate-100
+bg-white
+dark:bg-slate-900
+`;
+
 export const Content = tw.div`
 px-4
 w-full
@@ -35,15 +48,15 @@ export const ErrorInputStyle = 'border-rose-500 dark:border-rose-400';
 export const Input = tw.input`
   appearance-none 
   block
-  bg-transparent 
-  border
+  bg-slate-50 
+  dark:bg-slate-600 
   w-full 
-  text-stone-600
-  dark:text-stone-200
+  text-slate-600
+  dark:text-slate-200
   border
-  border-stone-200
-  dark:border-stone-200
-  rounded-full
+  border-slate-200
+  dark:border-slate-200
+  rounded-md 
   py-2 
   px-4 
   leading-tight 
@@ -52,9 +65,8 @@ export const Input = tw.input`
   transition 
   duration-300 
   ease-in-out
-
 `;
-export const InputContainer = tw.div`
+export const InputWrapper = tw.div`
   flex-col 
   items-center 
 `;
@@ -63,6 +75,7 @@ export const InputGroup = tw.div`
  flex
  flex-col
  gap-4
+ my-8
 `;
 
 export const Error = tw.div`
@@ -77,11 +90,13 @@ export const ErrorPlaceholder = tw(Error)`
 
 export const Button = tw.button`
   bg-indigo-500
+  dark:bg-indigo-400
   hover:bg-indigo-700 
   text-indigo-50 
+  dark:text-indigo-50 
   py-2 
   px-4 
-  rounded-full
+  rounded-md
   w-full
   transition 
   duration-300 
@@ -92,26 +107,23 @@ export const IconButton = tw.div`
 cursor-pointer
 `;
 
-export const FormContainer = tw.div`
-  w-full
-  flex-col 
-  items-center 
-  space-y-14
+export const FormWrapper = tw.div`
+  w-96
+  p-8
 `;
 
 export const Label = tw.label`
-   text-stone-700 
+   text-slate-700 
+   dark:text-slate-50
    mb-2
 `;
-export const LabelWithIcon = tw.label`
-   text-stone-700 
-   mb-2
+export const LabelWithIcon = tw(Label)`
    relative
 `;
 
 export const StyledEye = tw(Eye)`
-  text-stone-600
-  dark:text-stone-200
+  text-slate-400 
+  dark:text-slate-30
   cursor-pointer 
   w-6 
   h-6 
