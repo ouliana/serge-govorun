@@ -1,14 +1,16 @@
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import {
   Button,
   FormWrapper,
   Input,
   InputGroup,
   InputWrapper,
-  Label,
-  LabelWithIcon,
   StyledEye,
   StyledEyeOff,
+  Error,
+  ErrorPlaceholder,
+  InputWithIcon,
 } from '../theme';
 import { useState } from 'react';
 
@@ -20,6 +22,10 @@ const AuthForm = () => {
       email: '',
       password: '',
     },
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email('Invalid email').required('Required'),
+      password: Yup.string().required('Required'),
+    }),
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
     },
@@ -29,18 +35,27 @@ const AuthForm = () => {
       <form onSubmit={formik.handleSubmit}>
         <InputGroup>
           <InputWrapper>
-            <Label>
-              <Input
-                id='email'
-                name='email'
-                type='email'
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-            </Label>
+            {formik.errors.email ? (
+              <Error>{formik.errors.email}</Error>
+            ) : (
+              <ErrorPlaceholder>No error</ErrorPlaceholder>
+            )}
+            <Input
+              id='email'
+              name='email'
+              type='email'
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
           </InputWrapper>
+
           <InputWrapper>
-            <LabelWithIcon>
+            {formik.errors.password ? (
+              <Error>{formik.errors.password}</Error>
+            ) : (
+              <ErrorPlaceholder>No error</ErrorPlaceholder>
+            )}
+            <InputWithIcon>
               <Input
                 id='password'
                 name='password'
@@ -57,7 +72,7 @@ const AuthForm = () => {
                   onClick={() => setIsPasswordHidden(!isPasswordHidden)}
                 />
               )}
-            </LabelWithIcon>
+            </InputWithIcon>
           </InputWrapper>
         </InputGroup>
         <Button type='submit'>Submit</Button>

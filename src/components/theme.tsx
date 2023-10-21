@@ -74,7 +74,7 @@ export const InputWrapper = tw.div`
 export const InputGroup = tw.div`
  flex
  flex-col
- gap-4
+ gap-8
  my-8
 `;
 
@@ -117,7 +117,7 @@ export const Label = tw.label`
    dark:text-slate-50
    mb-2
 `;
-export const LabelWithIcon = tw(Label)`
+export const InputWithIcon = tw.label`
    relative
 `;
 
