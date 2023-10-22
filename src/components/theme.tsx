@@ -1,6 +1,12 @@
 import tw from 'tailwind-styled-components';
 
-import { Eye, EyeOff, LogOut } from '@styled-icons/ionicons-outline';
+import {
+  Eye,
+  EyeOff,
+  LogOut,
+  Pencil,
+  Trash,
+} from '@styled-icons/ionicons-outline';
 
 export const Page = tw.div`
 relative
@@ -133,8 +139,9 @@ export const StyledEyeOff = tw(EyeOff)`
   text-stone-600
   dark:text-stone-200
   cursor-pointer 
-  w-6 
-  h-6 
+  w-8 
+  h-8 
+  p-2console.log();
   absolute 
   top-1/2 
   transform 
@@ -144,12 +151,29 @@ export const StyledEyeOff = tw(EyeOff)`
 
 export const IconButton = tw.div`
 cursor-pointer
- 
 `;
 
-export const StyledIoExitOutline = tw(LogOut)`
+export const StyledLogOut = tw(LogOut)`
   text-slate-600
   dark:text-slate-50
-  w-8
-  h-8
+  w-10
+  h-10
+  p-2
+  cursor-pointer
+`;
+
+export const StyledPencil = tw(Pencil)`
+  text-slate-600
+  dark:text-slate-50
+  w-10
+  h-10
+  p-2
+`;
+
+export const StyledTrash = tw(Trash)`
+  text-slate-600
+  dark:text-slate-50
+  w-10
+  h-10
+  p-2
 `;

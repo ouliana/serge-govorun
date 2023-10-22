@@ -1,5 +1,6 @@
 import tw from 'tailwind-styled-components';
 import { Accordion } from 'flowbite-react';
+import { IoPencilOutline, IoTrashOutline } from 'react-icons/io5';
 
 export const TitleWrapper = tw.div`
 flex
@@ -7,10 +8,11 @@ flex-row
 justify-start
 items-center
 gap-4
+shrink-0
 `;
 
 export const Image = tw.img`
-w-20
+w-16
 aspect-square
 rounded-md
 `;
@@ -35,6 +37,8 @@ dark:border-slate-300
 `;
 
 export const StyledTitle = tw(Accordion.Title)`
+flex
+justify-between
 px-4
 `;
 
@@ -43,6 +47,10 @@ px-8
 bg-slate-50
 dark:bg-slate-800
 
+`;
+
+export const TableContainer = tw.div`
+overflow-auto
 `;
 
 export const StyledTable = tw.table`
@@ -69,4 +77,22 @@ dark:text-slate-400
 export const Th = tw(Cell)`
 text-slate-700
 dark:text-slate-50
+`;
+
+export const ButtonGloup = tw.div`
+w-full
+flex
+flex-row
+justify-end
+gap-2
+items-center
+pb-4
+`;
+
+export const ButtonEditIcon = tw(IoPencilOutline)`
+w-2
+`;
+
+export const ButtonTrashIcon = tw(IoTrashOutline)`
+w-4
 `;

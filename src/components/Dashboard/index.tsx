@@ -1,19 +1,7 @@
-import useVideo from '../../hooks/useVideo';
-import { Accordion } from 'flowbite-react';
-import AccordionItem from './AccordionItem';
-import { StyledAccordion } from './styles';
+import AdminVideo from '../AdminVideo';
 
 const Dashboard = () => {
-  const { videos } = useVideo();
-  return (
-    <StyledAccordion>
-      {videos.map(v => (
-        <Accordion.Panel key={v.id}>
-          <AccordionItem video={v} />
-        </Accordion.Panel>
-      ))}
-    </StyledAccordion>
-  );
+  return <AdminVideo />;
 };
 
 export default Dashboard;

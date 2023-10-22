@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { remult } from 'remult';
 import SignIn from './components/SignIn';
 import { UserCredentials } from './types';
-import { StyledIoExitOutline } from './components/theme';
 import Dashboard from './components/Dashboard';
+import IconButton from './components/Button';
 
 export default function Auth() {
   const [signedIn, setSignedIn] = useState(false);
@@ -44,7 +44,11 @@ export default function Auth() {
   return (
     <>
       <header>
-        {remult.user!.name} <StyledIoExitOutline onClick={signOut} />
+        {remult.user!.name}{' '}
+        <IconButton
+          icon='logout'
+          onClick={signOut}
+        />
       </header>
       <Dashboard />
     </>

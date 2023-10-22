@@ -1,8 +1,14 @@
 import { Video } from '../../shared/Video';
-import VideoDetails from '../VideoDetails';
+import VideoDetails from './VideoDetails';
 import { stillUrl } from '../../utils';
 import VideoTitle from './VideoTitle';
-import { AccordionItemWrapper, StyledContent, StyledTitle } from './styles';
+import {
+  AccordionItemWrapper,
+  ButtonGloup,
+  StyledContent,
+  StyledTitle,
+} from './styles';
+import IconButton from '../Button';
 
 interface Props {
   video: Video;
@@ -18,6 +24,16 @@ const AccordionItem = ({ video }: Props) => {
         />
       </StyledTitle>
       <StyledContent>
+        <ButtonGloup>
+          <IconButton
+            icon='pencil'
+            onClick={() => {}}
+          />
+          <IconButton
+            icon='trash'
+            onClick={() => {}}
+          />
+        </ButtonGloup>
         <VideoDetails
           key={video.id}
           video={video}
