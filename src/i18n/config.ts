@@ -6,8 +6,6 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import ru from './ru.json';
 import en from './en.json';
 
-console.log('LanguageDetector: ', LanguageDetector);
-
 const DETECTION_OPTIONS = {
   order: ['navigator'],
 };
@@ -18,7 +16,7 @@ const DETECTION_OPTIONS = {
       .use(LanguageDetector)
       .init({
         detection: DETECTION_OPTIONS,
-        debug: true,
+        debug: false,
         resources: {
           en: {
             translation: en,

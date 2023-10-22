@@ -62,7 +62,8 @@ const VideoList = ({ category }: Params) => {
           {videos
             .filter(
               v =>
-                params.brand === 'All' || v.brand?.brand_name === params.brand
+                params.brand === 'All' ||
+                v.brand?.brand_name_en === params.brand
             )
             .map((v: Video) => (
               <VideoListItem

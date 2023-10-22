@@ -1,6 +1,6 @@
 import tw from 'tailwind-styled-components';
 
-import { Eye, EyeOff } from '@styled-icons/ionicons-outline';
+import { Eye, EyeOff, LogOut } from '@styled-icons/ionicons-outline';
 
 export const Page = tw.div`
 relative
@@ -103,10 +103,6 @@ export const Button = tw.button`
   ease-in-out
 `;
 
-export const IconButton = tw.div`
-cursor-pointer
-`;
-
 export const FormWrapper = tw.div`
   w-96
   p-8
@@ -144,4 +140,16 @@ export const StyledEyeOff = tw(EyeOff)`
   transform 
   -translate-y-1/2 
   right-3
+`;
+
+export const IconButton = tw.div`
+cursor-pointer
+ 
+`;
+
+export const StyledIoExitOutline = tw(LogOut)`
+  text-slate-600
+  dark:text-slate-50
+  w-8
+  h-8
 `;
