@@ -8,3 +8,16 @@ export const stillUrl = (videoId: string): string => {
 
 export const isRussianLanguage = (lan: string): boolean =>
   lan.split('-').includes('ru');
+
+export const initialValues = {
+  youtube_video_id: '',
+  format: '',
+  title_ru: '',
+  title_en: '',
+  description_ru: '',
+  description_en: '',
+  category: '',
+  brand: '',
+  createdOn: new Date(),
+  featured: false,
+};

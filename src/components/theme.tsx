@@ -3,10 +3,17 @@ import tw from 'tailwind-styled-components';
 import {
   Eye,
   EyeOff,
-  LogOut,
-  Pencil,
-  Trash,
+  // LogOut,
+  // Pencil,
+  // Trash,
 } from '@styled-icons/ionicons-outline';
+
+import {
+  IoLogOutOutline,
+  IoPencilOutline,
+  IoTrashOutline,
+} from 'react-icons/io5';
+import { Field } from 'formik';
 
 export const Page = tw.div`
 relative
@@ -72,9 +79,35 @@ export const Input = tw.input`
   duration-300 
   ease-in-out
 `;
+export const StyledField = tw(Field)`
+  appearance-none 
+  block
+  bg-slate-50 
+  dark:bg-slate-600 
+  w-full 
+  text-slate-600
+  dark:text-slate-200
+  border
+  border-slate-200
+  dark:border-slate-200
+  rounded-md 
+  py-2 
+  px-4 
+  leading-tight 
+  focus:outline-none
+  focus:border-indigo-500
+  transition 
+  duration-300 
+  ease-in-out
+`;
 export const InputWrapper = tw.div`
   flex-col 
   items-center 
+`;
+
+export const FieldWrapper = tw.div`
+flex-col 
+  items-center
 `;
 
 export const InputGroup = tw.div`
@@ -153,24 +186,21 @@ export const IconButton = tw.div`
 cursor-pointer
 `;
 
-export const StyledLogOut = tw(LogOut)`
-  text-slate-600
-  dark:text-slate-50
-  w-10
-  h-10
-  p-2
-  cursor-pointer
-`;
-
-export const StyledPencil = tw(Pencil)`
+export const StyledLogOut = tw(IoLogOutOutline)`
   text-slate-600
   dark:text-slate-50
   w-10
   h-10
   p-2
 `;
-
-export const StyledTrash = tw(Trash)`
+export const StyledPencil = tw(IoPencilOutline)`
+  text-slate-600
+  dark:text-slate-50
+  w-10
+  h-10
+  p-2
+`;
+export const StyledTrash = tw(IoTrashOutline)`
   text-slate-600
   dark:text-slate-50
   w-10

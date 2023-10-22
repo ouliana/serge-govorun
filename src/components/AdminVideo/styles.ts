@@ -1,6 +1,5 @@
 import tw from 'tailwind-styled-components';
-import { Accordion } from 'flowbite-react';
-import { IoPencilOutline, IoTrashOutline } from 'react-icons/io5';
+import { Accordion, Modal } from 'flowbite-react';
 
 export const TitleWrapper = tw.div`
 flex
@@ -89,10 +88,6 @@ items-center
 pb-4
 `;
 
-export const ButtonEditIcon = tw(IoPencilOutline)`
-w-2
-`;
-
-export const ButtonTrashIcon = tw(IoTrashOutline)`
-w-4
+export const ModalBody = tw(Modal.Body)`
+dark:bg-slate-700
 `;
