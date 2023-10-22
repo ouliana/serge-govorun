@@ -1,11 +1,11 @@
 import Auth from '../../Auth';
-import { Page } from '../theme';
+import { PageAdmin } from '../theme';
 
 const Admin = () => {
   return (
-    <Page>
+    <PageAdmin>
       <Auth />
-    </Page>
+    </PageAdmin>
   );
 };
 
