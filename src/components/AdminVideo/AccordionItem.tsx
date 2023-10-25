@@ -6,13 +6,11 @@ import VideoTitle from './VideoTitle';
 import {
   AccordionItemWrapper,
   ButtonGloup,
-  ModalBody,
   StyledContent,
   StyledTitle,
 } from './styles';
 import IconButton from '../Button';
-import { Modal } from 'flowbite-react';
-import EditForm from './EditForm';
+import AdminVideoEntry from '../AdminVideoEntry';
 
 interface Props {
   video: Video;
@@ -21,10 +19,6 @@ interface Props {
 const AccordionItem = ({ video }: Props) => {
   const [openModal, setOpenModal] = useState<string | undefined>();
   const props = { openModal, setOpenModal };
-
-  // const handleSubmit = async (values: VideoFormValues) => {
-  //   console.log(values);
-  // };
 
   return (
     <>
@@ -55,26 +49,11 @@ const AccordionItem = ({ video }: Props) => {
           />
         </StyledContent>
       </AccordionItemWrapper>
-      <Modal
-        show={props.openModal === 'default'}
-        onClose={() => props.setOpenModal(undefined)}
-      >
-        <Modal.Header>Terms of Service</Modal.Header>
-        <ModalBody>
-          <EditForm />
-        </ModalBody>
-        <Modal.Footer>
-          <button onClick={() => props.setOpenModal(undefined)}>
-            I accept
-          </button>
-          <button
-            color='gray'
-            onClick={() => props.setOpenModal(undefined)}
-          >
-            Decline
-          </button>
-        </Modal.Footer>
-      </Modal>
+      <AdminVideoEntry
+        openModal={props.openModal}
+        setOpenModal={props.setOpenModal}
+        headerText={video.title_ru}
+      />
     </>
   );
 };
