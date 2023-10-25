@@ -58,6 +58,12 @@ items-center
 
 export const ErrorInputStyle = 'border-rose-500 dark:border-rose-400';
 
+export const FieldsContainer = tw.div`
+flex
+flex-col
+gap-4
+`;
+
 export const Input = tw.input`
   appearance-none 
   block
@@ -108,7 +114,7 @@ export const InputWrapper = tw.div`
 
 export const FieldWrapper = tw.div`
 flex-col 
-  items-center
+items-center
 `;
 
 export const InputGroup = tw.div`
@@ -148,13 +154,35 @@ export const FormWrapper = tw.div`
   p-8
 `;
 
-export const Label = tw.label`
-   text-slate-700 
-   dark:text-slate-50
-   mb-2
-`;
 export const InputWithIcon = tw.label`
    relative
+`;
+
+export const RadioButtonsContainer = tw.div`
+flex
+flex-col
+`;
+
+export const RadioButtonWrapper = tw.div`
+flex
+flex-row
+justify-start
+items-center
+gap-2
+`;
+
+export const RadioButton = tw.input`
+appearance-none 
+w-4 
+h-4 
+bg-radio 
+bg-no-repeat
+`;
+
+export const Label = tw.label`
+  font-normal
+  text-slate-700 
+  dark:text-slate-50
 `;
 
 export const StyledEye = tw(Eye)`

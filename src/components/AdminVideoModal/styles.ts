@@ -1,4 +1,5 @@
 import { CustomFlowbiteTheme } from 'flowbite-react';
+import tw from 'tailwind-styled-components';
 
 export const customTheme: CustomFlowbiteTheme['modal'] = {
   root: {
@@ -54,3 +55,10 @@ export const customTheme: CustomFlowbiteTheme['modal'] = {
     popup: 'border-t',
   },
 };
+
+export const FormatWrapper = tw.div`
+flex
+flex-row
+justify-start
+gap-4
+`;
