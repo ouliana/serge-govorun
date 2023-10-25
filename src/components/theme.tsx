@@ -136,14 +136,17 @@ export const ErrorPlaceholder = tw(Error)`
 
 export const Button = tw.button`
   bg-indigo-500
-  dark:bg-indigo-400
+  dark:bg-amber-300
   hover:bg-indigo-700 
+  dark:hover:bg-amber-400 
   text-indigo-50 
-  dark:text-indigo-50 
+  dark:text-slate-700 
+  dark:hover:text-slate-900
   py-2 
   px-4 
   rounded-md
   w-full
+  sm:w-32
   transition 
   duration-300 
   ease-in-out
