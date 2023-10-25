@@ -100,6 +100,7 @@ export const StyledField = tw(Field)`
   duration-300 
   ease-in-out
 `;
+
 export const InputWrapper = tw.div`
   flex-col 
   items-center 

@@ -1,10 +1,10 @@
-import { Modal } from 'flowbite-react';
-import { ModalBody } from './styles';
+import { customTheme } from './styles';
 import * as Yup from 'yup';
 
 import { VideoFormValues, ModalProps } from '../../types';
 import { withFormik } from 'formik';
 import VideoEntryForm from './VideoEntryForm';
+import { Modal } from 'flowbite-react';
 
 interface MyFormProps {
   initialYouTubeId?: string;
@@ -40,11 +40,12 @@ const AdminVideoEntry = ({
     <Modal
       show={openModal === 'default'}
       onClose={() => setOpenModal(undefined)}
+      theme={customTheme}
     >
       <Modal.Header>{headerText ? headerText : 'Новое видео'}</Modal.Header>
-      <ModalBody>
+      <Modal.Body>
         <MyForm />
-      </ModalBody>
+      </Modal.Body>
       <Modal.Footer>
         <button
           type='submit'

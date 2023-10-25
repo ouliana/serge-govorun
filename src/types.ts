@@ -21,5 +21,5 @@ export interface VideoFormValues {
 export interface ModalProps {
   openModal: string | undefined;
   setOpenModal: Dispatch<SetStateAction<string | undefined>>;
-  headerText: string;
+  headerText?: string;
 }

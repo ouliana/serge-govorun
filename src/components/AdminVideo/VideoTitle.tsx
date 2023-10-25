@@ -1,5 +1,4 @@
-import { StyledPencil, StyledTrash } from '../theme';
-import { TitleWrapper, Image, Title, Container, ButtonGloup } from './styles';
+import { TitleWrapper, Image, Title } from './styles';
 
 interface Props {
   imageSrc: string;

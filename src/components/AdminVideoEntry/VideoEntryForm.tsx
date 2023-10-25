@@ -1,7 +1,7 @@
 import { FormikProps, Form, Field } from 'formik';
 // import { object, string, date, boolean } from 'yup';
 import { Error, ErrorPlaceholder, FieldWrapper } from '../theme';
-import FormikTextField from '../AdminVideo/FormikTextField';
+import FormikTextField from './FormikTextField';
 import { VideoFormValues } from '../../types';
 
 const VideoEntryForm = (props: FormikProps<VideoFormValues>) => {
