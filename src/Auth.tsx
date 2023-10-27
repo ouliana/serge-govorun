@@ -6,6 +6,7 @@ import SignIn from './components/SignIn';
 import { UserCredentials } from './types';
 import Dashboard from './components/Dashboard';
 import IconButton from './components/Button';
+import { PageAdminHeader } from './components/theme';
 
 export default function Auth() {
   const [signedIn, setSignedIn] = useState(false);
@@ -43,13 +44,13 @@ export default function Auth() {
   if (!signedIn) return <SignIn handleSignIn={signIn} />;
   return (
     <>
-      <header>
+      <PageAdminHeader>
         {remult.user!.name}{' '}
         <IconButton
           icon='logout'
           onClick={signOut}
         />
-      </header>
+      </PageAdminHeader>
       <Dashboard />
     </>
   );

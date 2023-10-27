@@ -1,4 +1,18 @@
+import { Accordion } from 'flowbite-react';
 import tw from 'tailwind-styled-components';
+
+export const StyledAccordion = tw(Accordion)`
+w-screen 
+border-none 
+px-4 
+md:w-4/5 
+lg:w-3/5
+`;
+
+export const StyledAccordeonTitle = tw(Accordion.Title)`
+border-b 
+border-slate-500
+`;
 
 export const TitleWrapper = tw.div`
 flex

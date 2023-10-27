@@ -24,6 +24,13 @@ dark:via-indigo-900
 dark:to-rose-900
 `;
 
+export const PageAdminHeader = tw.div`
+flex
+justify-end
+items-center
+gap-4
+`;
+
 export const PageAdmin = tw.div`
 relative
 min-h-screen
