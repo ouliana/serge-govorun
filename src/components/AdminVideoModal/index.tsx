@@ -6,6 +6,8 @@ import VideoEntryForm from './VideoEntryForm';
 import { Modal } from 'flowbite-react';
 import { Button } from '../theme';
 import { StyledFooter } from './styles';
+import VideoTitle from '../AdminVideo/VideoTitle';
+import { stillUrl } from '../../utils';
 
 interface MyFormProps {
   initialYouTubeId?: string;
@@ -14,13 +16,11 @@ interface MyFormProps {
   initialTitleEn?: string;
   initialDescriptionRu?: string;
   initialDescriptionEn?: string;
+  initialCategory?: string;
+  initialBrand?: string;
 }
 
-const AdminVideoEntry = ({
-  openModal,
-  setOpenModal,
-  headerText,
-}: ModalProps) => {
+const AdminVideoEntry = ({ openModal, setOpenModal, video }: ModalProps) => {
   const MyForm = withFormik<MyFormProps, VideoFormValues>({
     // Transform outer props into form values
     mapPropsToValues: props => {
@@ -31,6 +31,8 @@ const AdminVideoEntry = ({
         title_en: props.initialTitleEn || '',
         description_ru: props.initialDescriptionRu || '',
         description_en: props.initialDescriptionEn || '',
+        category: props.initialCategory || '',
+        brand: props.initialBrand || '',
       };
     },
     validationSchema: Yup.object({
@@ -40,6 +42,8 @@ const AdminVideoEntry = ({
       title_en: Yup.string(),
       description_ru: Yup.string(),
       description_en: Yup.string(),
+      category: Yup.string(),
+      brand: Yup.string(),
     }),
     handleSubmit: values => {
       console.log('values: ', values);
@@ -55,9 +59,27 @@ const AdminVideoEntry = ({
       show={openModal === 'default'}
       onClose={() => setOpenModal(undefined)}
     >
-      <Modal.Header>{headerText ? headerText : 'Новое видео'}</Modal.Header>
+      <Modal.Header>
+        {video ? (
+          <VideoTitle
+            imageSrc={stillUrl(video.youtube_video_id)}
+            title={video.title_en}
+          />
+        ) : (
+          'Новое видео'
+        )}
+      </Modal.Header>
       <Modal.Body>
-        <MyForm />
+        <MyForm
+          initialYouTubeId={video?.youtube_video_id}
+          initialFormat={video?.format.id}
+          initialTitleRu={video?.title_ru}
+          initialTitleEn={video?.title_en}
+          initialDescriptionRu={video?.description_ru}
+          initialDescriptionEn={video?.description_en}
+          initialCategory={video?.category.id}
+          initialBrand={video?.brand.id}
+        />
       </Modal.Body>
       <StyledFooter>
         <Button onClick={() => setOpenModal(undefined)}>Отмена</Button>

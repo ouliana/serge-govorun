@@ -3,13 +3,14 @@ import tw from 'tailwind-styled-components';
 export const TitleWrapper = tw.div`
 flex
 grow
-
+justify-center
 `;
 
 export const Image = tw.img`
 w-16
 aspect-square
 rounded-md
+m-2
 `;
 
 export const Title = tw.div`

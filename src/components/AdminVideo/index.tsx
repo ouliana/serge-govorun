@@ -10,7 +10,7 @@ const AdminVideo = () => {
     <Accordion
       flush
       collapseAll
-      className='w-screen md:w-3/5'
+      className='w-screen px-4 md:w-4/5 lg:w-3/5'
     >
       {videos.map(v => (
         <Accordion.Panel key={v.id}>

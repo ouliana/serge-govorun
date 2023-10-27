@@ -27,7 +27,7 @@ const VideoDetails = ({ video }: Props) => {
         <AdminVideoModal
           openModal={props.openModal}
           setOpenModal={props.setOpenModal}
-          headerText={video.title_ru}
+          video={video}
         />
       </ButtonGroup>
       <TableContainer>

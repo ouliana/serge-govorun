@@ -1,24 +1,72 @@
+import { useEffect, useState } from 'react';
 import { FormikProps, Form } from 'formik';
-// import { object, string, date, boolean } from 'yup';
+import { VideoFormValues } from '../../types';
 import {
-  Error,
-  ErrorPlaceholder,
   FieldWrapper,
   FieldsContainer,
+  Error,
+  ErrorPlaceholder,
   Label,
-} from '../theme';
-import FormikTextField from '../FormikTextField';
-import { VideoFormValues } from '../../types';
-// import { FormatWrapper } from './styles';
-import FormikRadioButtons from '../FormikRadioButtons';
+} from '../FormComponents/styles';
+import {
+  FormikRadioButtons,
+  FormikSelect,
+  FormikTextField,
+} from '../FormComponents';
+import { Video } from '../../shared/Video';
+import useCategory from '../../hooks/useCategory';
+import useFormat from '../../hooks/useFormat';
+import useBrand from '../../hooks/useBrand';
 
-const VideoEntryForm = (props: FormikProps<VideoFormValues>) => {
+interface OtherProps {
+  video?: Video;
+}
+
+interface Options {
+  key: string;
+  value: string;
+}
+
+const VideoEntryForm = (props: OtherProps & FormikProps<VideoFormValues>) => {
   const { touched, errors } = props;
 
-  const formatOptions = [
-    { key: '16:9', value: '16:9' },
-    { key: '9:16', value: '9:16' },
-  ];
+  const { formats } = useFormat();
+  const { categories } = useCategory();
+  const { brands } = useBrand();
+
+  const [formatOptions, setFormatOptions] = useState<Options[]>([]);
+  const [сategoryOptions, setCategoryOptions] = useState<Options[]>([]);
+  const [brandOptions, setBrandOptions] = useState<Options[]>([]);
+
+  useEffect(() => {
+    if (formats) {
+      setFormatOptions(
+        formats.map(f => {
+          return { key: f.format_name, value: f.id };
+        })
+      );
+    }
+  }, [formats]);
+
+  useEffect(() => {
+    if (categories) {
+      setCategoryOptions(
+        categories.map(c => {
+          return { key: c.category_name_ru, value: c.id };
+        })
+      );
+    }
+  }, [categories]);
+
+  useEffect(() => {
+    if (brands) {
+      setBrandOptions(
+        brands.map(b => {
+          return { key: b.brand_name_ru, value: b.id };
+        })
+      );
+    }
+  }, [brands]);
 
   return (
     <Form id='videoForm'>
@@ -44,7 +92,7 @@ const VideoEntryForm = (props: FormikProps<VideoFormValues>) => {
             <ErrorPlaceholder>No error</ErrorPlaceholder>
           )}
           <FormikRadioButtons
-            label='Укажите формат*'
+            label='Формат*'
             name='format'
             options={formatOptions}
           />
@@ -77,6 +125,34 @@ const VideoEntryForm = (props: FormikProps<VideoFormValues>) => {
             id='title_en'
             type='text'
             name='title_en'
+          />
+        </FieldWrapper>
+
+        {/*  Category select */}
+        <FieldWrapper>
+          {touched.category && errors.category ? (
+            <Error>{errors.category}</Error>
+          ) : (
+            <ErrorPlaceholder>No error</ErrorPlaceholder>
+          )}
+          <FormikSelect
+            label='Категория*'
+            name='category'
+            options={сategoryOptions}
+          />
+        </FieldWrapper>
+
+        {/*  Brand select */}
+        <FieldWrapper>
+          {touched.brand && errors.brand ? (
+            <Error>{errors.brand}</Error>
+          ) : (
+            <ErrorPlaceholder>No error</ErrorPlaceholder>
+          )}
+          <FormikSelect
+            label='Бренд'
+            name='brand'
+            options={brandOptions}
           />
         </FieldWrapper>
 

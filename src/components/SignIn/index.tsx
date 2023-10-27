@@ -1,20 +1,21 @@
 import { useFormik } from 'formik';
 // import * as Yup from 'yup';
 import { object, string } from 'yup';
-import {
-  Button,
-  FormWrapper,
-  Input,
-  InputGroup,
-  InputWrapper,
-  StyledEye,
-  StyledEyeOff,
-  Error,
-  ErrorPlaceholder,
-  InputWithIcon,
-} from '../theme';
+
 import { useState } from 'react';
 import { UserCredentials } from '../../types';
+import {
+  FormWrapper,
+  InputGroup,
+  InputWrapper,
+  Error,
+  ErrorPlaceholder,
+  Input,
+  InputWithIcon,
+  StyledEye,
+  StyledEyeOff,
+} from '../FormComponents/styles';
+import { Button } from '../theme';
 
 interface Props {
   handleSignIn: (values: UserCredentials) => Promise<void>;

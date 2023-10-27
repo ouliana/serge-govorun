@@ -5,7 +5,6 @@ import VideoList from './components/VideoList';
 import Movies from './components/Movies';
 import HomePage from './components/HomePage';
 import Admin from './components/Admin';
-import Authorisation from './components/Authorisation';
 
 export const router = createBrowserRouter([
   {
@@ -40,9 +39,5 @@ export const router = createBrowserRouter([
   {
     path: '/admin',
     element: <Admin />,
-  },
-  {
-    path: '/auth',
-    element: <Authorisation />,
   },
 ]);

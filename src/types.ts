@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+import { Video } from './shared/Video';
 
 export interface UserCredentials {
   username: string;
@@ -12,8 +13,8 @@ export interface VideoFormValues {
   title_en: string;
   description_ru: string;
   description_en: string;
-  // category: string;
-  // brand: string;
+  category: string;
+  brand: string;
   // createdOn: Date;
   // featured: false;
 }
@@ -21,5 +22,5 @@ export interface VideoFormValues {
 export interface ModalProps {
   openModal: string | undefined;
   setOpenModal: Dispatch<SetStateAction<string | undefined>>;
-  headerText?: string;
+  video?: Video;
 }
