@@ -5,12 +5,13 @@ import { remult } from 'remult';
 import SignIn from './components/SignIn';
 import { UserCredentials } from './types';
 import IconButton from './components/Button';
+
+import { useNavigate } from 'react-router-dom';
 import {
   PageAdmin,
   PageAdminHeader,
   PageAdminHeaderRightGroup,
-} from './components/theme';
-import { useNavigate } from 'react-router-dom';
+} from './components/adminStyles';
 
 export default function Auth() {
   const [signedIn, setSignedIn] = useState(false);

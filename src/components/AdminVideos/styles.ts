@@ -66,12 +66,9 @@ text-slate-700
 dark:text-slate-50
 `;
 
-export const ButtonGroup = tw.div`
-w-full
+export const FormatWrapper = tw.div`
 flex
 flex-row
-justify-end
-gap-2
-items-center
-pb-4
+justify-start
+gap-4
 `;

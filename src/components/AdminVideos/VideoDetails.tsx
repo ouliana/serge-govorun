@@ -1,15 +1,9 @@
 import { useState } from 'react';
 import { Video } from '../../shared/Video';
-import {
-  ButtonGroup,
-  DetailsWrapper,
-  StyledTable,
-  TableWrapper,
-  Td,
-  Th,
-} from './styles';
+import { DetailsWrapper, StyledTable, TableWrapper, Td, Th } from './styles';
 import IconButton from '../Button';
-import AdminVideoModal from '../AdminVideoModal';
+import AdminVideoModal from './AdminVideoModal';
+import { ButtonGroup } from '../adminStyles';
 interface Props {
   video: Video;
 }

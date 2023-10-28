@@ -6,17 +6,14 @@ interface Props {
   name: string;
   text: string;
   path: string;
-  onAdd: (event: React.SyntheticEvent) => void;
+  onAdd?: (event: React.SyntheticEvent) => void;
 }
 
 const Card = ({ name, text, path, onAdd }: Props) => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate(`/admin/${path}`);
-  };
   return (
-    <CardContainer onClick={handleClick}>
+    <CardContainer>
       <h5>{name}</h5>
       <CardText>{text}</CardText>
       <ButtonGroup>
@@ -24,10 +21,12 @@ const Card = ({ name, text, path, onAdd }: Props) => {
           icon='list'
           onClick={() => navigate(`/admin/${path}`)}
         />
-        <IconButton
-          icon='add'
-          onClick={onAdd}
-        />
+        {onAdd && (
+          <IconButton
+            icon='add'
+            onClick={onAdd}
+          />
+        )}
       </ButtonGroup>
     </CardContainer>
   );

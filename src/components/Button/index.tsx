@@ -1,4 +1,3 @@
-import { ButtonWrapper } from './style';
 import {
   StyledAdd,
   StyledGrid,
@@ -6,7 +5,8 @@ import {
   StyledLogOut,
   StyledPencil,
   StyledTrash,
-} from '../theme';
+} from '../adminStyles';
+import { ButtonWrapper } from './style';
 
 interface Props {
   icon: string;

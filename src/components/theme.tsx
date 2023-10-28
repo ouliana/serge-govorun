@@ -1,12 +1,4 @@
 import tw from 'tailwind-styled-components';
-import {
-  IoLogOutOutline,
-  IoPencilOutline,
-  IoTrashOutline,
-  IoGridOutline,
-  IoAddOutline,
-  IoListOutline,
-} from 'react-icons/io5';
 
 export const Page = tw.div`
 relative
@@ -27,37 +19,6 @@ dark:via-indigo-900
 dark:to-rose-900
 `;
 
-export const PageAdminHeader = tw.div`
-h-10
-flex
-flex-row
-justify-between
-items-center
-gap-2
-`;
-
-export const PageAdminHeaderRightGroup = tw.div`
-flex
-flex-row
-justify-end
-items-center
-gap-4
-`;
-
-export const PageAdmin = tw.div`
-relative
-min-h-screen
-flex
-flex-col
-justify-start
-gap-14
-text-slate-700
-dark:text-slate-100
-bg-white
-dark:bg-slate-900
-px-8
-`;
-
 export const Content = tw.div`
 px-4
 w-full
@@ -65,12 +26,6 @@ flex
 flex-col
 gap-8
 items-center
-`;
-
-export const AdminContent = tw.div`
-overflow-auto
-relative
-space-y-8
 `;
 
 const StyledButton = tw.button`
@@ -106,50 +61,4 @@ shadow-2xl
 
 export const IconButton = tw.div`
 cursor-pointer
-`;
-
-export const StyledLogOut = tw(IoLogOutOutline)`
-  text-slate-600
-  dark:text-slate-50
-  w-10
-  h-10
-  p-2
-`;
-export const StyledPencil = tw(IoPencilOutline)`
-  text-slate-600
-  dark:text-slate-50
-  w-10
-  h-10
-  p-2
-`;
-export const StyledTrash = tw(IoTrashOutline)`
-  text-slate-600
-  dark:text-slate-50
-  w-10
-  h-10
-  p-2
-`;
-
-export const StyledGrid = tw(IoGridOutline)`
-  text-slate-600
-  dark:text-slate-50
-  w-10
-  h-10
-  p-2
-`;
-
-export const StyledAdd = tw(IoAddOutline)`
-  text-slate-600
-  dark:text-slate-50
-  w-10
-  h-10
-  p-2
-`;
-
-export const StyledList = tw(IoListOutline)`
-  text-slate-600
-  dark:text-slate-50
-  w-10
-  h-10
-  p-2
 `;

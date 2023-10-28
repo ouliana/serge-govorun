@@ -5,8 +5,11 @@ import VideoList from './components/VideoList';
 import Movies from './components/Movies';
 import HomePage from './components/HomePage';
 import Admin from './components/Admin';
-import AdminVideo from './components/AdminVideo';
+import AdminVideos from './components/AdminVideos';
 import Dashboard from './components/Dashboard';
+import AdminCategories from './components/AdminCategories';
+import AdminBrands from './components/AdminBrands';
+import AdminFormats from './components/AdminFormats';
 
 export const router = createBrowserRouter([
   {
@@ -47,8 +50,20 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: 'video',
-        element: <AdminVideo />,
+        path: 'videos',
+        element: <AdminVideos />,
+      },
+      {
+        path: 'categories',
+        element: <AdminCategories />,
+      },
+      {
+        path: 'brands',
+        element: <AdminBrands />,
+      },
+      {
+        path: 'formats',
+        element: <AdminFormats />,
       },
     ],
   },

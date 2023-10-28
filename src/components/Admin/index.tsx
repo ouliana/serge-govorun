@@ -1,12 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import Auth from '../../Auth';
-import { PageAdmin } from '../theme';
+import { AdminContent, PageAdmin } from '../adminStyles';
 
 const Admin = () => {
   return (
     <PageAdmin>
       <Auth />
-      <Outlet />
+      <AdminContent>
+        <Outlet />
+      </AdminContent>
     </PageAdmin>
   );
 };

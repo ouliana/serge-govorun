@@ -2,11 +2,16 @@ import * as Yup from 'yup';
 
 import { VideoFormValues, ModalProps } from '../../types';
 import { withFormik } from 'formik';
-import VideoEntryForm from './VideoEntryForm';
 import { Button } from '../theme';
-import { StyledBody, StyledFooter, StyledHeader, StyledModal } from './styles';
-import VideoTitle from '../AdminVideo/VideoTitle';
+import VideoTitle from './VideoTitle';
 import { stillUrl } from '../../utils';
+import {
+  StyledBody,
+  StyledFooter,
+  StyledHeader,
+  StyledModal,
+} from '../adminStyles';
+import VideoEntryForm from './VideoEntryForm';
 
 interface MyFormProps {
   initialYouTubeId?: string;
@@ -19,7 +24,7 @@ interface MyFormProps {
   initialBrand?: string;
 }
 
-const AdminVideoEntry = ({ openModal, setOpenModal, video }: ModalProps) => {
+const AdminVideoModal = ({ openModal, setOpenModal, video }: ModalProps) => {
   const MyForm = withFormik<MyFormProps, VideoFormValues>({
     // Transform outer props into form values
     mapPropsToValues: props => {
@@ -93,4 +98,4 @@ const AdminVideoEntry = ({ openModal, setOpenModal, video }: ModalProps) => {
   );
 };
 
-export default AdminVideoEntry;
+export default AdminVideoModal;
