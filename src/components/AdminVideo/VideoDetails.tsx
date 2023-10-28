@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { Video } from '../../shared/Video';
-import { ButtonGroup, StyledTable, TableContainer, Td, Th } from './styles';
+import {
+  ButtonGroup,
+  DetailsWrapper,
+  StyledTable,
+  TableWrapper,
+  Td,
+  Th,
+} from './styles';
 import IconButton from '../Button';
 import AdminVideoModal from '../AdminVideoModal';
 interface Props {
@@ -12,7 +19,7 @@ const VideoDetails = ({ video }: Props) => {
   const props = { openModal, setOpenModal };
 
   return (
-    <>
+    <DetailsWrapper>
       <ButtonGroup>
         <IconButton
           icon='pencil'
@@ -30,7 +37,7 @@ const VideoDetails = ({ video }: Props) => {
           video={video}
         />
       </ButtonGroup>
-      <TableContainer>
+      <TableWrapper>
         <StyledTable>
           <tbody>
             <tr>
@@ -70,8 +77,8 @@ const VideoDetails = ({ video }: Props) => {
             </tr>
           </tbody>
         </StyledTable>
-      </TableContainer>
-    </>
+      </TableWrapper>
+    </DetailsWrapper>
   );
 };
 

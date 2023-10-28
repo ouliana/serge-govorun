@@ -2,11 +2,8 @@ import { Accordion } from 'flowbite-react';
 import tw from 'tailwind-styled-components';
 
 export const StyledAccordion = tw(Accordion)`
-w-screen 
+w-full 
 border-none 
-px-4 
-md:w-4/5 
-lg:w-3/5
 `;
 
 export const StyledAccordeonTitle = tw(Accordion.Title)`
@@ -32,7 +29,14 @@ text-base
 p-4
 `;
 
-export const TableContainer = tw.div`
+export const DetailsWrapper = tw.div`
+pt-4
+pb-8
+border-b
+border-slate-500
+`;
+
+export const TableWrapper = tw.div`
 overflow-auto
 `;
 

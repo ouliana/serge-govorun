@@ -1,6 +1,22 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Video } from './shared/Video';
 
+export enum UserActionKind {
+  SIGNEDIN = 'SIGNEDIN',
+  CLEAR = 'CLEAR',
+}
+
+export interface User {
+  username: string;
+}
+export interface Action {
+  type: UserActionKind;
+  payload?: User;
+}
+
+export interface State {
+  user: User;
+}
 export interface UserCredentials {
   username: string;
   password: string;

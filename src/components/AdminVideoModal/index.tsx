@@ -3,9 +3,8 @@ import * as Yup from 'yup';
 import { VideoFormValues, ModalProps } from '../../types';
 import { withFormik } from 'formik';
 import VideoEntryForm from './VideoEntryForm';
-import { Modal } from 'flowbite-react';
 import { Button } from '../theme';
-import { StyledFooter } from './styles';
+import { StyledBody, StyledFooter, StyledHeader, StyledModal } from './styles';
 import VideoTitle from '../AdminVideo/VideoTitle';
 import { stillUrl } from '../../utils';
 
@@ -55,11 +54,11 @@ const AdminVideoEntry = ({ openModal, setOpenModal, video }: ModalProps) => {
   })(VideoEntryForm);
 
   return (
-    <Modal
+    <StyledModal
       show={openModal === 'default'}
       onClose={() => setOpenModal(undefined)}
     >
-      <Modal.Header>
+      <StyledHeader>
         {video ? (
           <VideoTitle
             imageSrc={stillUrl(video.youtube_video_id)}
@@ -68,8 +67,8 @@ const AdminVideoEntry = ({ openModal, setOpenModal, video }: ModalProps) => {
         ) : (
           'Новое видео'
         )}
-      </Modal.Header>
-      <Modal.Body>
+      </StyledHeader>
+      <StyledBody>
         <MyForm
           initialYouTubeId={video?.youtube_video_id}
           initialFormat={video?.format.id}
@@ -80,7 +79,7 @@ const AdminVideoEntry = ({ openModal, setOpenModal, video }: ModalProps) => {
           initialCategory={video?.category.id}
           initialBrand={video?.brand.id}
         />
-      </Modal.Body>
+      </StyledBody>
       <StyledFooter>
         <Button onClick={() => setOpenModal(undefined)}>Отмена</Button>
         <Button
@@ -90,7 +89,7 @@ const AdminVideoEntry = ({ openModal, setOpenModal, video }: ModalProps) => {
           Сохранить
         </Button>
       </StyledFooter>
-    </Modal>
+    </StyledModal>
   );
 };
 

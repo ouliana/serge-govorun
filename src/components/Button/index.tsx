@@ -1,5 +1,12 @@
 import { ButtonWrapper } from './style';
-import { StyledLogOut, StyledPencil, StyledTrash } from '../theme';
+import {
+  StyledAdd,
+  StyledGrid,
+  StyledList,
+  StyledLogOut,
+  StyledPencil,
+  StyledTrash,
+} from '../theme';
 
 interface Props {
   icon: string;
@@ -25,6 +32,24 @@ const IconButton = ({ icon, onClick }: Props) => {
         return (
           <div onClick={onClick}>
             <StyledLogOut />
+          </div>
+        );
+      case 'grid':
+        return (
+          <div onClick={onClick}>
+            <StyledGrid />
+          </div>
+        );
+      case 'add':
+        return (
+          <div onClick={onClick}>
+            <StyledAdd />
+          </div>
+        );
+      case 'list':
+        return (
+          <div onClick={onClick}>
+            <StyledList />
           </div>
         );
       default:

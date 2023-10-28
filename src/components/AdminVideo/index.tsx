@@ -8,11 +8,7 @@ import { StyledAccordeonTitle, StyledAccordion } from './styles';
 const AdminVideo = () => {
   const { videos } = useVideo();
   return (
-    <StyledAccordion
-      flush
-      collapseAll
-      className=''
-    >
+    <StyledAccordion collapseAll>
       {videos.map(v => (
         <Accordion.Panel key={v.id}>
           <StyledAccordeonTitle>
