@@ -3,11 +3,8 @@ import Chip from '../Chip';
 import { Chips } from './styles';
 import { remult } from 'remult';
 import { Brand } from '../../shared/Brand';
-import useLocaleRu from '../../hooks/useLocaleRu';
 
 const Brands = () => {
-  const { t, isRu } = useLocaleRu();
-
   const [brands, setBrands] = useState<Brand[]>([]);
 
   useEffect(() => {
@@ -20,14 +17,14 @@ const Brands = () => {
   return (
     <Chips>
       {brands
-        .filter(b => b.brand_name_en !== 'Other')
-        .map(b => (
+        .filter(brand => brand.brand_name_en !== 'Other')
+        .map(brand => (
           <Chip
-            key={b.id}
-            brand={isRu ? b.brand_name_ru : b.brand_name_en}
+            key={brand.id}
+            brand={brand}
           />
         ))}
-      <Chip brand={t('other')} />
+      <Chip brand={brands.find(brand => brand.brand_name_en === 'Other')} />
     </Chips>
   );
 };

@@ -1,6 +1,11 @@
 import * as Yup from 'yup';
 
-import { ActionKind, BrandFormValues, ModalProps } from '../../types';
+import {
+  ActionKind,
+  BrandFormValues,
+  MessageKind,
+  ModalProps,
+} from '../../types';
 import { withFormik } from 'formik';
 import {
   Button,
@@ -14,6 +19,7 @@ import { Brand } from '../../shared/Brand';
 import { remult } from 'remult';
 import { useContext } from 'react';
 import BrandsContext from '../../contexts/BrandsContext';
+import ToastMessageContext from '../../contexts/ToastMessageContext';
 
 interface FormProps {
   initialNameRu?: string;
@@ -23,18 +29,27 @@ interface FormProps {
 const BrandEditModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
   const { state, dispatch } = useContext(BrandsContext);
   const { brands } = state;
+  const { messageDispatch } = useContext(ToastMessageContext);
 
   const saveBrand = async (values: BrandFormValues) => {
     try {
-      const response = await remult
+      const savedBrand = await remult
         .repo(Brand)
         .save({ id: brand?.id, ...values });
 
       dispatch({
         type: ActionKind.SET,
         payload: brands.map(brand =>
-          brand.id === response.id ? response : brand
+          brand.id === savedBrand.id ? savedBrand : brand
         ),
+      });
+
+      messageDispatch({
+        type: ActionKind.SET,
+        payload: {
+          content: `Бренд ${savedBrand.brand_name_ru} обновлён.`,
+          kind: MessageKind.SUCCESS,
+        },
       });
 
       setOpenModal(undefined);
@@ -56,8 +71,23 @@ const BrandEditModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
         payload: [...brands, newBrand],
       });
 
+      messageDispatch({
+        type: ActionKind.SET,
+        payload: {
+          content: `Бренд ${newBrand.brand_name_ru} успешно сохранён.`,
+          kind: MessageKind.SUCCESS,
+        },
+      });
+
       setOpenModal(undefined);
     } catch (e) {
+      messageDispatch({
+        type: ActionKind.SET,
+        payload: {
+          content: `Не удалось сохранить бренд.`,
+          kind: MessageKind.ERROR,
+        },
+      });
       let message = 'Something worng';
       if (e instanceof Error) {
         message += ' ' + e.message;
@@ -84,6 +114,18 @@ const BrandEditModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
       } else {
         insertBrand(values);
       }
+
+      setTimeout(
+        () =>
+          messageDispatch({
+            type: ActionKind.CLEAR,
+            payload: {
+              content: '',
+              kind: MessageKind.NONE,
+            },
+          }),
+        5000
+      );
     },
   })(BrandForm);
 

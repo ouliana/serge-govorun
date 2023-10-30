@@ -63,4 +63,17 @@ export interface ModalProps {
 
 export enum ActionKind {
   SET = 'SET',
+  CLEAR = 'CLEAR',
+}
+
+export enum MessageKind {
+  SUCCESS = 'SUCCESS',
+  DELETE = 'DELETE',
+  ERROR = 'ERROR',
+  NONE = 'NONE',
+}
+
+export interface Message {
+  content: string;
+  kind: MessageKind;
 }

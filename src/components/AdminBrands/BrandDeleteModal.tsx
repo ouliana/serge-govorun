@@ -1,4 +1,4 @@
-import { ActionKind } from '../../types';
+import { ActionKind, MessageKind } from '../../types';
 
 import {
   Button,
@@ -12,6 +12,7 @@ import { Brand } from '../../shared/Brand';
 import { remult } from 'remult';
 import { Dispatch, SetStateAction, useContext } from 'react';
 import BrandsContext from '../../contexts/BrandsContext';
+import ToastMessageContext from '../../contexts/ToastMessageContext';
 
 interface ModalProps {
   openModal: string | undefined;
@@ -22,6 +23,7 @@ interface ModalProps {
 const BrandDeleteModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
   const { state, dispatch } = useContext(BrandsContext);
   const { brands } = state;
+  const { messageDispatch } = useContext(ToastMessageContext);
 
   const handleDelete = async () => {
     try {
@@ -30,6 +32,25 @@ const BrandDeleteModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
         type: ActionKind.SET,
         payload: brands.filter(b => b.id !== brand.id),
       });
+      messageDispatch({
+        type: ActionKind.SET,
+        payload: {
+          content: `Бренд ${brand.brand_name_ru} удалён.`,
+          kind: MessageKind.DELETE,
+        },
+      });
+
+      setTimeout(
+        () =>
+          messageDispatch({
+            type: ActionKind.CLEAR,
+            payload: {
+              content: '',
+              kind: MessageKind.NONE,
+            },
+          }),
+        5000
+      );
     } catch (e) {
       let message = 'Something worng';
       if (e instanceof Error) {
