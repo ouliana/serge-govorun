@@ -4,7 +4,7 @@ import Card from './Card';
 // import { PlusButton } from '../theme';
 import { DashboardContainer } from './styles';
 import AdminVideoModal from '../AdminVideos/AdminVideoModal';
-import BrandModal from '../AdminBrands/BrandModal';
+import BrandModal from '../AdminBrands/BrandEditModal';
 
 const Dashboard = () => {
   const [openVideoModal, setOpenVideoModal] = useState<string | undefined>();

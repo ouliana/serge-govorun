@@ -69,7 +69,7 @@ export const FormikRadioButtons = (props: Props) => {
                   checked={field.value === option.value}
                   className={
                     field.value === option.value
-                      ? 'appearance-none h-4 w-4 rounded-full border-4 border-amber-300 dark:bg-slate-50 transition ease-in-out duration-150'
+                      ? 'appearance-none h-4 w-4 rounded-full border-4 border-indigo-300 dark:border-indigo-400 dark:bg-slate-50 transition ease-in-out duration-150'
                       : 'appearance-none h-4 w-4 rounded-full border-2 border-gray-300 dark:border-slate-50 dark:bg-gray-700 transition ease-in-out duration-150'
                   }
                 />

@@ -2,8 +2,8 @@ import * as Yup from 'yup';
 
 import { CategoryFormValues, ModalProps } from '../../types';
 import { withFormik } from 'formik';
-import { Button } from '../theme';
 import {
+  Button,
   StyledBody,
   StyledFooter,
   StyledHeader,

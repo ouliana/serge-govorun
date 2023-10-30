@@ -2,8 +2,8 @@ import * as Yup from 'yup';
 
 import { ActionKind, BrandFormValues, ModalProps } from '../../types';
 import { withFormik } from 'formik';
-import { Button } from '../theme';
 import {
+  Button,
   StyledBody,
   StyledFooter,
   StyledHeader,
@@ -20,8 +20,51 @@ interface FormProps {
   initialNameEn?: string;
 }
 
-const BrandModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
-  const { dispatch } = useContext(BrandsContext);
+const BrandEditModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
+  const { state, dispatch } = useContext(BrandsContext);
+  const { brands } = state;
+
+  const saveBrand = async (values: BrandFormValues) => {
+    try {
+      const response = await remult
+        .repo(Brand)
+        .save({ id: brand?.id, ...values });
+
+      dispatch({
+        type: ActionKind.SET,
+        payload: brands.map(brand =>
+          brand.id === response.id ? response : brand
+        ),
+      });
+
+      setOpenModal(undefined);
+    } catch (e) {
+      let message = 'Something worng';
+      if (e instanceof Error) {
+        message += ' ' + e.message;
+      }
+      throw new Error(message);
+    }
+  };
+
+  const insertBrand = async (values: BrandFormValues) => {
+    try {
+      const newBrand = await remult.repo(Brand).insert(values);
+
+      dispatch({
+        type: ActionKind.SET,
+        payload: [...brands, newBrand],
+      });
+
+      setOpenModal(undefined);
+    } catch (e) {
+      let message = 'Something worng';
+      if (e instanceof Error) {
+        message += ' ' + e.message;
+      }
+      throw new Error(message);
+    }
+  };
 
   const MyForm = withFormik<FormProps, BrandFormValues>({
     // Transform outer props into form values
@@ -36,22 +79,11 @@ const BrandModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
       brand_name_en: Yup.string().required('Обязательное поле'),
     }),
     handleSubmit: async values => {
-      try {
-        await remult.repo(Brand).save({ id: brand?.id, ...values });
-        const data = await remult.repo(Brand).find();
-        dispatch({
-          type: ActionKind.SET,
-          payload: data,
-        });
-      } catch (e) {
-        let message = 'Something worng';
-        if (e instanceof Error) {
-          message += ' ' + e.message;
-        }
-        throw new Error(message);
+      if (brand) {
+        saveBrand(values);
+      } else {
+        insertBrand(values);
       }
-
-      setOpenModal(undefined);
     },
   })(BrandForm);
 
@@ -80,4 +112,4 @@ const BrandModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
   );
 };
 
-export default BrandModal;
+export default BrandEditModal;

@@ -2,15 +2,16 @@ import { useState } from 'react';
 import IconButton from '../Button';
 import { ButtonGroup, ItemContainer } from '../adminStyles';
 import { Brand } from '../../shared/Brand';
-import BrandModal from './BrandModal';
+import BrandEditModal from './BrandEditModal';
+import BrandDeleteModal from './BrandDeleteModal';
 
 interface Props {
   item: Brand;
 }
 
 const BrandListItem = ({ item }: Props) => {
-  const [openModal, setOpenModal] = useState<string | undefined>();
-  const props = { openModal, setOpenModal };
+  const [openEditModal, setOpenEditModal] = useState<string | undefined>();
+  const [openDeleteModal, setOpenDeleteModal] = useState<string | undefined>();
 
   return (
     <ItemContainer>
@@ -22,16 +23,23 @@ const BrandListItem = ({ item }: Props) => {
         <IconButton
           icon='pencil'
           onClick={() => {
-            props.setOpenModal('default');
+            setOpenEditModal('default');
           }}
+        />
+        <BrandEditModal
+          openModal={openEditModal}
+          setOpenModal={setOpenEditModal}
+          brand={item}
         />
         <IconButton
           icon='trash'
-          onClick={() => {}}
+          onClick={() => {
+            setOpenDeleteModal('default');
+          }}
         />
-        <BrandModal
-          openModal={props.openModal}
-          setOpenModal={props.setOpenModal}
+        <BrandDeleteModal
+          openModal={openDeleteModal}
+          setOpenModal={setOpenDeleteModal}
           brand={item}
         />
       </ButtonGroup>

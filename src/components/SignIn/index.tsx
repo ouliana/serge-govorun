@@ -15,7 +15,7 @@ import {
   StyledEye,
   StyledEyeOff,
 } from '../FormComponents/styles';
-import { Button } from '../theme';
+import { Button } from '../adminStyles';
 
 interface Props {
   handleSignIn: (values: UserCredentials) => Promise<void>;

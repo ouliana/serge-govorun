@@ -20,7 +20,10 @@ items-center
 gap-2
 border-b-2
 border-indigo-600
-bg-indigo-50
+bg-indigo-400
+bg-slate-50/75
+dark:bg-slate-800/75
+dark:text-slate-50
 fixed
 `;
 
@@ -40,7 +43,7 @@ flex-col
 justify-start
 gap-14
 text-slate-700
-dark:text-slate-100
+dark:text-slate-200
 bg-white
 dark:bg-slate-900
 relative
@@ -52,6 +55,48 @@ relative
 space-y-8
 mt-20
 px-4
+`;
+
+const BaseButton = tw.button`
+rounded-md
+transition 
+duration-300 
+ease-in-out
+`;
+
+const StyledButton = tw(BaseButton)`
+  bg-indigo-500
+  hover:bg-indigo-600 
+  dark:bg-indigo-400
+  dark:hover:bg-indigo-500 
+  text-indigo-50 
+  dark:text-slate-700 
+  dark:hover:text-slate-900
+ 
+`;
+
+const DButton = tw(BaseButton)`
+bg-rose-500
+  hover:bg-rose-700 
+  dark:bg-rose-400
+  dark:hover:bg-rose-500 
+  text-rose-50 
+  dark:text-slate-700 
+  dark:hover:text-slate-900
+`;
+
+export const Button = tw(StyledButton)`
+  w-full
+  sm:w-32
+  py-2 
+  px-4 
+`;
+
+export const DangerButton = tw(DButton)`
+w-full
+  sm:w-32
+  py-2 
+  px-4 
 `;
 
 export const ButtonGroup = tw.div`

@@ -2,18 +2,18 @@ import * as Yup from 'yup';
 
 import { VideoFormValues, ModalProps } from '../../types';
 import { withFormik } from 'formik';
-import { Button } from '../theme';
 import VideoTitle from './VideoTitle';
 import { stillUrl } from '../../utils';
 import {
+  Button,
   StyledBody,
   StyledFooter,
   StyledHeader,
   StyledModal,
 } from '../adminStyles';
 import VideoEntryForm from './VideoEntryForm';
-import { remult } from 'remult';
-import { Video } from '../../shared/Video';
+// import { remult } from 'remult';
+// import { Video } from '../../shared/Video';
 
 interface MyFormProps {
   initialYouTubeId?: string;
