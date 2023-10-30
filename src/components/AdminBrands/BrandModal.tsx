@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import { BrandFormValues, ModalProps } from '../../types';
+import { ActionKind, BrandFormValues, ModalProps } from '../../types';
 import { withFormik } from 'formik';
 import { Button } from '../theme';
 import {
@@ -10,6 +10,10 @@ import {
   StyledModal,
 } from '../adminStyles';
 import BrandForm from './BrandForm';
+import { Brand } from '../../shared/Brand';
+import { remult } from 'remult';
+import { useContext } from 'react';
+import BrandsContext from '../../contexts/BrandsContext';
 
 interface FormProps {
   initialNameRu?: string;
@@ -17,6 +21,8 @@ interface FormProps {
 }
 
 const BrandModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
+  const { dispatch } = useContext(BrandsContext);
+
   const MyForm = withFormik<FormProps, BrandFormValues>({
     // Transform outer props into form values
     mapPropsToValues: props => {
@@ -29,12 +35,23 @@ const BrandModal = ({ openModal, setOpenModal, brand }: ModalProps) => {
       brand_name_ru: Yup.string().required('Обязательное поле'),
       brand_name_en: Yup.string().required('Обязательное поле'),
     }),
-    handleSubmit: values => {
-      console.log('values: ', values);
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        setOpenModal(undefined);
-      }, 400);
+    handleSubmit: async values => {
+      try {
+        await remult.repo(Brand).save({ id: brand?.id, ...values });
+        const data = await remult.repo(Brand).find();
+        dispatch({
+          type: ActionKind.SET,
+          payload: data,
+        });
+      } catch (e) {
+        let message = 'Something worng';
+        if (e instanceof Error) {
+          message += ' ' + e.message;
+        }
+        throw new Error(message);
+      }
+
+      setOpenModal(undefined);
     },
   })(BrandForm);
 

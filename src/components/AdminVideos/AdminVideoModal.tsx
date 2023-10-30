@@ -12,6 +12,8 @@ import {
   StyledModal,
 } from '../adminStyles';
 import VideoEntryForm from './VideoEntryForm';
+import { remult } from 'remult';
+import { Video } from '../../shared/Video';
 
 interface MyFormProps {
   initialYouTubeId?: string;
@@ -49,12 +51,10 @@ const AdminVideoModal = ({ openModal, setOpenModal, video }: ModalProps) => {
       category: Yup.string(),
       brand: Yup.string(),
     }),
-    handleSubmit: values => {
+    handleSubmit: async values => {
       console.log('values: ', values);
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        setOpenModal(undefined);
-      }, 400);
+      // await remult.repo(Video).save({ id: video.id, ...values })
+      setOpenModal(undefined);
     },
   })(VideoEntryForm);
 

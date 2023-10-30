@@ -1,28 +1,38 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { remult } from 'remult';
 import { Brand } from '../../shared/Brand';
 import { ListContainer } from '../adminStyles';
 import BrandListItem from './BrandListItem';
+import BrandsContext from '../../contexts/BrandsContext';
+import { ActionKind } from '../../types';
 
 const AdminBrands = () => {
-  const [brands, setBrands] = useState<Brand[]>([]);
+  const { state, dispatch } = useContext(BrandsContext);
+  const { brands } = state;
+
+  console.log('state: ', state);
 
   useEffect(() => {
     (async () => {
       const data = await remult.repo(Brand).find();
-      setBrands(data);
+      dispatch({
+        type: ActionKind.SET,
+        payload: data,
+      });
     })();
-  }, []);
+  }, [dispatch]);
 
   return (
-    <ListContainer>
-      {brands.map(brand => (
-        <BrandListItem
-          key={brand.id}
-          item={brand}
-        />
-      ))}
-    </ListContainer>
+    <>
+      <ListContainer>
+        {brands.map((brand: Brand) => (
+          <BrandListItem
+            key={brand.id}
+            item={brand}
+          />
+        ))}
+      </ListContainer>
+    </>
   );
 };
 

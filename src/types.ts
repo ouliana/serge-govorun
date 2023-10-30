@@ -60,3 +60,7 @@ export interface ModalProps {
   brand?: Brand;
   format?: Format;
 }
+
+export enum ActionKind {
+  SET = 'SET',
+}
