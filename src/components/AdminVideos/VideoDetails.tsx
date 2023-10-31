@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Video } from '../../shared/Video';
 import { DetailsWrapper, StyledTable, TableWrapper, Td, Th } from './styles';
 import IconButton from '../Button';
-import AdminVideoModal from './AdminVideoModal';
 import { ButtonGroup } from '../adminStyles';
+import VideoEditModal from './VideoEditModal';
 interface Props {
   video: Video;
 }
@@ -25,7 +25,7 @@ const VideoDetails = ({ video }: Props) => {
           icon='trash'
           onClick={() => {}}
         />
-        <AdminVideoModal
+        <VideoEditModal
           openModal={props.openModal}
           setOpenModal={props.setOpenModal}
           video={video}

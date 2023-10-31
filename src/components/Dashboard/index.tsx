@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Card from './Card';
 // import { PlusButton } from '../theme';
 import { DashboardContainer } from './styles';
-import AdminVideoModal from '../AdminVideos/AdminVideoModal';
+import VideoEditModal from '../AdminVideos/VideoEditModal';
 import BrandModal from '../AdminBrands/BrandEditModal';
 
 const Dashboard = () => {
@@ -18,7 +18,7 @@ const Dashboard = () => {
         path='videos'
         onAdd={() => setOpenVideoModal('default')}
       />
-      <AdminVideoModal
+      <VideoEditModal
         openModal={openVideoModal}
         setOpenModal={setOpenVideoModal}
       />

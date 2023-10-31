@@ -77,3 +77,5 @@ export interface Message {
   content: string;
   kind: MessageKind;
 }
+
+export type VideoData = Omit<Video, 'id'>;

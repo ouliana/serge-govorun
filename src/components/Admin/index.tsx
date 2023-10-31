@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Auth from '../../Auth';
 import { AdminContent, PageAdmin } from '../adminStyles';
 import { ToastMessageContextProvider } from '../../contexts/ToastMessageContext';
+import { VideosContextProvider } from '../../contexts/VideosContext';
 
 const Admin = () => {
   return (
@@ -9,7 +10,9 @@ const Admin = () => {
       <Auth />
       <AdminContent>
         <ToastMessageContextProvider>
-          <Outlet />
+          <VideosContextProvider>
+            <Outlet />
+          </VideosContextProvider>
         </ToastMessageContextProvider>
       </AdminContent>
     </PageAdmin>
