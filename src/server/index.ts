@@ -14,17 +14,22 @@ app.use(
 );
 
 app.use(auth);
-
 app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      'img-src': ["'self'", 'https: data:'],
-      'media-src': ["'self'", 'https: data:'],
-      'script-src': ["'self'", 'https: data:'],
-    },
+  helmet({
+    contentSecurityPolicy: false,
   })
 );
+
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     useDefaults: true,
+//     directives: {
+//       'img-src': ["'self'", 'https: data:'],
+//       'media-src': ["'self'", 'https: data:'],
+//       'script-src': ["'self'", 'https: data:'],
+//     },
+//   })
+// );
 app.use(compression());
 
 app.use(api);
