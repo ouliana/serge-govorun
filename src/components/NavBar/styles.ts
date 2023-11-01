@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import tw from 'tailwind-styled-components';
-import { IoMoonOutline, IoSunnyOutline } from 'react-icons/io5';
+import { IoPersonCircle, IoMoonOutline, IoSunnyOutline } from 'react-icons/io5';
 
 export const Container = tw.div`
   flex
@@ -52,4 +52,9 @@ text-purple-200
 `;
 export const DarkIcon = tw(IoMoonOutline)`
 text-purple-200
+`;
+export const PersonIcon = tw(IoPersonCircle)`
+text-purple-200
+w-6
+h-6
 `;

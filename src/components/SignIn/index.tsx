@@ -16,6 +16,8 @@ import {
   StyledEyeOff,
 } from '../FormComponents/styles';
 import { Button } from '../adminStyles';
+import { ButtonGroup, Container } from './styles';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   handleSignIn: (values: UserCredentials) => Promise<void>;
@@ -23,6 +25,7 @@ interface Props {
 
 const AuthForm = ({ handleSignIn }: Props) => {
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -38,53 +41,66 @@ const AuthForm = ({ handleSignIn }: Props) => {
     },
   });
   return (
-    <FormWrapper>
-      <form onSubmit={formik.handleSubmit}>
-        <InputGroup>
-          <InputWrapper>
-            {formik.errors.username ? (
-              <Error>{formik.errors.username}</Error>
-            ) : (
-              <ErrorPlaceholder>No error</ErrorPlaceholder>
-            )}
-            <Input
-              id='username'
-              name='username'
-              type='text'
-              onChange={formik.handleChange}
-              value={formik.values.username}
-            />
-          </InputWrapper>
-
-          <InputWrapper>
-            {formik.errors.password ? (
-              <Error>{formik.errors.password}</Error>
-            ) : (
-              <ErrorPlaceholder>No error</ErrorPlaceholder>
-            )}
-            <InputWithIcon>
-              <Input
-                id='password'
-                name='password'
-                type={isPasswordHidden ? 'password' : 'text'}
-                onChange={formik.handleChange}
-                value={formik.values.password}
-              />
-              {isPasswordHidden ? (
-                <StyledEye
-                  onClick={() => setIsPasswordHidden(!isPasswordHidden)}
-                />
+    <Container>
+      <FormWrapper>
+        <h5>Авторизация</h5>
+        <form
+          id='loginForm'
+          onSubmit={formik.handleSubmit}
+        >
+          <InputGroup>
+            <InputWrapper>
+              {formik.errors.username ? (
+                <Error>{formik.errors.username}</Error>
               ) : (
-                <StyledEyeOff
-                  onClick={() => setIsPasswordHidden(!isPasswordHidden)}
-                />
+                <ErrorPlaceholder>No error</ErrorPlaceholder>
               )}
-            </InputWithIcon>
-          </InputWrapper>
-        </InputGroup>
-        <Button type='submit'>Submit</Button>
-      </form>
-    </FormWrapper>
+              <Input
+                id='username'
+                name='username'
+                type='text'
+                onChange={formik.handleChange}
+                value={formik.values.username}
+              />
+            </InputWrapper>
+            <InputWrapper>
+              {formik.errors.password ? (
+                <Error>{formik.errors.password}</Error>
+              ) : (
+                <ErrorPlaceholder>No error</ErrorPlaceholder>
+              )}
+              <InputWithIcon>
+                <Input
+                  id='password'
+                  name='password'
+                  type={isPasswordHidden ? 'password' : 'text'}
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                />
+                {isPasswordHidden ? (
+                  <StyledEye
+                    onClick={() => setIsPasswordHidden(!isPasswordHidden)}
+                  />
+                ) : (
+                  <StyledEyeOff
+                    onClick={() => setIsPasswordHidden(!isPasswordHidden)}
+                  />
+                )}
+              </InputWithIcon>
+            </InputWrapper>
+          </InputGroup>
+        </form>
+        <ButtonGroup>
+          <Button onClick={() => navigate('/')}>Отмена</Button>
+          <Button
+            type='submit'
+            form='loginForm'
+          >
+            Войти
+          </Button>
+        </ButtonGroup>
+      </FormWrapper>
+    </Container>
   );
 };
 

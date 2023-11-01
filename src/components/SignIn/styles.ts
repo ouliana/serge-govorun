@@ -6,3 +6,10 @@ export const Container = tw.div`
   p-8
   m-auto
 `;
+
+export const ButtonGroup = tw.div`
+w-full
+flex
+flex-row
+justify-between
+`;

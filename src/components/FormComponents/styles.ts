@@ -4,8 +4,16 @@ import { Field } from 'formik';
 import { Eye, EyeOff } from '@styled-icons/ionicons-outline';
 
 export const FormWrapper = tw.div`
+flex
+flex-col
+justify-start
+items-center
   w-96
   p-8
+  border
+  border-slate-300
+  rounded-md
+  dark:bg-slate-800
 `;
 
 export const InputWithIcon = tw.label`
