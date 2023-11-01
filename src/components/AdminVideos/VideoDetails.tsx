@@ -3,7 +3,7 @@ import { Video } from '../../shared/Video';
 import { DetailsWrapper, StyledTable, TableWrapper, Td, Th } from './styles';
 import IconButton from '../Button';
 import { ButtonGroup } from '../adminStyles';
-import VideoEditModal from './VideoEditModal';
+import VideoModal from './VideoModal';
 interface Props {
   video: Video;
 }
@@ -11,6 +11,8 @@ interface Props {
 const VideoDetails = ({ video }: Props) => {
   const [openModal, setOpenModal] = useState<string | undefined>();
   const props = { openModal, setOpenModal };
+
+  console.log('video: ', video);
 
   return (
     <DetailsWrapper>
@@ -25,7 +27,7 @@ const VideoDetails = ({ video }: Props) => {
           icon='trash'
           onClick={() => {}}
         />
-        <VideoEditModal
+        <VideoModal
           openModal={props.openModal}
           setOpenModal={props.setOpenModal}
           video={video}
@@ -40,19 +42,14 @@ const VideoDetails = ({ video }: Props) => {
               <Th>RU</Th>
             </tr>
             <tr>
+              <Th>URL</Th>
+              <Td>{video.url}</Td>
+              <Td></Td>
+            </tr>
+            <tr>
               <Th>Название</Th>
               <Td>{video.title_en}</Td>
               <Td>{video.title_ru}</Td>
-            </tr>
-            <tr>
-              <Th>Формат</Th>
-              <Td>{video.format.format_name}</Td>
-              <Td>{video.format.format_name}</Td>
-            </tr>
-            <tr>
-              <Th>VideoID</Th>
-              <Td>{video.youtube_video_id}</Td>
-              <Td>{video.youtube_video_id}</Td>
             </tr>
             <tr>
               <Th>Категория</Th>

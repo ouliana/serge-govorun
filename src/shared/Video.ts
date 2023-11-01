@@ -1,6 +1,5 @@
 import { Entity, Field, Fields } from 'remult';
 import { Brand } from './Brand';
-import { Format } from './Format';
 import { Category } from './Category';
 
 @Entity('videos', {
@@ -11,10 +10,7 @@ export class Video {
   id = '';
 
   @Fields.string()
-  youtube_video_id = '';
-
-  @Field(() => Format)
-  format!: Format;
+  url = '';
 
   @Fields.string()
   title_ru = '';

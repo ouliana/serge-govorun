@@ -15,4 +15,7 @@ export class Category extends IdEntity {
 
   @Fields.string()
   icon = '';
+
+  @Fields.string()
+  route = '';
 }

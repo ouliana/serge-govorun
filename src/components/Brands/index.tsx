@@ -16,6 +16,7 @@ const Brands = () => {
 
   return (
     <Chips>
+      <Chip />
       {brands
         .filter(brand => brand.brand_name_en !== 'Other')
         .map(brand => (

@@ -34,3 +34,8 @@ flex-row
 justify-start
 items-center
 `;
+
+export const FieldsGrid = tw.div`
+grid
+grid-cols-2
+`;

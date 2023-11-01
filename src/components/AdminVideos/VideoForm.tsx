@@ -8,14 +8,9 @@ import {
   ErrorPlaceholder,
   Label,
 } from '../FormComponents/styles';
-import {
-  FormikRadioButtons,
-  FormikSelect,
-  FormikTextField,
-} from '../FormComponents';
+import { FormikSelect, FormikTextField } from '../FormComponents';
 import { Video } from '../../shared/Video';
 import useCategory from '../../hooks/useCategory';
-import useFormat from '../../hooks/useFormat';
 import useBrand from '../../hooks/useBrand';
 
 interface OtherProps {
@@ -27,26 +22,14 @@ interface Options {
   value: string;
 }
 
-const VideoEntryForm = (props: OtherProps & FormikProps<VideoFormValues>) => {
+const VideoForm = (props: OtherProps & FormikProps<VideoFormValues>) => {
   const { touched, errors } = props;
 
-  const { formats } = useFormat();
   const { categories } = useCategory();
   const { brands } = useBrand();
 
-  const [formatOptions, setFormatOptions] = useState<Options[]>([]);
   const [сategoryOptions, setCategoryOptions] = useState<Options[]>([]);
   const [brandOptions, setBrandOptions] = useState<Options[]>([]);
-
-  useEffect(() => {
-    if (formats) {
-      setFormatOptions(
-        formats.map(f => {
-          return { key: f.format_name, value: f.id };
-        })
-      );
-    }
-  }, [formats]);
 
   useEffect(() => {
     if (categories) {
@@ -72,29 +55,16 @@ const VideoEntryForm = (props: OtherProps & FormikProps<VideoFormValues>) => {
     <Form id='videoForm'>
       <FieldsContainer>
         <FieldWrapper>
-          {touched.youtube_video_id && errors.youtube_video_id ? (
-            <Error>{errors.youtube_video_id}</Error>
+          {touched.url && errors.url ? (
+            <Error>{errors.url}</Error>
           ) : (
             <ErrorPlaceholder>No error</ErrorPlaceholder>
           )}
-          <Label htmlFor='youtube_video_id'>Ссылка на YouTube видео*</Label>
+          <Label htmlFor='url'>Ссылка на YouTube видео*</Label>
           <FormikTextField
-            id='youtube_video_id'
+            id='url'
             type='text'
-            name='youtube_video_id'
-          />
-        </FieldWrapper>
-        {/* Format radio buttons */}
-        <FieldWrapper>
-          {touched.format && errors.format ? (
-            <Error>{errors.format}</Error>
-          ) : (
-            <ErrorPlaceholder>No error</ErrorPlaceholder>
-          )}
-          <FormikRadioButtons
-            label='Формат*'
-            name='format'
-            options={formatOptions}
+            name='url'
           />
         </FieldWrapper>
 
@@ -190,4 +160,4 @@ const VideoEntryForm = (props: OtherProps & FormikProps<VideoFormValues>) => {
   );
 };
 
-export default VideoEntryForm;
+export default VideoForm;

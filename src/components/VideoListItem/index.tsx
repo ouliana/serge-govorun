@@ -1,21 +1,20 @@
-import { stillUrl } from '../../utils';
+import useUrl from '../../hooks/useUrl';
+import { Video } from '../../shared/Video';
 import { Thumb } from './styles';
 
 interface Props {
-  id: string;
-  videoId: string;
-  handleClick: (id: string) => void;
+  video: Video;
+  handleClick: (video: Video) => void;
 }
 
-const VideoListItem = ({ id, videoId, handleClick }: Props) => {
-  // const videoSrc = `https://www.youtube.com/embed/${videoId}`;
+const VideoListItem = ({ video, handleClick }: Props) => {
+  const { still } = useUrl(video);
 
   return (
     <>
       <Thumb
-        id={id}
-        src={stillUrl(videoId)}
-        onClick={() => handleClick(videoId)}
+        src={still}
+        onClick={() => handleClick(video)}
       />
     </>
   );

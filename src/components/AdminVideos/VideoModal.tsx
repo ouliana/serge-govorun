@@ -9,7 +9,7 @@ import {
 } from '../../types';
 import { withFormik } from 'formik';
 import VideoTitle from './VideoTitle';
-import { stillUrl, toVideo } from '../../utils';
+import { toStillUrl, toVideo } from '../../utils';
 import {
   Button,
   StyledBody,
@@ -17,16 +17,17 @@ import {
   StyledHeader,
   StyledModal,
 } from '../adminStyles';
-import VideoEntryForm from './VideoEntryForm';
 import VideosContext from '../../contexts/VideosContext';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ToastMessageContext from '../../contexts/ToastMessageContext';
 import { remult } from 'remult';
 import { Video } from '../../shared/Video';
+import VideoForm from './VideoForm';
+import useCategory from '../../hooks/useCategory';
+import useBrand from '../../hooks/useBrand';
 
-interface MyFormProps {
-  initialYouTubeId?: string;
-  initialFormat?: string;
+interface VideoFormProps {
+  initialUrl?: string;
   initialTitleRu?: string;
   initialTitleEn?: string;
   initialDescriptionRu?: string;
@@ -35,10 +36,16 @@ interface MyFormProps {
   initialBrand?: string;
 }
 
-const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
+const VideoModal = ({ openModal, setOpenModal, video }: ModalProps) => {
   const { state, dispatch } = useContext(VideosContext);
   const { videos } = state;
   const { messageDispatch } = useContext(ToastMessageContext);
+
+  const [initialCategory, setInitialCategory] = useState('');
+  const [initialBrand, setInitialBrand] = useState('');
+
+  const { categories } = useCategory();
+  const { brands } = useBrand();
 
   const saveVideo = async (values: VideoData) => {
     try {
@@ -105,12 +112,11 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
     }
   };
 
-  const MyForm = withFormik<MyFormProps, VideoFormValues>({
+  const MyForm = withFormik<VideoFormProps, VideoFormValues>({
     // Transform outer props into form values
     mapPropsToValues: props => {
       return {
-        youtube_video_id: props.initialYouTubeId || '',
-        format: props.initialFormat || '',
+        url: props.initialUrl || '',
         title_ru: props.initialTitleRu || '',
         title_en: props.initialTitleEn || '',
         description_ru: props.initialDescriptionRu || '',
@@ -120,8 +126,7 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
       };
     },
     validationSchema: Yup.object({
-      youtube_video_id: Yup.string().url().required('Обязательное поле'),
-      format: Yup.string().required('Обязательное поле'),
+      url: Yup.string().url().required('Обязательное поле'),
       title_ru: Yup.string().required('Обязательное поле'),
       title_en: Yup.string(),
       description_ru: Yup.string(),
@@ -130,6 +135,7 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
       brand: Yup.string(),
     }),
     handleSubmit: async formValues => {
+      console.log('formValues: ', formValues);
       const values = await toVideo(formValues);
 
       if (video) {
@@ -151,7 +157,20 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
       );
       setOpenModal(undefined);
     },
-  })(VideoEntryForm);
+  })(VideoForm);
+
+  useEffect(() => {
+    if (categories.length) {
+      console.log('categories: ', categories);
+      setInitialCategory(categories[0].id);
+    }
+  }, [categories]);
+
+  useEffect(() => {
+    if (brands.length) {
+      setInitialBrand(brands[0].id);
+    }
+  }, [brands]);
 
   return (
     <StyledModal
@@ -161,7 +180,7 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
       <StyledHeader>
         {video ? (
           <VideoTitle
-            imageSrc={stillUrl(video.youtube_video_id)}
+            imageSrc={toStillUrl(video.url)}
             title={video.title_en}
           />
         ) : (
@@ -170,14 +189,15 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
       </StyledHeader>
       <StyledBody>
         <MyForm
-          initialYouTubeId={video?.youtube_video_id}
-          initialFormat={video?.format.id}
+          initialUrl={video?.url}
           initialTitleRu={video?.title_ru}
           initialTitleEn={video?.title_en}
           initialDescriptionRu={video?.description_ru}
           initialDescriptionEn={video?.description_en}
-          initialCategory={video?.category.id}
-          initialBrand={video?.brand.id}
+          initialCategory={
+            video?.category.id ? video?.category.id : initialCategory
+          }
+          initialBrand={video?.brand.id ? video?.brand.id : initialBrand}
         />
       </StyledBody>
       <StyledFooter>
@@ -193,4 +213,4 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
   );
 };
 
-export default VideoEditModal;
+export default VideoModal;

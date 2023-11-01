@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useLoaderData } from 'react-router-dom';
+import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+// import { useLocation, useLoaderData } from 'react-router-dom';
 
 import VideoListItem from '../VideoListItem';
 import { Container } from './styles';
@@ -10,6 +11,7 @@ import Box from '@mui/material/Box';
 
 import ReactPlayer from 'react-player/youtube';
 import { Video } from '../../shared/Video';
+import { isWideScreen, toEmbeddedUrl } from '../../utils';
 
 interface Params {
   category: string;
@@ -32,26 +34,14 @@ const VideoList = ({ category }: Params) => {
 
   const { videos } = useVideo(category);
 
-  const { state } = useLocation();
-  const { targetId } = state || {};
+  // const { state } = useLocation();
 
   const [videoToPlay, setVideoToPlay] = useState<Video | null>(null);
-  const [isVideoFormat, setIsVideoFormat] = useState<boolean>(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      const el = document.getElementById(targetId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'instant' });
-      }
-    }, 100);
-  }, [targetId]);
+  const [wide, setWide] = useState(true);
 
   const handleClick = (video: Video): void => {
     setVideoToPlay(video);
-    if (video.format) {
-      setIsVideoFormat(video.format?.format_name === '16:9');
-    }
+    setWide(isWideScreen(video.url));
     handleOpen();
   };
 
@@ -67,10 +57,9 @@ const VideoList = ({ category }: Params) => {
             )
             .map((v: Video) => (
               <VideoListItem
-                id={v.youtube_video_id}
                 key={v.id}
-                videoId={v.youtube_video_id}
-                handleClick={() => handleClick(v)}
+                video={v}
+                handleClick={handleClick}
               />
             ))}
         </Container>
@@ -84,13 +73,13 @@ const VideoList = ({ category }: Params) => {
       >
         <Box
           className={
-            isVideoFormat
+            wide
               ? 'w-10/12 aspect-video m-auto translate-y-24'
               : 'h-4/5 aspect-[9/16] m-auto translate-y-24'
           }
         >
           <ReactPlayer
-            url={`https://www.youtube.com/embed/${videoToPlay?.youtube_video_id}`}
+            url={toEmbeddedUrl(videoToPlay?.url)}
             width='100%'
             height='100%'
             playing={true}

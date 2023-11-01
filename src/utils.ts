@@ -1,6 +1,5 @@
 import { remult } from 'remult';
 import { VideoData, VideoFormValues } from './types';
-import { Format } from './shared/Format';
 import { Brand } from './shared/Brand';
 import { Category } from './shared/Category';
 
@@ -33,7 +32,21 @@ export const urlToVodeoId = (url: string) => {
   if (!part) {
     throw new Error(`Невозможно выделить VideoId в ${url}`);
   }
-  return part[0].slice(1, part.length - 1);
+
+  return part[0].slice(1, part[0].length - 1);
+};
+
+export const toEmbeddedUrl = (url: string | undefined) => {
+  if (!url) return '';
+  const videoId = urlToVodeoId(url);
+  return `https://www.youtube.com/embed/${videoId}`;
+};
+
+export const toStillUrl = (url: string): string => {
+  if (!url)
+    throw new Error('Could not convert to embedded url, url is missing');
+  const videoId = urlToVodeoId(url);
+  return `https://img.youtube.com/vi/${videoId}/0.jpg`;
 };
 
 export const isWideScreen = (url: string) => {
@@ -45,31 +58,29 @@ export const isWideScreen = (url: string) => {
 };
 
 export const toVideo = async (values: VideoFormValues): Promise<VideoData> => {
+  console.log('values: ', values);
   try {
-    const format = await remult.repo(Format).find({
+    const brands = await remult.repo(Brand).find({
       where: {
-        format_name: values.format,
+        id: values.brand,
       },
     });
-    const brand = await remult.repo(Brand).find({
+    console.log('brands: ', brands);
+    const categories = await remult.repo(Category).find({
       where: {
-        brand_name_ru: values.brand,
+        id: values.category,
       },
     });
-    const category = await remult.repo(Category).find({
-      where: {
-        category_name_ru: values.category,
-      },
-    });
+    console.log('categories: ', categories);
+
     const video = {
-      youtube_video_id: urlToVodeoId(values.youtube_video_id),
-      format: format[0],
+      url: values.url,
       title_ru: values.title_ru,
       title_en: values.title_en,
       description_ru: values.description_ru,
       description_en: values.description_en,
-      brand: brand[0],
-      category: category[0],
+      brand: brands[0],
+      category: categories[0],
       createdOn: new Date(),
       featured: false,
     };

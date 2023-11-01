@@ -3,12 +3,18 @@ import { useState } from 'react';
 import Card from './Card';
 // import { PlusButton } from '../theme';
 import { DashboardContainer } from './styles';
-import VideoEditModal from '../AdminVideos/VideoEditModal';
 import BrandModal from '../AdminBrands/BrandEditModal';
+import VideoModal from '../AdminVideos/VideoModal';
+import CaregoryModal from '../AdminCategories/CaregoryModal';
+import AboutModal from './AboutModal';
 
 const Dashboard = () => {
   const [openVideoModal, setOpenVideoModal] = useState<string | undefined>();
   const [openBrandModal, setOpenBrandModal] = useState<string | undefined>();
+  const [openCategoryModal, setOpenCategoryModal] = useState<
+    string | undefined
+  >();
+  const [openAboutModal, setOpenAboutModal] = useState<string | undefined>();
 
   return (
     <DashboardContainer>
@@ -18,7 +24,7 @@ const Dashboard = () => {
         path='videos'
         onAdd={() => setOpenVideoModal('default')}
       />
-      <VideoEditModal
+      <VideoModal
         openModal={openVideoModal}
         setOpenModal={setOpenVideoModal}
       />
@@ -26,6 +32,11 @@ const Dashboard = () => {
         name='Категории'
         text='Общие категории, к которым относятся видео'
         path='categories'
+        onAdd={() => setOpenCategoryModal('default')}
+      />
+      <CaregoryModal
+        openModal={openCategoryModal}
+        setOpenModal={setOpenCategoryModal}
       />
       <Card
         name='Бренды'
@@ -38,9 +49,15 @@ const Dashboard = () => {
         setOpenModal={setOpenBrandModal}
       />
       <Card
-        name='Форматы'
-        text='Аспектное соотношение сторон'
-        path='formats'
+        name='Обо мне'
+        text='Текст, отображающийся на стартовой странице'
+        path='about'
+        // onEdit={() => setOpenAboutModal('default')}
+        onAdd={() => setOpenAboutModal('default')}
+      />
+      <AboutModal
+        openModal={openAboutModal}
+        setOpenModal={setOpenAboutModal}
       />
     </DashboardContainer>
   );

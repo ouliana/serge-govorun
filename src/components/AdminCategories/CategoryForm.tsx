@@ -61,6 +61,20 @@ const CategoryForm = (props: OtherProps & FormikProps<CategoryFormValues>) => {
             name='icon'
           />
         </FieldWrapper>
+
+        <FieldWrapper>
+          {touched.route && errors.route ? (
+            <Error>{errors.route}</Error>
+          ) : (
+            <ErrorPlaceholder>No error</ErrorPlaceholder>
+          )}
+          <Label htmlFor='route'>Route*</Label>
+          <FormikTextField
+            id='route'
+            type='text'
+            name='route'
+          />
+        </FieldWrapper>
       </FieldsContainer>
     </Form>
   );

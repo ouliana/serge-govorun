@@ -9,7 +9,6 @@ import AdminVideos from './components/AdminVideos';
 import Dashboard from './components/Dashboard';
 import AdminCategories from './components/AdminCategories';
 import AdminBrands from './components/AdminBrands';
-import AdminFormats from './components/AdminFormats';
 
 export const router = createBrowserRouter([
   {
@@ -60,10 +59,6 @@ export const router = createBrowserRouter([
       {
         path: 'brands',
         element: <AdminBrands />,
-      },
-      {
-        path: 'formats',
-        element: <AdminFormats />,
       },
     ],
   },

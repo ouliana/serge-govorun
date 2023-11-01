@@ -2,7 +2,6 @@ import { Dispatch, SetStateAction } from 'react';
 import { Video } from './shared/Video';
 import { Category } from './shared/Category';
 import { Brand } from './shared/Brand';
-import { Format } from './shared/Format';
 
 export enum UserActionKind {
   SIGNEDIN = 'SIGNEDIN',
@@ -26,30 +25,25 @@ export interface UserCredentials {
 }
 
 export interface VideoFormValues {
-  youtube_video_id: string;
-  format: string;
+  url: string;
   title_ru: string;
   title_en: string;
   description_ru: string;
   description_en: string;
   category: string;
   brand: string;
-  // createdOn: Date;
-  // featured: false;
 }
 
 export interface CategoryFormValues {
   category_name_ru: string;
   category_name_en: string;
   icon: string;
+  route: string;
 }
 
 export interface BrandFormValues {
   brand_name_ru: string;
   brand_name_en: string;
-}
-export interface FormatFormValues {
-  format_name: string;
 }
 
 export interface ModalProps {
@@ -58,7 +52,7 @@ export interface ModalProps {
   video?: Video;
   category?: Category;
   brand?: Brand;
-  format?: Format;
+  newText?: boolean;
 }
 
 export enum ActionKind {
@@ -79,3 +73,12 @@ export interface Message {
 }
 
 export type VideoData = Omit<Video, 'id'>;
+
+export interface ParagraphFormValues {
+  paragraph_1_ru: string;
+  paragraph_1_en: string;
+  paragraph_2_ru: string;
+  paragraph_2_en: string;
+  paragraph_3_ru: string;
+  paragraph_3_en: string;
+}

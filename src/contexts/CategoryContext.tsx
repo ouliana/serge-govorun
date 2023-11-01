@@ -1,36 +1,36 @@
 import { createContext, useReducer } from 'react';
-import { Brand } from '../shared/Brand';
 import { ActionKind } from '../types';
+import { Category } from '../shared/Category';
 
 type Action = {
   type: ActionKind.SET;
-  payload: Brand[];
+  payload: Category[];
 };
 
 interface State {
-  brands: Brand[];
+  categories: Category[];
 }
 
-const initialState: State = { brands: [] as Brand[] };
+const initialState: State = { categories: [] as Category[] };
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case ActionKind.SET:
-      return { brands: action.payload };
+      return { categories: action.payload };
     default:
       return state;
   }
 };
 
-const BrandsContext = createContext<{
+const CategoryContext = createContext<{
   state: State;
   dispatch: React.Dispatch<Action>;
 }>({
-  state: { brands: [] as Brand[] },
+  state: { categories: [] as Category[] },
   dispatch: () => undefined,
 });
 
-export const BrandsContextProvider = ({
+export const CategoryContextProvider = ({
   children,
 }: {
   children: JSX.Element;
@@ -38,10 +38,10 @@ export const BrandsContextProvider = ({
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <BrandsContext.Provider value={{ state, dispatch }}>
+    <CategoryContext.Provider value={{ state, dispatch }}>
       {children}
-    </BrandsContext.Provider>
+    </CategoryContext.Provider>
   );
 };
 
-export default BrandsContext;
+export default CategoryContext;
