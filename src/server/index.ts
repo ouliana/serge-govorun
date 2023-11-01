@@ -21,6 +21,7 @@ app.use(
     directives: {
       'img-src': ["'self'", 'https: data:'],
       'media-src': ["'self'", 'https: data:'],
+      'script-src': ["'self'", 'https: data:'],
     },
   })
 );
