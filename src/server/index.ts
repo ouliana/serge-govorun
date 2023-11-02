@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import helmet from 'helmet';
+// import helmet from 'helmet';
 import compression from 'compression';
 import { api } from './api';
 import session from 'cookie-session';
@@ -20,17 +20,19 @@ app.use(auth);
 //   })
 // );
 
-app.use(
-  helmet.contentSecurityPolicy({
-    // useDefaults: true,
-    directives: {
-      'img-src': ["'self'", 'https: data:'],
-      'media-src': ["'self'", 'https: data:'],
-      'script-src': ["'self'", 'https://www.youtube.com/iframe_api'],
-      'style-src': null,
-    },
-  })
-);
+// app.use(helmet());
+
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     // useDefaults: true,
+//     directives: {
+//       'script-src': ["'self'", 'https://www.youtube.com/iframe_api'],
+//       'style-src': null,
+//       'img-src': ["'self'", 'https: data:'],
+//       'media-src': ["'self'", 'https: data:'],
+//     },
+//   })
+// );
 
 app.use(compression());
 

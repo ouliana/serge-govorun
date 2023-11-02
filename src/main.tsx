@@ -14,9 +14,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <meta
           httpEquiv='Content-Security-Policy'
           content={`
-                      default-src 'self';
-                      script-src 'self';
-                      img-src 'self' https://img.youtube.com;
+                      default-src 'self' 'unsafe-inline' ;
+                      script-src 'self'  https://www.youtube.com;
+                      frame-src https://www.youtube.com;
+                      img-src 'self' https://img.youtube.com https://i.ytimg.com/;
                       media-src https://www.youtube.com;
                 `}
         ></meta>
