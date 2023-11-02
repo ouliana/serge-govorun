@@ -6,7 +6,7 @@ flex-row
 justify-start
 md:justify-center
 gap-4
-md:flex-wrap
+sm:flex-wrap
 overflow-x-auto
 pb-4
 w-full
