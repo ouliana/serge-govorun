@@ -26,7 +26,11 @@ app.use(
     directives: {
       'img-src': ["'self'", 'https: data:'],
       'media-src': ["'self'", 'https: data:'],
-      'script-src': ["'self'", 'https://www.youtube.com/iframe_api'],
+      'script-src': [
+        "'self'",
+        "'unsafe-inline'",
+        'https://www.youtube.com/iframe_api',
+      ],
     },
   })
 );
