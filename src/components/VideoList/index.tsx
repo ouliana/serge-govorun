@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 // import { useLocation, useLoaderData } from 'react-router-dom';
 
 import VideoListItem from '../VideoListItem';
@@ -11,8 +11,13 @@ import Box from '@mui/material/Box';
 import ReactPlayer from 'react-player/youtube';
 import { Video } from '../../shared/Video';
 import { isWideScreen, toEmbeddedUrl } from '../../utils';
+import Brands from '../Brands';
+import SelectedBrandContext from '../../contexts/SelectedBrandContext';
 
 const VideoList = () => {
+  const { state } = useContext(SelectedBrandContext);
+  const { selectedBrand } = state;
+
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
@@ -22,8 +27,6 @@ const VideoList = () => {
   };
 
   const { videos } = useVideo();
-
-  // const { state } = useLocation();
 
   const [videoToPlay, setVideoToPlay] = useState<Video | null>(null);
   const [wide, setWide] = useState(true);
@@ -37,15 +40,28 @@ const VideoList = () => {
   return (
     <>
       {videos && (
-        <Container>
-          {videos.map((v: Video) => (
-            <VideoListItem
-              key={v.id}
-              video={v}
-              handleClick={handleClick}
-            />
-          ))}
-        </Container>
+        <div className='w-full p-4'>
+          <Brands />
+          <Container>
+            {!selectedBrand
+              ? videos.map((v: Video) => (
+                  <VideoListItem
+                    key={v.id}
+                    video={v}
+                    handleClick={handleClick}
+                  />
+                ))
+              : videos
+                  .filter(v => v.brand.id === selectedBrand)
+                  .map((v: Video) => (
+                    <VideoListItem
+                      key={v.id}
+                      video={v}
+                      handleClick={handleClick}
+                    />
+                  ))}
+          </Container>
+        </div>
       )}
 
       <Modal

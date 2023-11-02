@@ -1,46 +1,46 @@
-import { useNavigate, useParams } from 'react-router-dom';
 import { ChipItem, SelectedChipItem } from './styles';
 import useLocaleRu from '../../hooks/useLocaleRu';
+import { useContext, useEffect, useState } from 'react';
+import { ActionKind } from '../../types';
+import SelectedBrandContext from '../../contexts/SelectedBrandContext';
 import { Brand } from '../../shared/Brand';
-import { useEffect, useState } from 'react';
 
-interface Params {
-  brand?: Brand | undefined;
+interface Props {
+  brand?: Brand;
 }
 
-const Chip = ({ brand }: Params) => {
-  const params = useParams();
+const Chip = ({ brand }: Props) => {
   const { t, isRu } = useLocaleRu();
 
-  const navigate = useNavigate();
+  const { state, dispatch } = useContext(SelectedBrandContext);
+  const { selectedBrand } = state;
 
   const [selected, setSelected] = useState(false);
-
   const [text, setText] = useState<string>(t('allBrands'));
 
   useEffect(() => {
     if (!brand) {
       setText(t('allBrands'));
-    } else if (isRu) {
-      setText(brand.brand_name_ru);
     } else {
-      setText(brand.brand_name_ru);
+      setText(t(brand.brand_name_en));
     }
   }, [isRu, t, brand]);
 
   useEffect(() => {
-    if (!brand && params.brand === 'All') {
+    if (!brand && !selectedBrand) {
       setSelected(true);
-    } else if (brand && params.brand === brand.brand_name_en) {
+    } else if (brand && brand.id === selectedBrand) {
       setSelected(true);
     } else {
       setSelected(false);
     }
-  }, [brand, params.brand]);
+  }, [brand, selectedBrand]);
 
   const handleClick = () => {
-    const path = brand ? brand.brand_name_en : 'All';
-    navigate(`/videos/adv/${path}`);
+    dispatch({
+      type: ActionKind.SET,
+      payload: brand ? brand.id : '',
+    });
   };
 
   return (
