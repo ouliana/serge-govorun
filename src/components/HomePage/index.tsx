@@ -21,7 +21,6 @@ const HomePage = () => {
       {/* <NavBar /> */}
       <Content>
         <About />
-        test
         <SelectedBrandContextProvider>
           <VideoList />
         </SelectedBrandContextProvider>
