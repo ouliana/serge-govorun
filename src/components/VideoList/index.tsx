@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 // import { useLocation, useLoaderData } from 'react-router-dom';
 
 import VideoListItem from '../VideoListItem';
@@ -13,17 +12,7 @@ import ReactPlayer from 'react-player/youtube';
 import { Video } from '../../shared/Video';
 import { isWideScreen, toEmbeddedUrl } from '../../utils';
 
-interface Params {
-  category: string;
-}
-
-interface RouteParams {
-  brand: string;
-}
-
-const VideoList = ({ category }: Params) => {
-  const params = useLoaderData() as RouteParams;
-
+const VideoList = () => {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
@@ -32,7 +21,7 @@ const VideoList = ({ category }: Params) => {
     setOpen(true);
   };
 
-  const { videos } = useVideo(category);
+  const { videos } = useVideo();
 
   // const { state } = useLocation();
 
@@ -49,19 +38,13 @@ const VideoList = ({ category }: Params) => {
     <>
       {videos && (
         <Container>
-          {videos
-            .filter(
-              v =>
-                params.brand === 'All' ||
-                v.brand?.brand_name_en === params.brand
-            )
-            .map((v: Video) => (
-              <VideoListItem
-                key={v.id}
-                video={v}
-                handleClick={handleClick}
-              />
-            ))}
+          {videos.map((v: Video) => (
+            <VideoListItem
+              key={v.id}
+              video={v}
+              handleClick={handleClick}
+            />
+          ))}
         </Container>
       )}
 
@@ -74,8 +57,8 @@ const VideoList = ({ category }: Params) => {
         <Box
           className={
             wide
-              ? 'w-10/12 aspect-video m-auto translate-y-24'
-              : 'h-4/5 aspect-[9/16] m-auto translate-y-24'
+              ? 'w-10/12 aspect-video m-auto '
+              : 'h-4/5 aspect-[9/16] m-auto '
           }
         >
           <ReactPlayer
