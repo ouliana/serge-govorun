@@ -4,10 +4,10 @@ export const Chips = tw.div`
 flex
 flex-row
 justify-start
-sm:justify-center
+md:justify-center
 gap-4
-sm:flex-wrap
-sx:overflow-x-auto
+md:flex-wrap
+overflow-x-auto
 pb-4
 w-full
 `;
