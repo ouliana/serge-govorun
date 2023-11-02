@@ -5,6 +5,7 @@ import {
   StyledLogOut,
   StyledPencil,
   StyledTrash,
+  StyledHome,
 } from '../adminStyles';
 import { ButtonWrapper } from './style';
 
@@ -50,6 +51,12 @@ const IconButton = ({ icon, onClick }: Props) => {
         return (
           <div onClick={onClick}>
             <StyledList />
+          </div>
+        );
+      case 'home':
+        return (
+          <div onClick={onClick}>
+            <StyledHome />
           </div>
         );
       default:

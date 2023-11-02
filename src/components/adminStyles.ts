@@ -6,6 +6,7 @@ import {
   IoGridOutline,
   IoAddOutline,
   IoListOutline,
+  IoHomeOutline,
 } from 'react-icons/io5';
 import { Modal } from 'flowbite-react';
 
@@ -32,7 +33,14 @@ flex
 flex-row
 justify-end
 items-center
-gap-4
+gap-2
+`;
+export const PageAdminHeaderLeftGroup = tw.div`
+flex
+flex-row
+justify-start
+items-center
+gap-2
 `;
 
 export const PageAdmin = tw.div`
@@ -158,6 +166,13 @@ export const StyledAdd = tw(IoAddOutline)`
 `;
 
 export const StyledList = tw(IoListOutline)`
+  text-slate-600
+  dark:text-slate-50
+  w-10
+  h-10
+  p-2
+`;
+export const StyledHome = tw(IoHomeOutline)`
   text-slate-600
   dark:text-slate-50
   w-10

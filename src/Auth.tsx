@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   PageAdmin,
   PageAdminHeader,
+  PageAdminHeaderLeftGroup,
   PageAdminHeaderRightGroup,
 } from './components/adminStyles';
 
@@ -42,6 +43,7 @@ export default function Auth() {
   };
 
   const returnToDashboard = () => navigate('/admin/dashboard');
+  const returnToHomepage = () => navigate('/');
 
   useEffect(() => {
     fetch('/api/currentUser').then(async r => {
@@ -64,10 +66,16 @@ export default function Auth() {
   return (
     <>
       <PageAdminHeader>
-        <IconButton
-          icon='grid'
-          onClick={returnToDashboard}
-        />
+        <PageAdminHeaderLeftGroup>
+          <IconButton
+            icon='home'
+            onClick={returnToHomepage}
+          />
+          <IconButton
+            icon='grid'
+            onClick={returnToDashboard}
+          />
+        </PageAdminHeaderLeftGroup>
         <PageAdminHeaderRightGroup>
           {remult.user!.name}{' '}
           <IconButton

@@ -74,7 +74,7 @@ const VideoList = () => {
           className={
             wide
               ? 'w-10/12 aspect-video m-auto '
-              : 'h-4/5 aspect-[9/16] m-auto '
+              : 'h-11/12 sm:h-4/5 aspect-[9/16] m-auto '
           }
         >
           <ReactPlayer

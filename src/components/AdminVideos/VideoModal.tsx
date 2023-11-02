@@ -161,7 +161,6 @@ const VideoModal = ({ openModal, setOpenModal, video }: ModalProps) => {
 
   useEffect(() => {
     if (categories.length) {
-      console.log('categories: ', categories);
       setInitialCategory(categories[0].id);
     }
   }, [categories]);

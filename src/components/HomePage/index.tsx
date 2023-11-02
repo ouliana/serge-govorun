@@ -6,6 +6,7 @@ import NavBar from '../NavBar';
 import { Content, Page } from '../theme';
 import VideoList from '../VideoList';
 import { SelectedBrandContextProvider } from '../../contexts/SelectedBrandContext';
+import Footer from '../Footer';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -24,6 +25,7 @@ const HomePage = () => {
           <VideoList />
         </SelectedBrandContextProvider>
       </Content>
+      <Footer />
     </Page>
   );
 };
