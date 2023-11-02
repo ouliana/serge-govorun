@@ -7,19 +7,15 @@ flex
 flex-col
 items-center
 gap-14
-text-indigo-900
-dark:text-purple-100
+text-slate-200
 bg-gradient-to-tr
-from-emerald-400
-via-indigo-300 
-to-purple-300
-dark:bg-gradient-to-br
-dark:from-slate-900
-dark:via-indigo-900 
-dark:to-rose-900
+from-slate-900
+via-slate-800
+to-slate-900
 `;
 
 export const Content = tw.div`
+pt-16
 px-4
 w-full
 flex

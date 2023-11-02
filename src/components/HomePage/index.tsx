@@ -2,10 +2,10 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import About from '../About';
-import NavBar from '../NavBar';
 import { Content, Page } from '../theme';
 import VideoList from '../VideoList';
 import { SelectedBrandContextProvider } from '../../contexts/SelectedBrandContext';
+import Footer from '../Footer';
 // import Footer from '../Footer';
 
 const HomePage = () => {
@@ -18,14 +18,14 @@ const HomePage = () => {
 
   return (
     <Page>
-      <NavBar />
+      {/* <NavBar /> */}
       <Content>
         <About />
         <SelectedBrandContextProvider>
           <VideoList />
         </SelectedBrandContextProvider>
       </Content>
-      {/* <Footer /> */}
+      <Footer />
     </Page>
   );
 };
