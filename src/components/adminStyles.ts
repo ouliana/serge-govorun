@@ -194,6 +194,7 @@ dark:text-slate-50
 
 export const StyledBody = tw(Modal.Body)`
 p-4
+dark:text-slate-50
 `;
 
 export const StyledFooter = tw(Modal.Footer)`

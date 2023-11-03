@@ -3,7 +3,7 @@ import VideoTitle from './VideoTitle';
 import VideoDetails from './VideoDetails';
 import { StyledAccordeonTitle, StyledAccordion } from './styles';
 import { toStillUrl } from '../../utils/utils';
-import VideoModal from './VideoModal';
+import VideoModal from './VideoEditModal';
 import { Button } from '../adminStyles';
 import { useContext, useEffect, useState } from 'react';
 import VideosContext from '../../contexts/VideosContext';

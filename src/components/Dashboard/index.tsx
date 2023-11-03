@@ -4,7 +4,7 @@ import Card from './Card';
 // import { PlusButton } from '../theme';
 import { DashboardContainer } from './styles';
 import BrandModal from '../AdminBrands/BrandEditModal';
-import VideoModal from '../AdminVideos/VideoModal';
+import VideoModal from '../AdminVideos/VideoEditModal';
 import CaregoryModal from '../AdminCategories/CaregoryModal';
 import AboutModal from './AboutModal';
 

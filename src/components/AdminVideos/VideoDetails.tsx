@@ -3,14 +3,15 @@ import { Video } from '../../shared/Video';
 import { DetailsWrapper, StyledTable, TableWrapper, Td, Th } from './styles';
 import IconButton from '../Button';
 import { ButtonGroup } from '../adminStyles';
-import VideoModal from './VideoModal';
+import VideoEditModal from './VideoEditModal';
+import VideoDeleteModal from './VideoDeleteModal';
 interface Props {
   video: Video;
 }
 
 const VideoDetails = ({ video }: Props) => {
-  const [openModal, setOpenModal] = useState<string | undefined>();
-  const props = { openModal, setOpenModal };
+  const [openEditModal, setOpenEditModal] = useState<string | undefined>();
+  const [openDeleteModal, setOpenDeleteModal] = useState<string | undefined>();
 
   console.log('video: ', video);
 
@@ -20,16 +21,23 @@ const VideoDetails = ({ video }: Props) => {
         <IconButton
           icon='pencil'
           onClick={() => {
-            props.setOpenModal('default');
+            setOpenEditModal('default');
           }}
+        />
+        <VideoEditModal
+          openModal={openEditModal}
+          setOpenModal={setOpenEditModal}
+          video={video}
         />
         <IconButton
           icon='trash'
-          onClick={() => {}}
+          onClick={() => {
+            setOpenDeleteModal('default');
+          }}
         />
-        <VideoModal
-          openModal={props.openModal}
-          setOpenModal={props.setOpenModal}
+        <VideoDeleteModal
+          openModal={openDeleteModal}
+          setOpenModal={setOpenDeleteModal}
           video={video}
         />
       </ButtonGroup>
