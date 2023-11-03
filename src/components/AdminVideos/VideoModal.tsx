@@ -9,7 +9,7 @@ import {
 } from '../../types';
 import { withFormik } from 'formik';
 import VideoTitle from './VideoTitle';
-import { toStillUrl, toVideo } from '../../utils';
+import { toStillUrl, toVideo } from '../../utils/utils';
 import {
   Button,
   StyledBody,

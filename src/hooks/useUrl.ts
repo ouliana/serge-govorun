@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { toEmbeddedUrl, toStillUrl } from '../utils';
+import { toEmbeddedUrl, toStillUrl } from '../utils/utils';
 import { Video } from '../shared/Video';
 
 interface urls {

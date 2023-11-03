@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import About from '../About';
 import { Content, Page } from '../theme';
-import VideoList from '../VideoList';
 import Footer from '../Footer';
+import { VideoList } from '../VideoList';
 
 const HomePage = () => {
   const { t } = useTranslation();

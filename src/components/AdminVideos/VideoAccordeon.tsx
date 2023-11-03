@@ -2,7 +2,7 @@ import { Accordion } from 'flowbite-react';
 import VideoTitle from './VideoTitle';
 import VideoDetails from './VideoDetails';
 import { StyledAccordeonTitle, StyledAccordion } from './styles';
-import { toStillUrl } from '../../utils';
+import { toStillUrl } from '../../utils/utils';
 import VideoModal from './VideoModal';
 import { Button } from '../adminStyles';
 import { useContext, useEffect, useState } from 'react';
