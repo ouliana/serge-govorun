@@ -19,7 +19,7 @@ const About = () => {
   return (
     <Container>
       <ProfileImage />
-      <h2>{t('serge')}</h2>
+      <h1>{t('serge')}</h1>
       <ProfileText>
         {text.map((p: string) => (
           <p key={key++}>{p}</p>

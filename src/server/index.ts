@@ -25,7 +25,9 @@ app.use(express.static(process.cwd() + '/dist'));
 
 const PORT = process.env.PORT;
 
-if (process.env.SSL) {
+if (process.env.SSL === 'no ssl') {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+} else {
   const options = {
     key: readFileSync('/etc/letsencrypt/live/oulianakotik.com/privkey.pem'),
     cert: readFileSync('/etc/letsencrypt/live/oulianakotik.com/cert.pem'),
@@ -33,6 +35,4 @@ if (process.env.SSL) {
   https.createServer(options, app).listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
-} else {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }

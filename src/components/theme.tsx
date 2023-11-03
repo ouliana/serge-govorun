@@ -6,7 +6,7 @@ min-h-screen
 flex
 flex-col
 items-center
-gap-14
+gap-24
 text-slate-200
 bg-gradient-to-tr
 from-slate-900
@@ -20,7 +20,7 @@ px-4
 w-full
 flex
 flex-col
-gap-8
+gap-24
 items-center
 `;
 
