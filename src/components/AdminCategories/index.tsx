@@ -1,12 +1,9 @@
-import { CategoryContextProvider } from '../../contexts/CategoryContext';
-import CategoryList from '../CategoryList';
+import useCategory from '../../hooks/useCategory';
 
 const AdminCategories = () => {
-  return (
-    <CategoryContextProvider>
-      <CategoryList />
-    </CategoryContextProvider>
-  );
+  const { categories } = useCategory();
+
+  return <>{categories && categories.map(c => c.category_name_ru)}</>;
 };
 
 export default AdminCategories;
