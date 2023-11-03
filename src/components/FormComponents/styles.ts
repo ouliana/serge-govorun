@@ -16,10 +16,6 @@ items-center
   dark:bg-slate-800
 `;
 
-export const InputWithIcon = tw.label`
-   relative
-`;
-
 export const RadioButtonsContainer = tw.div`
 flex
 flex-col

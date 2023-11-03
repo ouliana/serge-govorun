@@ -15,7 +15,6 @@ border-purple-100
 `;
 
 export const PersonIcon = tw(IoPersonCircle)`
-text-purple-200
 w-6
 h-6
 `;

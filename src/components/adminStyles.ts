@@ -83,16 +83,6 @@ const StyledButton = tw(BaseButton)`
  
 `;
 
-// export const PlusButton = tw(StyledButton)`
-// fixed
-// bottom-8
-// right-8
-// w-16
-// text-2xl
-// p-2
-// shadow-2xl
-// `;
-
 const DButton = tw(BaseButton)`
 bg-rose-500
   hover:bg-rose-700 
@@ -107,6 +97,12 @@ export const Button = tw(StyledButton)`
   w-full
   sm:w-32
   py-2 
+  px-4 
+`;
+
+export const SignInButton = tw(StyledButton)`
+w-32
+py-2 
   px-4 
 `;
 

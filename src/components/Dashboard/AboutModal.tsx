@@ -36,71 +36,32 @@ const AboutModal = ({ openModal, setOpenModal }: ModalProps) => {
   const { messageDispatch } = useContext(ToastMessageContext);
 
   // CRUD operations
-  // const saveParagraphs = async (values: ParagraphFormValues) => {
-  //   try {
-  //     const paragraph1 = {
-  //       id: paragraphs[0].id,
-  //       paragraph_position: 1,
-  //       paragraph_ru: values.paragraph_1_ru,
-  //       paragraph_en: values.paragraph_1_en,
-  //     };
-  //     const paragraph2 = {
-  //       id: paragraphs[1].id,
-  //       paragraph_position: 2,
-  //       paragraph_ru: values.paragraph_2_ru,
-  //       paragraph_en: values.paragraph_2_en,
-  //     };
-  //     const paragraph3 = {
-  //       id: paragraphs[2].id,
-  //       paragraph_position: 3,
-  //       paragraph_ru: values.paragraph_3_ru,
-  //       paragraph_en: values.paragraph_3_en,
-  //     };
-  //     await remult.repo(AboutParagraph).save({ ...paragraph1 });
-  //     await remult.repo(AboutParagraph).save({ ...paragraph2 });
-  //     await remult.repo(AboutParagraph).save({ ...paragraph3 });
-
-  //     setOpenModal(undefined);
-  //   } catch (e) {
-  //     let message = 'Something worng';
-  //     if (e instanceof Error) {
-  //       message += ' ' + e.message;
-  //     }
-  //     throw new Error(message);
-  //   }
-  // };
-
-  const insertParagraph = async (values: ParagraphFormValues) => {
+  const saveParagraphs = async (values: ParagraphFormValues) => {
     try {
       const paragraph1 = {
+        id: paragraphs[0].id,
         paragraph_position: 1,
         paragraph_ru: values.paragraph_1_ru,
         paragraph_en: values.paragraph_1_en,
       };
       const paragraph2 = {
+        id: paragraphs[1].id,
         paragraph_position: 2,
         paragraph_ru: values.paragraph_2_ru,
         paragraph_en: values.paragraph_2_en,
       };
       const paragraph3 = {
+        id: paragraphs[2].id,
         paragraph_position: 3,
         paragraph_ru: values.paragraph_3_ru,
         paragraph_en: values.paragraph_3_en,
       };
-
-      await remult.repo(AboutParagraph).insert(paragraph1);
-      await remult.repo(AboutParagraph).insert(paragraph2);
-      await remult.repo(AboutParagraph).insert(paragraph3);
+      await remult.repo(AboutParagraph).save({ ...paragraph1 });
+      await remult.repo(AboutParagraph).save({ ...paragraph2 });
+      await remult.repo(AboutParagraph).save({ ...paragraph3 });
 
       setOpenModal(undefined);
     } catch (e) {
-      messageDispatch({
-        type: ActionKind.SET,
-        payload: {
-          content: `Не удалось сохранить бренд.`,
-          kind: MessageKind.ERROR,
-        },
-      });
       let message = 'Something worng';
       if (e instanceof Error) {
         message += ' ' + e.message;
@@ -130,8 +91,7 @@ const AboutModal = ({ openModal, setOpenModal }: ModalProps) => {
       paragraph_3_en: Yup.string(),
     }),
     handleSubmit: async values => {
-      insertParagraph(values);
-      // saveParagraphs(values);
+      saveParagraphs(values);
       messageDispatch({
         type: ActionKind.SET,
         payload: {

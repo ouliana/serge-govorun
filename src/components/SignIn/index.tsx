@@ -1,7 +1,6 @@
 import { useFormik } from 'formik';
 import { object, string } from 'yup';
 
-import { useState } from 'react';
 import { UserCredentials } from '../../types';
 import {
   FormWrapper,
@@ -10,11 +9,8 @@ import {
   Error,
   ErrorPlaceholder,
   Input,
-  InputWithIcon,
-  StyledEye,
-  StyledEyeOff,
 } from '../FormComponents/styles';
-import { Button } from '../adminStyles';
+import { SignInButton } from '../adminStyles';
 import { ButtonGroup, Container } from './styles';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +19,6 @@ interface Props {
 }
 
 const AuthForm = ({ handleSignIn }: Props) => {
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -68,35 +63,24 @@ const AuthForm = ({ handleSignIn }: Props) => {
               ) : (
                 <ErrorPlaceholder>No error</ErrorPlaceholder>
               )}
-              <InputWithIcon>
-                <Input
-                  id='password'
-                  name='password'
-                  type={isPasswordHidden ? 'password' : 'text'}
-                  onChange={formik.handleChange}
-                  value={formik.values.password}
-                />
-                {isPasswordHidden ? (
-                  <StyledEye
-                    onClick={() => setIsPasswordHidden(!isPasswordHidden)}
-                  />
-                ) : (
-                  <StyledEyeOff
-                    onClick={() => setIsPasswordHidden(!isPasswordHidden)}
-                  />
-                )}
-              </InputWithIcon>
+              <Input
+                id='password'
+                name='password'
+                type='password'
+                onChange={formik.handleChange}
+                value={formik.values.password}
+              />
             </InputWrapper>
           </InputGroup>
         </form>
         <ButtonGroup>
-          <Button onClick={() => navigate('/')}>Отмена</Button>
-          <Button
+          <SignInButton onClick={() => navigate('/')}>Отмена</SignInButton>
+          <SignInButton
             type='submit'
             form='loginForm'
           >
             Войти
-          </Button>
+          </SignInButton>
         </ButtonGroup>
       </FormWrapper>
     </Container>

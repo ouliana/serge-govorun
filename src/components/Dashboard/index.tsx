@@ -52,8 +52,7 @@ const Dashboard = () => {
         name='Обо мне'
         text='Текст, отображающийся на стартовой странице'
         path='about'
-        // onEdit={() => setOpenAboutModal('default')}
-        onAdd={() => setOpenAboutModal('default')}
+        onEdit={() => setOpenAboutModal('default')}
       />
       <AboutModal
         openModal={openAboutModal}

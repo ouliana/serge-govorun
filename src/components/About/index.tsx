@@ -21,9 +21,9 @@ const About = () => {
       <ProfileImage />
       <h1>{t('serge')}</h1>
       <ProfileText>
-        {text.map((p: string) => (
-          <p key={key++}>{p}</p>
-        ))}
+        {text.map((p: string) => {
+          if (p !== '') return <p key={key++}>{p}</p>;
+        })}
       </ProfileText>
     </Container>
   );
