@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <meta
           httpEquiv='Content-Security-Policy'
           content={`
-                      default-src 'self' 'unsafe-inline' 'https://fonts.googleapis.com ;
+                      default-src 'self' 'unsafe-inline' 'https://fonts.googleapis.com;
                       script-src 'self'  https://www.youtube.com;
                       frame-src https://www.youtube.com;
                       img-src 'self' https://img.youtube.com https://i.ytimg.com/;
