@@ -14,7 +14,7 @@ const useAboutParagraph = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { paragraphs, loading: !paragraphs };
+  return { paragraphs };
 };
 
 export default useAboutParagraph;
