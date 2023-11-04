@@ -2,7 +2,7 @@ import { remult } from 'remult';
 import { useEffect, useState } from 'react';
 import { AboutParagraph } from '../shared/AboutParagraph';
 
-const useAboutParagraph = () => {
+const useAboutParagraphs = () => {
   const [paragraphs, setParagraphs] = useState<AboutParagraph[]>([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const useAboutParagraph = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { paragraphs, loading: !paragraphs };
+  return { paragraphs };
 };
 
-export default useAboutParagraph;
+export default useAboutParagraphs;

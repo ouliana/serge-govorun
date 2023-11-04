@@ -9,8 +9,7 @@ flex-row
 justify-around
 items-center
 border-t
-border-purple-100
-  dark:border-purple-200
+border-lime-400
   px-4
 `;
 
