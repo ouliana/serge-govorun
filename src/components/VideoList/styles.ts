@@ -1,5 +1,5 @@
 import tw from 'tailwind-styled-components';
-import Box from '@mui/material/Box';
+import { IoPlay } from 'react-icons/io5';
 
 export const Wrapper = tw.div`
 w-full
@@ -34,16 +34,6 @@ justify-center
 items-center
 `;
 
-export const PlayerH = tw(Box)`
-w-11/12
-aspect-video 
-`;
-
-export const PlayerV = tw(Box)`
-h-4/5
-aspect-[9/16]
-`;
-
 export const VideoWrapper = tw.div`
 py-8
 ring-1
@@ -54,4 +44,18 @@ export const Description = tw.div`
 px-8
 pt-4
 text-sm
+`;
+
+export const ImageWrapper = tw.div`
+relative
+h-full
+w-full
+`;
+
+export const StyledPlay = tw(IoPlay)`
+h-4
+w-4
+absolute
+inset-y-1/2
+inset-x-1/2
 `;

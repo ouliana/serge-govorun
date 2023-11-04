@@ -3,8 +3,10 @@ import { isWideScreen, toEmbeddedUrl } from '../../utils/utils';
 import { Video } from '../../shared/Video';
 import { Description, VideoWrapper } from './styles';
 import useLocaleRu from '../../hooks/useLocaleRu';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { urlToVideoId } from '../../utils/urlToVideoId';
+import CurrentContext from '../../contexts/CurrentContext';
+import Still from './Still';
 
 interface Props {
   video: Video;
@@ -12,6 +14,10 @@ interface Props {
 const VideoListItem = ({ video }: Props) => {
   const { t, isRu } = useLocaleRu();
   const [description, setDescription] = useState('');
+  const {
+    state: { current },
+  } = useContext(CurrentContext);
+  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
     if (isRu) {
@@ -23,6 +29,15 @@ const VideoListItem = ({ video }: Props) => {
 
   if (!urlToVideoId(video.url)) return null;
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (current === video.id) {
+      setSelected(true);
+    } else {
+      setSelected(false);
+    }
+  }, [selected, current, video.id]);
+
   return (
     <VideoWrapper>
       <div
@@ -32,16 +47,19 @@ const VideoListItem = ({ video }: Props) => {
             : 'h-11/12 sm:h-4/5 aspect-[9/16] m-auto '
         }
       >
-        <ReactPlayer
-          url={toEmbeddedUrl(video.url)}
-          width='100%'
-          height='100%'
-          playing={false}
-          loop={isWideScreen(video.url) ? false : true}
-          showinfo={false}
-          allowFullScreen
-          controls
-        />
+        {!selected && <Still video={video} />}
+        {selected && (
+          <ReactPlayer
+            url={toEmbeddedUrl(video.url)}
+            width='100%'
+            height='100%'
+            playing={true}
+            loop={isWideScreen(video.url) ? false : true}
+            showinfo={false}
+            allowFullScreen
+            controls
+          />
+        )}
       </div>
       <Description>{description}</Description>
     </VideoWrapper>
