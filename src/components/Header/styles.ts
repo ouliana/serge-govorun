@@ -35,7 +35,7 @@ sm:px-4
 
 export const ProfileImage = tw.div`
 bg-no-repeat bg-cover bg-center
-bg-[url('../public/images/profile-gray.jpg')]
+bg-[url('../images/profile-gray.jpg')]
 rounded-full
 bg-cover
 w-24

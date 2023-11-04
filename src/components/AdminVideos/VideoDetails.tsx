@@ -13,8 +13,6 @@ const VideoDetails = ({ video }: Props) => {
   const [openEditModal, setOpenEditModal] = useState<string | undefined>();
   const [openDeleteModal, setOpenDeleteModal] = useState<string | undefined>();
 
-  console.log('video: ', video);
-
   return (
     <DetailsWrapper>
       <ButtonGroup>

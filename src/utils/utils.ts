@@ -30,28 +30,28 @@ export const toStillUrl = (url: string): string => {
   if (!url)
     throw new Error('Could not convert to embedded url, url is missing');
   const videoId = urlToVideoId(url);
-  return `https://img.youtube.com/vi/${videoId}/0.jpg`;
+  console.log('videoId: ', videoId);
+  console.log(`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
+  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 };
 
 export const isWideScreen = (url: string) => {
-  return !/shorts/i.test(url);
+  const regexp = /shorts/i;
+  return !regexp.test(url);
 };
 
 export const toVideo = async (values: VideoFormValues): Promise<VideoData> => {
-  console.log('values: ', values);
   try {
     const brands = await remult.repo(Brand).find({
       where: {
         id: values.brand,
       },
     });
-    console.log('brands: ', brands);
     const categories = await remult.repo(Category).find({
       where: {
         id: values.category,
       },
     });
-    console.log('categories: ', categories);
 
     const video = {
       url: values.url,

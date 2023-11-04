@@ -5,8 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    // proxy: { '/api': `http://localhost:3001` },
-    proxy: { '/api': `http://oulianakotik.com` },
+    proxy: { '/api': `http://localhost:3001` },
+    // proxy: { '/api': `http://oulianakotik.com` },
     // proxy: { '/api': `https://serge-govorun.onrender.com:${process.env.PORT}` },
   },
 });

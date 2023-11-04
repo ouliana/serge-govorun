@@ -9,7 +9,7 @@ items-center
 gap-24
 text-slate-200
 bg-no-repeat bg-cover bg-center
-bg-[url('../public/images/bg.jpg')]
+bg-[url('../images/bg.jpg')]
 
 `;
 
