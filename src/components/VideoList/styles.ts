@@ -49,3 +49,9 @@ py-8
 ring-1
 ring-lime-400
 `;
+
+export const Description = tw.div`
+px-8
+pt-4
+text-sm
+`;

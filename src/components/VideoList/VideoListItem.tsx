@@ -1,12 +1,25 @@
 import ReactPlayer from 'react-player/youtube';
 import { isWideScreen, toEmbeddedUrl } from '../../utils/utils';
 import { Video } from '../../shared/Video';
-import { VideoWrapper } from './styles';
+import { Description, VideoWrapper } from './styles';
+import useLocaleRu from '../../hooks/useLocaleRu';
+import { useEffect, useState } from 'react';
 
 interface Props {
   video: Video;
 }
 const VideoListItem = ({ video }: Props) => {
+  const { t, isRu } = useLocaleRu();
+  const [description, setDescription] = useState('');
+
+  useEffect(() => {
+    if (isRu) {
+      setDescription(video.description_ru);
+    } else {
+      setDescription(video.description_en);
+    }
+  }, [isRu, t, video]);
+
   return (
     <VideoWrapper>
       <div
@@ -27,6 +40,7 @@ const VideoListItem = ({ video }: Props) => {
           controls
         />
       </div>
+      <Description>{description}</Description>
     </VideoWrapper>
   );
 };
