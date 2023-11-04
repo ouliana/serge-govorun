@@ -20,11 +20,11 @@ justify-between
 items-center
 gap-2
 border-b-2
-border-indigo-600
-bg-indigo-400
-bg-slate-50/75
-dark:bg-slate-800/75
-dark:text-slate-50
+border-lime-400
+bg-zink-100
+bg-zinc-50/75
+dark:bg-zinc-800/75
+dark:text-zinc-50
 fixed
 `;
 
@@ -50,10 +50,10 @@ flex
 flex-col
 justify-start
 gap-14
-text-slate-700
-dark:text-slate-200
+text-zinc-700
+dark:text-zinc-200
 bg-white
-dark:bg-slate-900
+dark:bg-zinc-900
 relative
 `;
 
@@ -70,27 +70,33 @@ rounded-md
 transition 
 duration-300 
 ease-in-out
+uppercase
 `;
 
 const StyledButton = tw(BaseButton)`
-  bg-indigo-500
-  hover:bg-indigo-600 
-  dark:bg-indigo-400
-  dark:hover:bg-indigo-500 
-  text-indigo-50 
-  dark:text-slate-700 
-  dark:hover:text-slate-900
+  border
+  border-lime-700
+  dark:border-lime-400
+  hover:border-lime-200 
+  dark:hover:border-lime-500
+  text-lime-700 
+  dark:text-lime-400
+  dark:hover:text-lime-200
+  dark:hover:bg-lime-900
+  
  
 `;
 
 const DButton = tw(BaseButton)`
-bg-rose-500
-  hover:bg-rose-700 
-  dark:bg-rose-400
-  dark:hover:bg-rose-500 
-  text-rose-50 
-  dark:text-slate-700 
-  dark:hover:text-slate-900
+border
+border-rose-500
+  hover:border-rose-700 
+  dark:border-rose-400
+  dark:hover:border-rose-500 
+  text-rose-400 
+  dark:text-rose-300
+  dark:hover:text-rose-200
+  dark:hover:bg-rose-900
 `;
 
 export const Button = tw(StyledButton)`
@@ -124,53 +130,53 @@ pb-4
 `;
 
 export const StyledLogOut = tw(IoLogOutOutline)`
-  text-slate-600
-  dark:text-slate-50
+  text-zinc-600
+  dark:text-zinc-50
   w-10
   h-10
   p-2
 `;
 export const StyledPencil = tw(IoPencilOutline)`
-  text-slate-600
-  dark:text-slate-50
+  text-zinc-600
+  dark:text-zinc-50
   w-10
   h-10
   p-2
 `;
 export const StyledTrash = tw(IoTrashOutline)`
-  text-slate-600
-  dark:text-slate-50
+  text-zinc-600
+  dark:text-zinc-50
   w-10
   h-10
   p-2
 `;
 
 export const StyledGrid = tw(IoGridOutline)`
-  text-slate-600
-  dark:text-slate-50
+  text-zinc-600
+  dark:text-zinc-50
   w-10
   h-10
   p-2
 `;
 
 export const StyledAdd = tw(IoAddOutline)`
-  text-slate-600
-  dark:text-slate-50
+  text-zinc-600
+  dark:text-zinc-50
   w-10
   h-10
   p-2
 `;
 
 export const StyledList = tw(IoListOutline)`
-  text-slate-600
-  dark:text-slate-50
+  text-zinc-600
+  dark:text-zinc-50
   w-10
   h-10
   p-2
 `;
 export const StyledHome = tw(IoHomeOutline)`
-  text-slate-600
-  dark:text-slate-50
+  text-zinc-600
+  dark:text-zinc-50
   w-10
   h-10
   p-2
@@ -183,21 +189,24 @@ sm:px-32
 lg:px-52
 xl:px-96
 bg-opacity-70
-bg-slate-900
+bg-zinc-900
 `;
 
 export const StyledHeader = tw(Modal.Header)`
 p-4
-text-slate-700
-dark:text-slate-50
+text-zinc-700
+dark:text-zinc-50
+dark:bg-zinc-800
 `;
 
 export const StyledBody = tw(Modal.Body)`
 p-4
-dark:text-slate-50
+  dark:text-zinc-50
+dark:bg-zinc-800
 `;
 
 export const StyledFooter = tw(Modal.Footer)`
+dark:bg-zinc-800
 justify-end
 gap-4
 p-4

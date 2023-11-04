@@ -8,9 +8,9 @@ flex-row
 justify-start
 items-center
 bg-white
-dark:bg-slate-800
-text-slate-700
-dark:text-slate-200
+dark:bg-zinc-800
+text-zinc-700
+dark:text-zinc-200
 rounded-md
 drop-shadow-md
 fixed

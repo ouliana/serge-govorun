@@ -7,7 +7,7 @@ flex
 flex-col
 items-center
 gap-24
-text-slate-200
+text-zinc-200
 bg-no-repeat bg-cover bg-center
 bg-[url('../images/bg.jpg')]
 

@@ -22,6 +22,7 @@ items-start
 export const HeaderText = tw.div`
 text-2xl
 shrink-0
+uppercase
 `;
 export const Green = tw(HeaderText)`
 text-lime-400

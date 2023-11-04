@@ -26,7 +26,7 @@ left-0
 h-full
 w-full
 bg-opacity-60
-bg-slate-900
+bg-zinc-900
 p-20
 flex
 flex-col

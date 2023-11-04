@@ -8,7 +8,7 @@ border-none
 
 export const StyledAccordeonTitle = tw(Accordion.Title)`
 border-b 
-border-slate-500
+border-zinc-500
 `;
 
 export const TitleWrapper = tw.div`
@@ -33,7 +33,7 @@ export const DetailsWrapper = tw.div`
 pt-4
 pb-8
 border-b
-border-slate-500
+border-zinc-500
 `;
 
 export const TableWrapper = tw.div`
@@ -45,25 +45,25 @@ w-full
 table-auto
 border-collapse
 border
-border-slate-200
-dark:border-slate-700
+border-zinc-200
+dark:border-zinc-700
 `;
 
 const Cell = tw.td`
 p-4
 border
-border-slate-200
-dark:border-slate-700
+border-zinc-200
+dark:border-zinc-700
 `;
 
 export const Td = tw(Cell)`
-text-slate-700
-dark:text-slate-400
+text-zinc-700
+dark:text-zinc-400
 `;
 
 export const Th = tw(Cell)`
-text-slate-700
-dark:text-slate-50
+text-zinc-700
+dark:text-zinc-50
 `;
 
 export const FormatWrapper = tw.div`

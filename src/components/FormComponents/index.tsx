@@ -30,14 +30,14 @@ export const FormikTextField = ({ id, type, name }: TextProps) => {
       id={id}
       type={type}
       name={name}
-      className=' bg-slate-50 
-      dark:bg-slate-600 
+      className=' bg-zinc-50 
+      dark:bg-zinc-600 
       w-full 
-      text-slate-600
-      dark:text-slate-200
+      text-zinc-600
+      dark:text-zinc-200
       border
-      border-slate-200
-      dark:border-slate-200
+      border-zinc-200
+      dark:border-zinc-200
       rounded-md 
       py-2 
       px-4 
@@ -90,8 +90,8 @@ export const FormikRadioButtons = (props: Props) => {
                   checked={field.value === option.value}
                   className={
                     field.value === option.value
-                      ? 'appearance-none h-4 w-4 rounded-full border-4 border-indigo-300 dark:border-indigo-400 dark:bg-slate-50 transition ease-in-out duration-150'
-                      : 'appearance-none h-4 w-4 rounded-full border-2 border-gray-300 dark:border-slate-50 dark:bg-gray-700 transition ease-in-out duration-150'
+                      ? 'appearance-none h-4 w-4 rounded-full border-4 border-indigo-300 dark:border-indigo-400 dark:bg-zinc-50 transition ease-in-out duration-150'
+                      : 'appearance-none h-4 w-4 rounded-full border-2 border-gray-300 dark:border-zinc-50 dark:bg-gray-700 transition ease-in-out duration-150'
                   }
                 />
                 <Label htmlFor={option.value}>{option.key}</Label>
@@ -115,7 +115,7 @@ export const FormikSelect = (props: Props) => {
         id={name}
         name={name}
         className='
-        w-full font-normal text-slate-700 px-2.5 py-2 border border-slate-200 rounded-md cursor-pointer
+        w-full font-normal text-zinc-700 px-2.5 py-2 border border-zinc-200 rounded-md cursor-pointer
        relative'
         {...rest}
       >
