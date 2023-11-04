@@ -4,6 +4,7 @@ import { Video } from '../../shared/Video';
 import { Description, VideoWrapper } from './styles';
 import useLocaleRu from '../../hooks/useLocaleRu';
 import { useEffect, useState } from 'react';
+import { urlToVideoId } from '../../utils/urlToVideoId';
 
 interface Props {
   video: Video;
@@ -19,6 +20,8 @@ const VideoListItem = ({ video }: Props) => {
       setDescription(video.description_en);
     }
   }, [isRu, t, video]);
+
+  if (!urlToVideoId(video.url)) return null;
 
   return (
     <VideoWrapper>

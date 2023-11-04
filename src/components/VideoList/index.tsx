@@ -1,12 +1,9 @@
 import { Container, Wrapper } from './styles';
 import useVideo from '../../hooks/useVideo';
 import { Video } from '../../shared/Video';
-import { useTranslation } from 'react-i18next';
 import VideoListItem from './VideoListItem';
 
 export const VideoList = () => {
-  const { t } = useTranslation();
-
   const { videos } = useVideo();
 
   return (
