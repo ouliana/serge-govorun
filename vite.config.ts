@@ -6,6 +6,5 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: { '/api': `http://localhost:3001` },
-    // proxy: { '/api': `http://oulianakotik.com` },
   },
 });
