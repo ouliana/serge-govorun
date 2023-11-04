@@ -3,7 +3,7 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      sans: ['Mulish'],
+      sans: ['"Roboto Condensed"'],
     },
     // darkMode: 'class',
     extend: {

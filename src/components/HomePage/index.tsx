@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import About from '../About';
 import { Content, Page } from '../theme';
 import Footer from '../Footer';
 import { VideoList } from '../VideoList';
+import Header from '../Header';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -16,7 +16,8 @@ const HomePage = () => {
   return (
     <Page>
       <Content>
-        <About />
+        <Header />
+        {/* <About /> */}
         <VideoList />
       </Content>
       <Footer />

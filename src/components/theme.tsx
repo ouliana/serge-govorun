@@ -8,10 +8,9 @@ flex-col
 items-center
 gap-24
 text-slate-200
-bg-gradient-to-tr
-from-slate-900
-via-slate-800
-to-slate-900
+bg-no-repeat bg-cover bg-center
+bg-[url('../public/images/bg.jpg')]
+
 `;
 
 export const Content = tw.div`

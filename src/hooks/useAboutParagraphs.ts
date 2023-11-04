@@ -2,7 +2,7 @@ import { remult } from 'remult';
 import { useEffect, useState } from 'react';
 import { AboutParagraph } from '../shared/AboutParagraph';
 
-const useAboutParagraph = () => {
+const useAboutParagraphs = () => {
   const [paragraphs, setParagraphs] = useState<AboutParagraph[]>([]);
 
   useEffect(() => {
@@ -17,4 +17,4 @@ const useAboutParagraph = () => {
   return { paragraphs };
 };
 
-export default useAboutParagraph;
+export default useAboutParagraphs;

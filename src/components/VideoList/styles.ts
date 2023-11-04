@@ -43,3 +43,9 @@ export const PlayerV = tw(Box)`
 h-4/5
 aspect-[9/16]
 `;
+
+export const VideoWrapper = tw.div`
+py-8
+ring-1
+ring-lime-400
+`;
