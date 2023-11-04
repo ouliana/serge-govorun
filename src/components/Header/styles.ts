@@ -4,12 +4,20 @@ export const BaseWrapper = tw.div`
 w-full
 flex
 justify-start
+px-4
+md:px-8
+
 `;
 
 export const Wrapper = tw(BaseWrapper)`
 flex-row
 items-center
 gap-4
+bg-gradient-to-b
+from-black
+from-70%
+to-transparent
+py-12
 `;
 
 export const TextWrapper = tw(BaseWrapper)`

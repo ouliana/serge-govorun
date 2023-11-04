@@ -5,22 +5,24 @@ relative
 min-h-screen
 flex
 flex-col
+justify-start
 items-center
-gap-24
+gap-12
 text-zinc-200
 bg-no-repeat bg-cover bg-center
 bg-[url('../images/bg.jpg')]
-
+bg-fixed
 `;
 
 export const Content = tw.div`
-pt-16
 px-4
 w-full
 flex
 flex-col
 gap-24
+justify-start
 items-center
+px-4
 `;
 
 export const IconButton = tw.div`

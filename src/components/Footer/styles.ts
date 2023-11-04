@@ -10,6 +10,7 @@ justify-around
 items-center
 border-t
 border-lime-400
+bg-black
   px-4
 `;
 

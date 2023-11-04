@@ -22,9 +22,9 @@ const Still = ({ video }: Props) => {
     <ImageWrapper>
       <img
         src={toStillUrl(video.url)}
-        width='100%'
-        height='100%'
-        className='opacity-50 hover:opacity-80 transition ease-in-out duration-300'
+        // width='100%'
+        // height='100%'
+        className='h-full w-full opacity-50 hover:opacity-80 transition ease-in-out duration-300'
         onClick={() => handleClick()}
       />
       <StyledPlay />

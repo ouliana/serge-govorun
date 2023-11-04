@@ -27,9 +27,6 @@ const VideoListItem = ({ video }: Props) => {
     }
   }, [isRu, t, video]);
 
-  if (!urlToVideoId(video.url)) return null;
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (current === video.id) {
       setSelected(true);
@@ -38,29 +35,27 @@ const VideoListItem = ({ video }: Props) => {
     }
   }, [selected, current, video.id]);
 
+  if (!urlToVideoId(video.url)) return null;
+
   return (
-    <VideoWrapper>
-      <div
-        className={
-          isWideScreen(video.url)
-            ? 'w-10/12 aspect-video m-auto '
-            : 'h-11/12 sm:h-4/5 aspect-[9/16] m-auto '
-        }
-      >
-        {!selected && <Still video={video} />}
-        {selected && (
-          <ReactPlayer
-            url={toEmbeddedUrl(video.url)}
-            width='100%'
-            height='100%'
-            playing={true}
-            loop={isWideScreen(video.url) ? false : true}
-            showinfo={false}
-            allowFullScreen
-            controls
-          />
-        )}
-      </div>
+    <VideoWrapper
+      className={
+        isWideScreen(video.url) ? 'px-4 aspect-video' : 'p-4 aspect-[9/16] '
+      }
+    >
+      {!selected && <Still video={video} />}
+      {selected && (
+        <ReactPlayer
+          url={toEmbeddedUrl(video.url)}
+          width='100%'
+          height='100%'
+          playing={true}
+          loop={isWideScreen(video.url) ? false : true}
+          showinfo={false}
+          allowFullScreen
+          controls
+        />
+      )}
       <Description>{description}</Description>
     </VideoWrapper>
   );
