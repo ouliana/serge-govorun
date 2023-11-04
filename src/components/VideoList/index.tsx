@@ -11,9 +11,7 @@ export const VideoList = () => {
 
   return (
     <Wrapper>
-      <div className='sm:col-span-2 md:col-span-3 lg:col-span-4 text-center'>
-        <h2>{t('myWork')}</h2>
-      </div>
+      <div className='sm:col-span-2 md:col-span-3 lg:col-span-4 text-center'></div>
       {videos && (
         <div className='w-full p-4'>
           <Container>
