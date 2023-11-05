@@ -7,6 +7,5 @@ export default defineConfig({
   server: {
     // proxy: { '/api': `http://localhost:3001` },
     proxy: { '/api': `http://oulianakotik.com` },
-    // proxy: { '/api': `https://serge-govorun.onrender.com:${process.env.PORT}` },
   },
 });

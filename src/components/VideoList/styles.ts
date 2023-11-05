@@ -23,8 +23,8 @@ px-4
   grid
   grid-cols-1
   sm:grid-cols-2
-  md:grid-cols-4
-  lg:grid-cols-6
+  md:grid-cols-3
+  lg:grid-cols-4
   gap-16
 
 `;
@@ -49,16 +49,16 @@ text-sm
 
 export const ImageWrapper = tw.div`
 relative
+bg-center bg-cover opacity-70 hover:opacity-90 transition ease-in-out duration-300
 h-full
 w-full
-bg-center bg-cover opacity-70 hover:opacity-90 transition ease-in-out duration-300
-
 `;
 
 export const StyledPlay = tw(IoPlay)`
 h-8
 w-8
 absolute
-inset-y-1/2
-inset-x-1/2
+m-auto
+left-0 right-0 top-0 bottom-0
+text-white
 `;
