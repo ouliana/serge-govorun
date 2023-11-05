@@ -1,25 +1,37 @@
-import { Container, Wrapper } from './styles';
+import { ContainerShorts, ContainerWidescreen, Wrapper } from './styles';
 import useVideo from '../../hooks/useVideo';
 import { Video } from '../../shared/Video';
 import VideoListItem from './VideoListItem';
+import { isWideScreen } from '../../utils/utils';
 
 export const VideoList = () => {
   const { videos } = useVideo();
 
   return (
     <Wrapper>
-      <div className='sm:col-span-2 md:col-span-3 lg:col-span-4 text-center'></div>
       {videos && (
-        <div className='w-full p-4'>
-          <Container>
-            {videos.map((v: Video) => (
+        <ContainerWidescreen>
+          {videos
+            .filter(v => isWideScreen(v.url))
+            .map((v: Video) => (
               <VideoListItem
                 key={v.id}
                 video={v}
               />
             ))}
-          </Container>
-        </div>
+        </ContainerWidescreen>
+      )}
+      {videos && (
+        <ContainerShorts>
+          {videos
+            .filter(v => !isWideScreen(v.url))
+            .map((v: Video) => (
+              <VideoListItem
+                key={v.id}
+                video={v}
+              />
+            ))}
+        </ContainerShorts>
       )}
     </Wrapper>
   );

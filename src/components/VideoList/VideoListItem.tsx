@@ -3,46 +3,58 @@ import { isWideScreen, toEmbeddedUrl } from '../../utils/utils';
 import { Video } from '../../shared/Video';
 import { Description, VideoWrapper } from './styles';
 import useLocaleRu from '../../hooks/useLocaleRu';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { urlToVideoId } from '../../utils/urlToVideoId';
+import CurrentContext from '../../contexts/CurrentContext';
+import Still from './Still';
 
 interface Props {
   video: Video;
 }
 const VideoListItem = ({ video }: Props) => {
-  const { t, isRu } = useLocaleRu();
+  const { description_ru, description_en, id, url } = video;
+
+  const { isRu } = useLocaleRu();
   const [description, setDescription] = useState('');
+  const {
+    state: { current },
+  } = useContext(CurrentContext);
+  const [selected, setSelected] = useState(false);
 
   useEffect(() => {
     if (isRu) {
-      setDescription(video.description_ru);
+      setDescription(description_ru);
     } else {
-      setDescription(video.description_en);
+      setDescription(description_en);
     }
-  }, [isRu, t, video]);
+  }, [description_en, description_ru, isRu]);
 
-  if (!urlToVideoId(video.url)) return null;
+  useEffect(() => {
+    if (current === id) {
+      setSelected(true);
+    } else {
+      setSelected(false);
+    }
+  }, [current, id]);
+
+  if (!urlToVideoId(url)) return null;
 
   return (
-    <VideoWrapper>
-      <div
-        className={
-          isWideScreen(video.url)
-            ? 'w-10/12 aspect-video m-auto '
-            : 'h-11/12 sm:h-4/5 aspect-[9/16] m-auto '
-        }
-      >
+    <VideoWrapper
+      className={isWideScreen(url) ? 'px-4 aspect-video' : 'p-4 aspect-[9/16] '}
+    >
+      {!selected && <Still video={video} />}
+      {selected && (
         <ReactPlayer
-          url={toEmbeddedUrl(video.url)}
+          url={toEmbeddedUrl(url)}
           width='100%'
           height='100%'
-          playing={false}
-          loop={isWideScreen(video.url) ? false : true}
-          showinfo={false}
+          playing={true}
+          loop={isWideScreen(url) ? false : true}
           allowFullScreen
           controls
         />
-      </div>
+      )}
       <Description>{description}</Description>
     </VideoWrapper>
   );

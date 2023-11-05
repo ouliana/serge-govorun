@@ -12,7 +12,6 @@ const About = () => {
   useEffect(() => {
     if (paragraphs.length) {
       setText(isRu ? paragraphs[1].paragraph_ru : paragraphs[1].paragraph_en);
-      // setText(paragraphs.map(p => (isRu ? p.paragraph_ru : p.paragraph_en)));
     }
   }, [paragraphs, isRu]);
 
@@ -20,12 +19,7 @@ const About = () => {
   return (
     <Container>
       <h2>{t('about')}</h2>
-      <ProfileText data-testid='paragraphs-list'>
-        {/* {text.map((p: string) => {
-          if (p !== '') return <p key={key++}>{p}</p>;
-        })} */}
-        {text}
-      </ProfileText>
+      <ProfileText data-testid='paragraphs-list'>{text}</ProfileText>
     </Container>
   );
 };

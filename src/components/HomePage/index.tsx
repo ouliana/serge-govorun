@@ -5,6 +5,7 @@ import Footer from '../Footer';
 import { VideoList } from '../VideoList';
 import Header from '../Header';
 import About from '../About';
+import { CurrentContextProvider } from '../../contexts/CurrentContext';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -18,7 +19,9 @@ const HomePage = () => {
     <Page>
       <Content>
         <Header />
-        <VideoList />
+        <CurrentContextProvider>
+          <VideoList />
+        </CurrentContextProvider>
         <About />
       </Content>
       <Footer />

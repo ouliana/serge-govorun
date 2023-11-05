@@ -9,6 +9,7 @@ export default {
     extend: {
       aspectRatio: {
         '9/16': '9 / 16',
+        '9/20': '9 / 20',
       },
       backgroundImage: {
         profile: "url('/profile.jpg')",

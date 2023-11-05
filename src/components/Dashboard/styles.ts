@@ -15,17 +15,17 @@ justify-between
 gap-4
 rounded-lg 
 border 
-border-slate-200 
+border-zinc-200 
 bg-white 
 shadow-md 
-dark:border-slate-700 
-dark:bg-slate-800
+dark:border-zinc-700 
+dark:bg-zinc-800
 p-4
 `;
 
 export const CardText = tw.div`
-text-slate-500
-dark:text-slate-400
+text-zink-500
+dark:text-zinc-400
 `;
 
 export const ButtonGroup = tw.div`

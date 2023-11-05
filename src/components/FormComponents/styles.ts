@@ -11,9 +11,9 @@ items-center
   w-96
   p-8
   border
-  border-slate-300
+  border-zinc-300
   rounded-md
-  dark:bg-slate-800
+  dark:bg-zinc-800
 `;
 
 export const RadioButtonsContainer = tw.div`
@@ -39,13 +39,13 @@ bg-no-repeat
 
 export const Label = tw.label`
   font-normal
-  text-slate-700 
-  dark:text-slate-50
+  text-zinc-700 
+  dark:text-zinc-50
 `;
 
 export const StyledEye = tw(Eye)`
-  text-slate-400 
-  dark:text-slate-30
+  text-zinc-400 
+  dark:text-zinc-30
   cursor-pointer 
   w-6 
   h-6 
@@ -80,14 +80,14 @@ gap-4
 export const Input = tw.input`
   appearance-none 
   block
-  bg-slate-50 
-  dark:bg-slate-600 
+  bg-zinc-50 
+  dark:bg-zinc-600 
   w-full 
-  text-slate-600
-  dark:text-slate-200
+  text-zinc-600
+  dark:text-zinc-200
   border
-  border-slate-200
-  dark:border-slate-200
+  border-zinc-200
+  dark:border-zinc-200
   rounded-md 
   py-2 
   px-4 
@@ -101,14 +101,14 @@ export const Input = tw.input`
 export const StyledField = tw(Field)`
   appearance-none 
   block
-  bg-slate-50 
-  dark:bg-slate-600 
+  bg-zinc-50 
+  dark:bg-zinc-600 
   w-full 
-  text-slate-600
-  dark:text-slate-200
+  text-zinc-600
+  dark:text-zinc-200
   border
-  border-slate-200
-  dark:border-slate-200
+  border-zinc-200
+  dark:border-zinc-200
   rounded-md 
   py-2 
   px-4 

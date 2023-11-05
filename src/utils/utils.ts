@@ -30,8 +30,6 @@ export const toStillUrl = (url: string): string => {
   if (!url)
     throw new Error('Could not convert to embedded url, url is missing');
   const videoId = urlToVideoId(url);
-  console.log('videoId: ', videoId);
-  console.log(`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`);
   return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 };
 
