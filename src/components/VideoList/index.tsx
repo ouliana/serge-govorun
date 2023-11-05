@@ -1,8 +1,7 @@
-import { ContainerShorts, ContainerWidescreen, Wrapper } from './styles';
+import { ContainerWidescreen, Wrapper } from './styles';
 import useVideo from '../../hooks/useVideo';
 import { Video } from '../../shared/Video';
 import VideoListItem from './VideoListItem';
-import { isWideScreen } from '../../utils/utils';
 
 export const VideoList = () => {
   const { videos } = useVideo();
