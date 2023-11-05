@@ -18,10 +18,6 @@ const Still = ({ video }: Props) => {
     });
   };
 
-  const className = " bg-[url('" + toStillUrl(video.url) + "')]";
-
-  console.log(className);
-
   return (
     <ImageWrapper
       style={{ backgroundImage: `url(${toStillUrl(video.url)})` }}
