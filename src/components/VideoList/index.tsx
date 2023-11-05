@@ -12,7 +12,7 @@ export const VideoList = () => {
       {videos && (
         <ContainerWidescreen>
           {videos
-            .filter(v => isWideScreen(v.url))
+            // .filter(v => isWideScreen(v.url))
             .map((v: Video) => (
               <VideoListItem
                 key={v.id}
@@ -21,7 +21,7 @@ export const VideoList = () => {
             ))}
         </ContainerWidescreen>
       )}
-      {videos && (
+      {/* {videos && (
         <ContainerShorts>
           {videos
             .filter(v => !isWideScreen(v.url))
@@ -32,7 +32,7 @@ export const VideoList = () => {
               />
             ))}
         </ContainerShorts>
-      )}
+      )} */}
     </Wrapper>
   );
 };

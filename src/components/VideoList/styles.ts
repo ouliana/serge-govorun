@@ -15,16 +15,15 @@ px-4
   grid
   grid-cols-1
   sm:grid-cols-2
-  md:grid-cols-3
-  lg:grid-cols-4
+  lg:grid-cols-3
   justify-items-stretch
   grid-flow-row 
-  gap-8
+  gap-16
 `;
 export const ContainerShorts = tw.div`
 px-4
   grid
-  grid-cols-2
+  grid-cols-1
   sm:grid-cols-3
   md:grid-cols-4
   lg:grid-cols-6
@@ -34,13 +33,15 @@ px-4
 `;
 
 export const VideoWrapper = tw.div`
-py-4
-ring-1
-ring-lime-400
 flex
 flex-col
 shrink-0
 grow-1
+py-4
+rounded-lg
+ring-1
+ring-lime-400
+px-4
 `;
 
 export const Description = tw.div`
@@ -56,8 +57,8 @@ w-full
 `;
 
 export const StyledPlay = tw(IoPlay)`
-h-4
-w-4
+h-8
+w-8
 absolute
 inset-y-1/2
 inset-x-1/2

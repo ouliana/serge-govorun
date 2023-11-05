@@ -39,9 +39,9 @@ const VideoListItem = ({ video }: Props) => {
 
   return (
     <VideoWrapper
-      className={
-        isWideScreen(video.url) ? 'px-4 aspect-video' : 'p-4 aspect-[9/16] '
-      }
+    // className={
+    //   isWideScreen(video.url) ? 'px-4 aspect-video' : 'p-4 aspect-[9/16] '
+    // }
     >
       {!selected && <Still video={video} />}
       {selected && (

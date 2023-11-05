@@ -24,7 +24,7 @@ const Still = ({ video }: Props) => {
         src={toStillUrl(video.url)}
         // width='100%'
         // height='100%'
-        className='h-full w-full opacity-50 hover:opacity-80 transition ease-in-out duration-300'
+        className='h-full w-full opacity-70 hover:opacity-90 transition ease-in-out duration-300'
         onClick={() => handleClick()}
       />
       <StyledPlay />
