@@ -25,7 +25,7 @@ app.use(express.static(process.cwd() + '/dist'));
 
 const PORT = process.env.PORT;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 if (process.env.SSL === 'no_ssl') {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
