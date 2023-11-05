@@ -1,7 +1,8 @@
-import { ContainerWidescreen, Wrapper } from './styles';
+import { ContainerShorts, ContainerWidescreen, Wrapper } from './styles';
 import useVideo from '../../hooks/useVideo';
 import { Video } from '../../shared/Video';
 import VideoListItem from './VideoListItem';
+import { isWideScreen } from '../../utils/utils';
 
 export const VideoList = () => {
   const { videos } = useVideo();
@@ -11,7 +12,7 @@ export const VideoList = () => {
       {videos && (
         <ContainerWidescreen>
           {videos
-            // .filter(v => isWideScreen(v.url))
+            .filter(v => isWideScreen(v.url))
             .map((v: Video) => (
               <VideoListItem
                 key={v.id}
@@ -20,7 +21,7 @@ export const VideoList = () => {
             ))}
         </ContainerWidescreen>
       )}
-      {/* {videos && (
+      {videos && (
         <ContainerShorts>
           {videos
             .filter(v => !isWideScreen(v.url))
@@ -31,7 +32,7 @@ export const VideoList = () => {
               />
             ))}
         </ContainerShorts>
-      )} */}
+      )}
     </Wrapper>
   );
 };

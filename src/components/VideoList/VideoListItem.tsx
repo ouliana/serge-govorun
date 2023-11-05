@@ -12,7 +12,9 @@ interface Props {
   video: Video;
 }
 const VideoListItem = ({ video }: Props) => {
-  const { t, isRu } = useLocaleRu();
+  const { description_ru, description_en, id, url } = video;
+
+  const { isRu } = useLocaleRu();
   const [description, setDescription] = useState('');
   const {
     state: { current },
@@ -21,37 +23,34 @@ const VideoListItem = ({ video }: Props) => {
 
   useEffect(() => {
     if (isRu) {
-      setDescription(video.description_ru);
+      setDescription(description_ru);
     } else {
-      setDescription(video.description_en);
+      setDescription(description_en);
     }
-  }, [isRu, t, video]);
+  }, [description_en, description_ru, isRu]);
 
   useEffect(() => {
-    if (current === video.id) {
+    if (current === id) {
       setSelected(true);
     } else {
       setSelected(false);
     }
-  }, [selected, current, video.id]);
+  }, [current, id]);
 
-  if (!urlToVideoId(video.url)) return null;
+  if (!urlToVideoId(url)) return null;
 
   return (
     <VideoWrapper
-    // className={
-    //   isWideScreen(video.url) ? 'px-4 aspect-video' : 'p-4 aspect-[9/16] '
-    // }
+      className={isWideScreen(url) ? 'px-4 aspect-video' : 'p-4 aspect-[9/16] '}
     >
       {!selected && <Still video={video} />}
       {selected && (
         <ReactPlayer
-          url={toEmbeddedUrl(video.url)}
+          url={toEmbeddedUrl(url)}
           width='100%'
           height='100%'
           playing={true}
-          loop={isWideScreen(video.url) ? false : true}
-          showinfo={false}
+          loop={isWideScreen(url) ? false : true}
           allowFullScreen
           controls
         />

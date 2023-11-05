@@ -18,15 +18,15 @@ const Still = ({ video }: Props) => {
     });
   };
 
+  const className = " bg-[url('" + toStillUrl(video.url) + "')]";
+
+  console.log(className);
+
   return (
-    <ImageWrapper>
-      <img
-        src={toStillUrl(video.url)}
-        // width='100%'
-        // height='100%'
-        className='h-full w-full opacity-70 hover:opacity-90 transition ease-in-out duration-300'
-        onClick={() => handleClick()}
-      />
+    <ImageWrapper
+      style={{ backgroundImage: `url(${toStillUrl(video.url)})` }}
+      onClick={handleClick}
+    >
       <StyledPlay />
     </ImageWrapper>
   );

@@ -11,25 +11,22 @@ gap-8
 `;
 
 export const ContainerWidescreen = tw.div`
-px-4
+  px-4  
   grid
   grid-cols-1
   sm:grid-cols-2
   lg:grid-cols-3
-  justify-items-stretch
-  grid-flow-row 
   gap-16
 `;
 export const ContainerShorts = tw.div`
 px-4
   grid
   grid-cols-1
-  sm:grid-cols-3
+  sm:grid-cols-2
   md:grid-cols-4
   lg:grid-cols-6
-  auto-rows-max
-  gap-8
-  aspect-[9/16]
+  gap-16
+
 `;
 
 export const VideoWrapper = tw.div`
@@ -54,6 +51,8 @@ export const ImageWrapper = tw.div`
 relative
 h-full
 w-full
+bg-center bg-cover opacity-70 hover:opacity-90 transition ease-in-out duration-300
+
 `;
 
 export const StyledPlay = tw(IoPlay)`
