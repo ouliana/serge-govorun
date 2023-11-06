@@ -21,9 +21,9 @@ const VideoListItem = ({ video }: Props) => {
   } = useContext(CurrentContext);
   const [selected, setSelected] = useState(false);
 
-  // const handleEnded = () => {
-  //   setSelected(false);
-  // };
+  const handleEnded = () => {
+    setSelected(false);
+  };
 
   useEffect(() => {
     if (isRu) {
@@ -55,10 +55,10 @@ const VideoListItem = ({ video }: Props) => {
           height='100%'
           playing={true}
           muted
-          // loop={isWideScreen(url) ? false : true}
+          loop={isWideScreen(url) ? false : true}
           allowFullScreen
           controls
-          // onEnded={handleEnded}
+          onEnded={handleEnded}
         />
       )}
       <Description>{description}</Description>
