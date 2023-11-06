@@ -21,9 +21,9 @@ const VideoListItem = ({ video }: Props) => {
   } = useContext(CurrentContext);
   const [selected, setSelected] = useState(false);
 
-  // const handleEnded = () => {
-  //   setSelected(false);
-  // };
+  const handleEnded = () => {
+    setSelected(false);
+  };
 
   useEffect(() => {
     if (isRu) {
@@ -50,14 +50,15 @@ const VideoListItem = ({ video }: Props) => {
       {!selected && <Still video={video} />}
       {selected && (
         <ReactPlayer
-          url={toEmbeddedUrl(url)}
+          url={toEmbeddedUrl(video.url)}
           width='100%'
           height='100%'
           playing={true}
+          muted
           loop={isWideScreen(url) ? false : true}
           allowFullScreen
           controls
-          // onEnded={handleEnded}
+          onEnded={handleEnded}
         />
       )}
       <Description>{description}</Description>

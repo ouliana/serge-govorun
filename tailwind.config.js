@@ -5,11 +5,9 @@ export default {
     fontFamily: {
       sans: ['"Roboto Condensed"'],
     },
-    // darkMode: 'class',
     extend: {
       aspectRatio: {
         '9/16': '9 / 16',
-        '9/20': '9 / 20',
       },
       backgroundImage: {
         profile: "url('/profile.jpg')",
