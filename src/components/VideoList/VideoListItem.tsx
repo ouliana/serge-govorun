@@ -53,7 +53,7 @@ const VideoListItem = ({ video }: Props) => {
           url={toEmbeddedUrl(url)}
           width='100%'
           height='100%'
-          playing={true}
+          playing={false}
           loop={isWideScreen(url) ? false : true}
           allowFullScreen
           controls
