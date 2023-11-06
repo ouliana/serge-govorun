@@ -1,4 +1,4 @@
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/youtube';
 import { isWideScreen } from '../../utils/utils';
 import { Video } from '../../shared/Video';
 import { Description, VideoWrapper } from './styles';
