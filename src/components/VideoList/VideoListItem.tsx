@@ -1,4 +1,4 @@
-import ReactPlayer from 'react-player/youtube';
+import ReactPlayer from 'react-player';
 import { isWideScreen } from '../../utils/utils';
 import { Video } from '../../shared/Video';
 import { Description, VideoWrapper } from './styles';
@@ -54,6 +54,8 @@ const VideoListItem = ({ video }: Props) => {
           width='100%'
           height='100%'
           playing={true}
+          volume={0.5}
+          mute={true}
           // loop={isWideScreen(url) ? false : true}
           allowFullScreen
           controls
