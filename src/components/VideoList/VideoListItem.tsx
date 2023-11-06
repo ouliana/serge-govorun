@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player/youtube';
-import { isWideScreen, toEmbeddedUrl } from '../../utils/utils';
+import { isWideScreen } from '../../utils/utils';
 import { Video } from '../../shared/Video';
 import { Description, VideoWrapper } from './styles';
 import useLocaleRu from '../../hooks/useLocaleRu';
@@ -50,11 +50,11 @@ const VideoListItem = ({ video }: Props) => {
       {!selected && <Still video={video} />}
       {selected && (
         <ReactPlayer
-          url={toEmbeddedUrl(url)}
+          url={video.url}
           width='100%'
           height='100%'
           playing={true}
-          loop={isWideScreen(url) ? false : true}
+          // loop={isWideScreen(url) ? false : true}
           allowFullScreen
           controls
           // onEnded={handleEnded}
