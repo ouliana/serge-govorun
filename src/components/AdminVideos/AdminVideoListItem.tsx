@@ -8,7 +8,6 @@ import { ButtonGroup } from '../adminStyles';
 import IconButton from '../Button';
 import { IoChevronDown } from 'react-icons/io5';
 import tw from 'tailwind-styled-components';
-import Draggable from 'react-draggable';
 
 interface Props {
   video: Video;
@@ -20,8 +19,8 @@ interface Props {
 }
 const AdminVideoListItem = ({
   video,
-  // handleDrag,
-  // handleDrop,
+  handleDrag,
+  handleDrop,
   setOpenEditModal,
   setOpenDeleteModal,
 }: // setCurrent,
@@ -46,7 +45,14 @@ Props) => {
   };
 
   return (
-    <Draggable>
+    <div
+      draggable={true}
+      id={video.video_order.toString()}
+      onDragOver={ev => ev.preventDefault()}
+      onDragStart={handleDrag}
+      onDrop={handleDrop}
+      // onClick={handleClick}
+    >
       <ListItemWrapper>
         <VideoTitle
           imageSrc={toStillUrl(video.url)}
@@ -77,7 +83,7 @@ Props) => {
           isOpen={isOpen}
         />
       )}
-    </Draggable>
+    </div>
   );
 };
 
