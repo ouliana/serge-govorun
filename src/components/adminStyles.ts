@@ -20,7 +20,8 @@ justify-between
 items-center
 gap-2
 border-b-2
-border-lime-400
+border-lime-600
+dark:border-lime-400
 bg-zink-100
 bg-zinc-50/75
 dark:bg-zinc-800/75
@@ -75,14 +76,18 @@ uppercase
 
 const StyledButton = tw(BaseButton)`
   border
-  border-lime-700
+  border-lime-600
   dark:border-lime-400
   hover:border-lime-200 
   dark:hover:border-lime-500
-  text-lime-700 
+  text-lime-600 
   dark:text-lime-400
+  hover:text-lime-600
+  hover:bg-lime-200
+  hover:border-lime-600 
   dark:hover:text-lime-200
   dark:hover:bg-lime-900
+  dark:hover:border-lime-200 
   
  
 `;

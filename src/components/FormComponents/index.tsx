@@ -43,7 +43,8 @@ export const FormikTextField = ({ id, type, name }: TextProps) => {
       px-4 
       leading-tight 
       focus:outline-none
-      focus:border-indigo-500
+      focus:border-lime-600
+      dark:focus:border-lime-400
       transition 
       duration-300 
       ease-in-out'

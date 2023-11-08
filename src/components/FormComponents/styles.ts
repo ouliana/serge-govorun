@@ -1,8 +1,6 @@
 import tw from 'tailwind-styled-components';
 import { Field } from 'formik';
 
-import { Eye, EyeOff } from '@styled-icons/ionicons-outline';
-
 export const FormWrapper = tw.div`
 flex
 flex-col
@@ -43,32 +41,6 @@ export const Label = tw.label`
   dark:text-zinc-50
 `;
 
-export const StyledEye = tw(Eye)`
-  text-zinc-400 
-  dark:text-zinc-30
-  cursor-pointer 
-  w-6 
-  h-6 
-  absolute 
-  top-1/2 
-  transform 
-  -translate-y-1/2 
-  right-3
-`;
-export const StyledEyeOff = tw(EyeOff)`
-  text-stone-600
-  dark:text-stone-200
-  cursor-pointer 
-  w-8 
-  h-8 
-  p-2
-  absolute 
-  top-1/2 
-  transform 
-  -translate-y-1/2 
-  right-3
-`;
-
 export const ErrorInputStyle = 'border-rose-500 dark:border-rose-400';
 
 export const FieldsContainer = tw.div`
@@ -93,7 +65,8 @@ export const Input = tw.input`
   px-4 
   leading-tight 
   focus:outline-none
-  focus:border-indigo-500
+  focus:border-lime-500
+  dark:focus:border-lime-400
   transition 
   duration-300 
   ease-in-out
@@ -114,7 +87,8 @@ export const StyledField = tw(Field)`
   px-4 
   leading-tight 
   focus:outline-none
-  focus:border-indigo-500
+  focus:border-lime-500
+  dark:focus:border-lime-400
   transition 
   duration-300 
   ease-in-out
@@ -155,13 +129,13 @@ text-gray-900
 bg-gray-50 
 rounded-lg 
 border 
-border-gray-300 
-focus:ring-blue-500 
-focus:border-blue-500 
-dark:bg-gray-700 
-dark:border-gray-600 
-dark:placeholder-gray-400 
-dark:text-white 
-dark:focus:ring-blue-500 
-dark:focus:border-blue-500
+border-zinc-300 
+focus:ring-lime-500 
+focus:border-lime-500 
+dark:bg-zinc-700 
+dark:border-zinc-600 
+dark:placeholder-zinc-400 
+dark:text-zink-100 
+dark:focus:ring-lime-400 
+dark:focus:border-lime-400
 `;
