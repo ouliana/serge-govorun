@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import express from 'express';
-// import helmet from 'helmet';
 import compression from 'compression';
 import { api } from './api';
 import session from 'cookie-session';

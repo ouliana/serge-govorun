@@ -14,10 +14,8 @@ interface State {
 const initialState: State = { videos: [] as Video[] };
 
 const reducer = (state: State, action: Action) => {
-  console.log('action: ', action);
   switch (action.type) {
     case ActionKind.SET:
-      console.log(action.payload);
       return { videos: action.payload };
     default:
       return state;

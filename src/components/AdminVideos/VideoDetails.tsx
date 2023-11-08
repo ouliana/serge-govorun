@@ -1,44 +1,12 @@
-import { useState } from 'react';
 import { Video } from '../../shared/Video';
 import { DetailsWrapper, StyledTable, TableWrapper, Td, Th } from './styles';
-import IconButton from '../Button';
-import { ButtonGroup } from '../adminStyles';
-import VideoEditModal from './VideoEditModal';
-import VideoDeleteModal from './VideoDeleteModal';
 interface Props {
   video: Video;
 }
 
 const VideoDetails = ({ video }: Props) => {
-  const [openEditModal, setOpenEditModal] = useState<string | undefined>();
-  const [openDeleteModal, setOpenDeleteModal] = useState<string | undefined>();
-
   return (
     <DetailsWrapper>
-      <ButtonGroup>
-        <IconButton
-          icon='pencil'
-          onClick={() => {
-            setOpenEditModal('default');
-          }}
-        />
-        <VideoEditModal
-          openModal={openEditModal}
-          setOpenModal={setOpenEditModal}
-          video={video}
-        />
-        <IconButton
-          icon='trash'
-          onClick={() => {
-            setOpenDeleteModal('default');
-          }}
-        />
-        <VideoDeleteModal
-          openModal={openDeleteModal}
-          setOpenModal={setOpenDeleteModal}
-          video={video}
-        />
-      </ButtonGroup>
       <TableWrapper>
         <StyledTable>
           <tbody>

@@ -35,4 +35,7 @@ export class Video {
 
   @Fields.boolean()
   featured = false;
+
+  @Fields.number()
+  video_order = 0;
 }

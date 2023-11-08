@@ -49,7 +49,7 @@ export interface BrandFormValues {
 export interface ModalProps {
   openModal: string | undefined;
   setOpenModal: Dispatch<SetStateAction<string | undefined>>;
-  video?: Video;
+  video?: Video | null;
   category?: Category;
   brand?: Brand;
   newText?: boolean;

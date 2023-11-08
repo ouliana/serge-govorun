@@ -51,7 +51,7 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
     try {
       const savedVideo = await remult
         .repo(Video)
-        .save({ id: video?.id, ...values });
+        .save({ id: video?.id, ...values, video_order: video?.video_order });
 
       dispatch({
         type: ActionKind.SET,
@@ -80,7 +80,9 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
 
   const insertVideo = async (values: VideoData) => {
     try {
-      const newVideo = await remult.repo(Video).insert(values);
+      const newVideo = await remult
+        .repo(Video)
+        .insert({ ...values, video_order: videos.length + 1 });
 
       dispatch({
         type: ActionKind.SET,
@@ -135,7 +137,6 @@ const VideoEditModal = ({ openModal, setOpenModal, video }: ModalProps) => {
       brand: Yup.string(),
     }),
     handleSubmit: async formValues => {
-      console.log('formValues: ', formValues);
       const values = await toVideo(formValues);
 
       if (video) {

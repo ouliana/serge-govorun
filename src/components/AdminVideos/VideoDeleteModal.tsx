@@ -17,13 +17,15 @@ import VideosContext from '../../contexts/VideosContext';
 interface ModalProps {
   openModal: string | undefined;
   setOpenModal: Dispatch<SetStateAction<string | undefined>>;
-  video: Video;
+  video: Video | null;
 }
 
 const VideoDeleteModal = ({ openModal, setOpenModal, video }: ModalProps) => {
   const { state, dispatch } = useContext(VideosContext);
   const { videos } = state;
   const { messageDispatch } = useContext(ToastMessageContext);
+
+  if (!video) return null;
 
   const handleDelete = async () => {
     try {

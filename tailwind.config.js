@@ -14,6 +14,8 @@ export default {
       },
       animation: {
         slide: 'slide 5s linear',
+        rotateDown: 'rotateDown 0.4s linear',
+        rotateUp: 'rotateUp 0.4s linear',
       },
       keyframes: {
         slide: {
@@ -21,6 +23,17 @@ export default {
           '5%': { transform: 'translateY(-2em)', opacity: 1 },
           '95%': { transform: 'translateY(-2em)', opacity: 1 },
           '100%': { transform: 'translateY(2em)', opacity: 0.1 },
+        },
+
+        rotateDown: {
+          '0%': { transform: 'rotate(0deg)' },
+          '50%': { transform: 'rotate(90deg)' },
+          '100%': { transform: 'rotate(180deg)' },
+        },
+        rotateUp: {
+          '0%': { transform: 'rotate(180deg)' },
+          '50%': { transform: 'rotate(90deg)' },
+          '100%': { transform: 'rotate(0deg)' },
         },
       },
     },
