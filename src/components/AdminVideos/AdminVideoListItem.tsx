@@ -8,6 +8,7 @@ import { ButtonGroup } from '../adminStyles';
 import IconButton from '../Button';
 import { IoChevronDown } from 'react-icons/io5';
 import tw from 'tailwind-styled-components';
+import Draggable from 'react-draggable';
 
 interface Props {
   video: Video;
@@ -19,19 +20,19 @@ interface Props {
 }
 const AdminVideoListItem = ({
   video,
-  handleDrag,
-  handleDrop,
+  // handleDrag,
+  // handleDrop,
   setOpenEditModal,
   setOpenDeleteModal,
-  setCurrent,
-}: Props) => {
+}: // setCurrent,
+Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [rotate, setRotate] = useState<boolean | undefined>();
 
-  const handleClick = () => {
-    setCurrent(video);
-  };
+  // const handleClick = () => {
+  //   setCurrent(video);
+  // };
 
   const handleChevronCkick = () => {
     // undefined is needed to exclude animation at first render
@@ -45,14 +46,7 @@ const AdminVideoListItem = ({
   };
 
   return (
-    <div
-      draggable={true}
-      id={video.video_order.toString()}
-      onDragOver={ev => ev.preventDefault()}
-      onDragStart={handleDrag}
-      onDrop={handleDrop}
-      onClick={handleClick}
-    >
+    <Draggable>
       <ListItemWrapper>
         <VideoTitle
           imageSrc={toStillUrl(video.url)}
@@ -83,7 +77,7 @@ const AdminVideoListItem = ({
           isOpen={isOpen}
         />
       )}
-    </div>
+    </Draggable>
   );
 };
 
