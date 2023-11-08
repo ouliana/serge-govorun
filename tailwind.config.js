@@ -16,6 +16,8 @@ export default {
         slide: 'slide 5s linear',
         rotateDown: 'rotateDown 0.4s linear',
         rotateUp: 'rotateUp 0.4s linear',
+        dropDown: 'dropDown 0.4s ease-in-out',
+        dropUp: 'dropUp 0.4s ease-in-out',
       },
       keyframes: {
         slide: {
@@ -23,6 +25,15 @@ export default {
           '5%': { transform: 'translateY(-2em)', opacity: 1 },
           '95%': { transform: 'translateY(-2em)', opacity: 1 },
           '100%': { transform: 'translateY(2em)', opacity: 0.1 },
+        },
+        dropDown: {
+          '0%': { transform: 'scaleY(0)' },
+          '100%': { transform: 'scaleY(1)' },
+        },
+
+        dropUp: {
+          '0%': { transform: 'scaleY(1)' },
+          '100%': { transform: 'scaleY(0)' },
         },
 
         rotateDown: {

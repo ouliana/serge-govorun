@@ -29,14 +29,6 @@ export const Title = tw.div`
 text-base
 `;
 
-export const DetailsWrapper = tw.div`
-  pt-4
-  pb-8
-  origin-top
- 
-
-`;
-
 export const TableWrapper = tw.div`
 overflow-auto
 `;
@@ -77,8 +69,9 @@ gap-4
 `;
 
 export const VideoListContainer = tw.div`
-grid
-grid-cols-1
+flex
+flex-col
+justify-start
 gap-4
 `;
 

@@ -25,6 +25,7 @@ const AdminVideoListItem = ({
   setOpenDeleteModal,
   setCurrent,
 }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [rotate, setRotate] = useState<boolean | undefined>();
 
@@ -35,7 +36,12 @@ const AdminVideoListItem = ({
   const handleChevronCkick = () => {
     // undefined is needed to exclude animation at first render
     setRotate(rotate === undefined ? true : !rotate);
-    setShowDetails(!showDetails);
+    setIsOpen(!isOpen);
+    if (showDetails) {
+      setTimeout(() => setShowDetails(!showDetails), 400);
+    } else {
+      setShowDetails(!showDetails);
+    }
   };
 
   return (
@@ -71,7 +77,12 @@ const AdminVideoListItem = ({
           />
         </ButtonGroup>
       </ListItemWrapper>
-      {showDetails && <VideoDetails video={video} />}
+      {showDetails && (
+        <VideoDetails
+          video={video}
+          isOpen={isOpen}
+        />
+      )}
     </div>
   );
 };
