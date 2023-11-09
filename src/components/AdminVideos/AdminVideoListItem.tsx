@@ -23,15 +23,15 @@ const AdminVideoListItem = ({
   handleDrop,
   setOpenEditModal,
   setOpenDeleteModal,
-}: // setCurrent,
-Props) => {
+  setCurrent,
+}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [rotate, setRotate] = useState<boolean | undefined>();
 
-  // const handleClick = () => {
-  //   setCurrent(video);
-  // };
+  const handleClick = () => {
+    setCurrent(video);
+  };
 
   const handleChevronCkick = () => {
     // undefined is needed to exclude animation at first render
@@ -51,7 +51,7 @@ Props) => {
       onDragOver={ev => ev.preventDefault()}
       onDragStart={handleDrag}
       onDrop={handleDrop}
-      // onClick={handleClick}
+      onClick={handleClick}
     >
       <ListItemWrapper>
         <VideoTitle
