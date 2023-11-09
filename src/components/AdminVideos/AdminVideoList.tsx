@@ -10,6 +10,7 @@ import { Button } from '../adminStyles';
 import ToastMessageContext from '../../contexts/ToastMessageContext';
 import VideoEditModal from './VideoEditModal';
 import VideoDeleteModal from './VideoDeleteModal';
+import Toast from '../Toast';
 
 const AdminVideoList = () => {
   const {
@@ -70,6 +71,15 @@ const AdminVideoList = () => {
           kind: MessageKind.SUCCESS,
         },
       });
+      setTimeout(() => {
+        messageDispatch({
+          type: ActionKind.CLEAR,
+          payload: {
+            content: ``,
+            kind: MessageKind.NONE,
+          },
+        });
+      }, 5000);
     } catch (e) {
       let message = 'Something worng';
       if (e instanceof Error) {
@@ -118,6 +128,7 @@ const AdminVideoList = () => {
           setCurrent={setCurrent}
         />
       ))}
+      <Toast />
     </VideoListContainer>
   );
 };
