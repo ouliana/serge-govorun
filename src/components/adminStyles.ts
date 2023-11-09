@@ -7,6 +7,7 @@ import {
   IoAddOutline,
   IoListOutline,
   IoHomeOutline,
+  IoChevronDown,
 } from 'react-icons/io5';
 import { Modal } from 'flowbite-react';
 
@@ -129,9 +130,7 @@ w-full
 flex
 flex-row
 justify-end
-gap-2
 items-center
-pb-4
 `;
 
 export const StyledLogOut = tw(IoLogOutOutline)`
@@ -185,6 +184,22 @@ export const StyledHome = tw(IoHomeOutline)`
   w-10
   h-10
   p-2
+`;
+
+interface ButtonProps {
+  $rotate: boolean;
+}
+
+export const StyledChevron = tw(IoChevronDown)<ButtonProps>`
+  text-zinc-600
+  dark:text-zinc-50
+  w-10
+  h-10
+  p-2
+  transition-all
+  transform
+  ${p =>
+    p.$rotate ? 'animate-rotateDown rotate-180' : 'animate-rotateUp rotate-0'}
 `;
 
 export const StyledModal = tw(Modal)`

@@ -3,6 +3,7 @@ import { VideoData, VideoFormValues } from '../types';
 import { Brand } from '../shared/Brand';
 import { Category } from '../shared/Category';
 import { urlToVideoId } from './urlToVideoId';
+import { Video } from '../shared/Video';
 
 export const isRussianLanguage = (lan: string): boolean =>
   lan.split('-').includes('ru');
@@ -61,6 +62,7 @@ export const toVideo = async (values: VideoFormValues): Promise<VideoData> => {
       category: categories[0],
       createdOn: new Date(),
       featured: false,
+      video_order: 0,
     };
 
     return video;
@@ -71,4 +73,8 @@ export const toVideo = async (values: VideoFormValues): Promise<VideoData> => {
     }
     throw new Error(message);
   }
+};
+
+export const compareFn = (v1: Video, v2: Video): number => {
+  return v2.video_order - v1.video_order;
 };

@@ -14,7 +14,8 @@ border-zinc-500
 export const TitleWrapper = tw.div`
 flex
 grow
-justify-center
+shrink-0
+items-center
 `;
 
 export const Image = tw.img`
@@ -26,14 +27,6 @@ m-2
 
 export const Title = tw.div`
 text-base
-p-4
-`;
-
-export const DetailsWrapper = tw.div`
-pt-4
-pb-8
-border-b
-border-zinc-500
 `;
 
 export const TableWrapper = tw.div`
@@ -47,6 +40,8 @@ border-collapse
 border
 border-zinc-200
 dark:border-zinc-700
+bg-zinc-50
+dark:bg-zinc-800
 `;
 
 const Cell = tw.td`
@@ -70,5 +65,42 @@ export const FormatWrapper = tw.div`
 flex
 flex-row
 justify-start
+gap-4
+`;
+
+export const VideoListContainer = tw.div`
+flex
+flex-col
+justify-start
+gap-4
+`;
+
+export const ListItemWrapper = tw.div`
+flex 
+flex-row
+justify-start
+items-center
+w-full
+rounded-lg 
+border 
+border-zinc-200 
+bg-white 
+shadow-sm 
+dark:border-zinc-700 
+dark:bg-zinc-800
+hover:bg-zinc-100
+dark:hover:bg-zinc-700
+transition 
+ease-in-out 
+duration-300
+cursor-pointer
+`;
+
+export const ButtonsWrapper = tw.div`
+w-full
+flex
+flex-row
+justify-start
+items-center
 gap-4
 `;

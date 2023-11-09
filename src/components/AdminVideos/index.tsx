@@ -1,10 +1,12 @@
 import { VideosContextProvider } from '../../contexts/VideosContext';
-import VideoAccordeon from './VideoAccordeon';
+import AdminVideoList from './AdminVideoList';
+// import VideoAccordeon from './VideoAccordeon';
 
 const AdminVideos = () => {
   return (
     <VideosContextProvider>
-      <VideoAccordeon />
+      {/* <VideoAccordeon /> */}
+      <AdminVideoList />
     </VideosContextProvider>
   );
 };

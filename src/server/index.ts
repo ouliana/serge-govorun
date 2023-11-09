@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import express from 'express';
-// import helmet from 'helmet';
 import compression from 'compression';
 import { api } from './api';
 import session from 'cookie-session';
@@ -27,7 +26,7 @@ const PORT = process.env.PORT;
 
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-if (process.env.SSL === 'no_ssl') {
+if (process.env.SSL === 'nossl') {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 } else {
   const options = {

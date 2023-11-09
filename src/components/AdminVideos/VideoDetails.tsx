@@ -1,44 +1,14 @@
-import { useState } from 'react';
+import tw from 'tailwind-styled-components';
 import { Video } from '../../shared/Video';
-import { DetailsWrapper, StyledTable, TableWrapper, Td, Th } from './styles';
-import IconButton from '../Button';
-import { ButtonGroup } from '../adminStyles';
-import VideoEditModal from './VideoEditModal';
-import VideoDeleteModal from './VideoDeleteModal';
+import { StyledTable, TableWrapper, Td, Th } from './styles';
 interface Props {
   video: Video;
+  isOpen: boolean;
 }
 
-const VideoDetails = ({ video }: Props) => {
-  const [openEditModal, setOpenEditModal] = useState<string | undefined>();
-  const [openDeleteModal, setOpenDeleteModal] = useState<string | undefined>();
-
+const VideoDetails = ({ video, isOpen }: Props) => {
   return (
-    <DetailsWrapper>
-      <ButtonGroup>
-        <IconButton
-          icon='pencil'
-          onClick={() => {
-            setOpenEditModal('default');
-          }}
-        />
-        <VideoEditModal
-          openModal={openEditModal}
-          setOpenModal={setOpenEditModal}
-          video={video}
-        />
-        <IconButton
-          icon='trash'
-          onClick={() => {
-            setOpenDeleteModal('default');
-          }}
-        />
-        <VideoDeleteModal
-          openModal={openDeleteModal}
-          setOpenModal={setOpenDeleteModal}
-          video={video}
-        />
-      </ButtonGroup>
+    <DetailsWrapper $isOpen={isOpen}>
       <TableWrapper>
         <StyledTable>
           <tbody>
@@ -78,5 +48,18 @@ const VideoDetails = ({ video }: Props) => {
     </DetailsWrapper>
   );
 };
+
+interface Details {
+  $isOpen: boolean;
+}
+
+const DetailsWrapper = tw.div<Details>`
+  pt-4
+  pb-8
+  origin-top
+  transform
+  ${p => (p.$isOpen ? 'animate-dropDown' : 'animate-dropUp')}
+
+`;
 
 export default VideoDetails;
