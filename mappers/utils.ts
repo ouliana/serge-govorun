@@ -20,9 +20,17 @@ const parseNumber = (num: unknown): number => {
   throw new Error('Incorrect or missing value');
 };
 
+const toNumber = (value: unknown): number => {
+  if (isString(value) && isNumber(Number(value))) return Number(value);
+
+  if (isNumber(value)) return value;
+
+  throw new Error('Incorrect or missing value');
+};
+
 const parseBoolean = (bool: unknown): boolean => {
   if (isBoolean(bool)) return bool;
   throw new Error('Incorrect or missing value');
 };
 
-export { isString, isNumber, parseString, parseNumber, parseBoolean };
+export { isString, isNumber, parseString, parseNumber, toNumber, parseBoolean };

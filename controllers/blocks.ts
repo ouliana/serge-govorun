@@ -10,10 +10,10 @@ export const create = async (payload: unknown): Promise<BlockAttributes> => {
 };
 
 export const update = async (
-  idStr: string,
+  idValue: string,
   payload: unknown
 ): Promise<void> => {
-  const id = utils.parseNumber(idStr);
+  const id = utils.parseNumber(idValue);
   const values = blockMapper.toBlockCreationAttributes(payload);
 
   const data = await Block.findByPk(id);
@@ -31,6 +31,7 @@ export const getById = async (idStr: string): Promise<BlockAttributes> => {
   if (!data) {
     throw new Error('not found');
   }
+
   return data.dataValues;
 };
 

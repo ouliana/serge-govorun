@@ -17,15 +17,15 @@ export type Category = {
 export type Video = {
   id: string;
   url: string;
-  title_ru: string;
-  title_en: string;
-  description_ru: string;
-  description_en: string;
+  titleRu: string;
+  titleRn: string;
+  descriptionRu: string;
+  descriptionRn: string;
   brand: Brand;
   category: Category;
   createdOn: Date;
   featured: boolean;
-  video_order: number;
+  videoOrder: number;
 };
 
 export type AboutParagraph = {

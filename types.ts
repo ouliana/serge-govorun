@@ -2,7 +2,7 @@ import { Optional } from 'sequelize';
 
 export interface BlockAttributes {
   id: number;
-  blockName: number;
+  blockName: string;
   textRu: string;
   textEn: string;
 }
@@ -40,3 +40,17 @@ export interface VideoAttributes {
 }
 
 export type VideoCreationAttributes = Optional<VideoAttributes, 'id'>;
+
+export interface VideoReturned {
+  id: number;
+  url: string;
+  titleRu: string;
+  titleEn: string;
+  descriptionRu?: string;
+  descriptionEn?: string;
+  createdon: Date;
+  featured: boolean;
+  videoOrder: number;
+  brand: BrandAttributes;
+  category: CategoryAttributes;
+}

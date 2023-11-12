@@ -1,6 +1,10 @@
-import { VideoAttributes, VideoCreationAttributes } from '../types';
+import {
+  VideoAttributes,
+  VideoCreationAttributes,
+  VideoReturned,
+} from '../types';
 import { NotFoundError } from '../utils/errors';
-import { Video } from '../db/models';
+import { Brand, Category, Video } from '../db/models';
 import { utils, videoMapper } from '../mappers';
 
 export const create = async (payload: unknown): Promise<VideoAttributes> => {
@@ -10,10 +14,10 @@ export const create = async (payload: unknown): Promise<VideoAttributes> => {
 };
 
 export const update = async (
-  idStr: string,
+  idValue: string,
   payload: unknown
 ): Promise<void> => {
-  const id = utils.parseNumber(idStr);
+  const id = utils.toNumber(idValue);
   const values = videoMapper.toVideoCreationAttributes(payload);
 
   const data = await Video.findByPk(id);
@@ -25,17 +29,23 @@ export const update = async (
   });
 };
 
-export const getById = async (idStr: string): Promise<VideoAttributes> => {
-  const id = utils.parseNumber(idStr);
-  const data = await Video.findByPk(id);
-  if (!data) {
+export const getById = async (idValue: string): Promise<VideoAttributes> => {
+  const id = utils.toNumber(idValue);
+  const video = await Video.findOne({
+    where: {
+      id,
+    },
+    include: [Brand, Category],
+  });
+  if (!video) {
     throw new Error('not found');
   }
-  return data.dataValues;
+
+  return video.dataValues;
 };
 
-export const deleteById = async (idStr: string): Promise<boolean> => {
-  const id = utils.parseNumber(idStr);
+export const deleteById = async (idValue: string): Promise<boolean> => {
+  const id = utils.toNumber(idValue);
   const deletedVideoCount = await Video.destroy({
     where: { id },
   });
@@ -43,7 +53,9 @@ export const deleteById = async (idStr: string): Promise<boolean> => {
 };
 
 export const getAll = async (): Promise<VideoAttributes[]> => {
-  const data = await Video.findAll();
+  const data = await Video.findAll({
+    include: [Brand, Category],
+  });
 
   if (!data) throw new Error('');
   return data.map(d => d.dataValues);

@@ -10,10 +10,10 @@ export const create = async (payload: unknown): Promise<BrandAttributes> => {
 };
 
 export const update = async (
-  idStr: string,
+  idValue: string,
   payload: unknown
 ): Promise<void> => {
-  const id = utils.parseNumber(idStr);
+  const id = utils.toNumber(idValue);
   const values = brandMapper.toBrandCreationAttributes(payload);
 
   const data = await Brand.findByPk(id);
@@ -25,8 +25,8 @@ export const update = async (
   });
 };
 
-export const getById = async (idStr: string): Promise<BrandAttributes> => {
-  const id = utils.parseNumber(idStr);
+export const getById = async (idValue: string): Promise<BrandAttributes> => {
+  const id = utils.toNumber(idValue);
   const data = await Brand.findByPk(id);
   if (!data) {
     throw new Error('not found');
@@ -34,8 +34,8 @@ export const getById = async (idStr: string): Promise<BrandAttributes> => {
   return data.dataValues;
 };
 
-export const deleteById = async (idStr: string): Promise<boolean> => {
-  const id = utils.parseNumber(idStr);
+export const deleteById = async (idValue: string): Promise<boolean> => {
+  const id = utils.toNumber(idValue);
   const deletedBrandCount = await Brand.destroy({
     where: { id },
   });

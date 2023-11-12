@@ -1,4 +1,9 @@
-import { VideoCreationAttributes } from '../types';
+import { Model } from 'sequelize';
+import {
+  VideoAttributes,
+  VideoCreationAttributes,
+  VideoReturned,
+} from '../types';
 import * as utils from './utils';
 
 export const toVideoCreationAttributes = (

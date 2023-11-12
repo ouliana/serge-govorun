@@ -10,7 +10,7 @@ export const toBlockCreationAttributes = (
 
   if ('blockName' in object && 'textRu' in object && 'textEn' in object) {
     return {
-      blockName: utils.parseNumber(object.blockName),
+      blockName: utils.parseString(object.blockName),
       textRu: utils.parseString(object.textRu),
       textEn: utils.parseString(object.textEn),
     };

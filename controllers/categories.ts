@@ -10,10 +10,10 @@ export const create = async (payload: unknown): Promise<CategoryAttributes> => {
 };
 
 export const update = async (
-  idStr: string,
+  idValue: string,
   payload: unknown
 ): Promise<void> => {
-  const id = utils.parseNumber(idStr);
+  const id = utils.toNumber(idValue);
   const typedPayload = categoryMapper.toCategoryCreationAttributes(payload);
 
   const data = await Category.findByPk(id);
@@ -25,8 +25,8 @@ export const update = async (
   });
 };
 
-export const getById = async (idStr: string): Promise<CategoryAttributes> => {
-  const id = utils.parseNumber(idStr);
+export const getById = async (idValue: string): Promise<CategoryAttributes> => {
+  const id = utils.toNumber(idValue);
   const data = await Category.findByPk(id);
   if (!data) {
     throw new Error('not found');
@@ -34,8 +34,8 @@ export const getById = async (idStr: string): Promise<CategoryAttributes> => {
   return data.dataValues;
 };
 
-export const deleteById = async (idStr: string): Promise<boolean> => {
-  const id = utils.parseNumber(idStr);
+export const deleteById = async (idValue: string): Promise<boolean> => {
+  const id = utils.toNumber(idValue);
   const deletedCategoryCount = await Category.destroy({
     where: { id },
   });
