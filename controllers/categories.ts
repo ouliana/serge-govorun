@@ -4,9 +4,9 @@ import { Category } from '../db/models';
 import { utils, categoryMapper } from '../mappers';
 
 export const create = async (payload: unknown): Promise<CategoryAttributes> => {
-  const data = categoryMapper.toCategoryCreationAttributes(payload);
-  const brand = await Category.create(data);
-  return brand.dataValues;
+  const values = categoryMapper.toCategoryCreationAttributes(payload);
+  const data = await Category.create(values);
+  return data.dataValues;
 };
 
 export const update = async (
@@ -14,24 +14,24 @@ export const update = async (
   payload: unknown
 ): Promise<void> => {
   const id = utils.parseNumber(idStr);
-  const data = categoryMapper.toCategoryCreationAttributes(payload);
+  const typedPayload = categoryMapper.toCategoryCreationAttributes(payload);
 
-  const category = await Category.findByPk(id);
-  if (!category) {
+  const data = await Category.findByPk(id);
+  if (!data) {
     throw new NotFoundError('not found');
   }
-  await Category.update(data, {
+  await Category.update(typedPayload, {
     where: { id },
   });
 };
 
 export const getById = async (idStr: string): Promise<CategoryAttributes> => {
   const id = utils.parseNumber(idStr);
-  const category = await Category.findByPk(id);
-  if (!category) {
+  const data = await Category.findByPk(id);
+  if (!data) {
     throw new Error('not found');
   }
-  return category.dataValues;
+  return data.dataValues;
 };
 
 export const deleteById = async (idStr: string): Promise<boolean> => {
@@ -43,8 +43,8 @@ export const deleteById = async (idStr: string): Promise<boolean> => {
 };
 
 export const getAll = async (): Promise<CategoryAttributes[]> => {
-  const response = await Category.findAll();
+  const data = await Category.findAll();
 
-  if (!response) throw new Error('');
-  return response.map(res => res.dataValues);
+  if (!data) throw new Error('');
+  return data.map(d => d.dataValues);
 };

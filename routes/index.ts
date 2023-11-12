@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import aboutParagraphsRouter from './aboutParagraphs';
+import blocksRouter from './blocks';
 import brandsRouter from './brands';
 import categoriesRouter from './categories';
 import videosRouter from './videos';
 
 const router = Router();
 
-router.use('/about', aboutParagraphsRouter);
+router.use('/blocks', blocksRouter);
 router.use('/brands', brandsRouter);
 router.use('/categories', categoriesRouter);
 router.use('/videos', videosRouter);

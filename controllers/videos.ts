@@ -4,9 +4,9 @@ import { Video } from '../db/models';
 import { utils, videoMapper } from '../mappers';
 
 export const create = async (payload: unknown): Promise<VideoAttributes> => {
-  const data = videoMapper.toVideoCreationAttributes(payload);
-  const video = await Video.create(data);
-  return video.dataValues;
+  const values = videoMapper.toVideoCreationAttributes(payload);
+  const data = await Video.create(values);
+  return data.dataValues;
 };
 
 export const update = async (
@@ -14,37 +14,37 @@ export const update = async (
   payload: unknown
 ): Promise<void> => {
   const id = utils.parseNumber(idStr);
-  const data = videoMapper.toVideoCreationAttributes(payload);
+  const values = videoMapper.toVideoCreationAttributes(payload);
 
-  const video = await Video.findByPk(id);
-  if (!video) {
+  const data = await Video.findByPk(id);
+  if (!data) {
     throw new NotFoundError('not found');
   }
-  await Video.update(data, {
+  await Video.update(values, {
     where: { id },
   });
 };
 
 export const getById = async (idStr: string): Promise<VideoAttributes> => {
   const id = utils.parseNumber(idStr);
-  const video = await Video.findByPk(id);
-  if (!video) {
+  const data = await Video.findByPk(id);
+  if (!data) {
     throw new Error('not found');
   }
-  return video.dataValues;
+  return data.dataValues;
 };
 
 export const deleteById = async (idStr: string): Promise<boolean> => {
   const id = utils.parseNumber(idStr);
-  const deletedBrandCount = await Video.destroy({
+  const deletedVideoCount = await Video.destroy({
     where: { id },
   });
-  return !!deletedBrandCount;
+  return !!deletedVideoCount;
 };
 
 export const getAll = async (): Promise<VideoAttributes[]> => {
-  const response = await Video.findAll();
+  const data = await Video.findAll();
 
-  if (!response) throw new Error('');
-  return response.map(res => res.dataValues);
+  if (!data) throw new Error('');
+  return data.map(d => d.dataValues);
 };

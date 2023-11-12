@@ -1,16 +1,13 @@
 import { Optional } from 'sequelize';
 
-export interface AboutParagraphAttributes {
+export interface BlockAttributes {
   id: number;
-  paragraphPosition: number;
-  paragraphRu: string;
-  paragraphEn: string;
+  blockName: number;
+  textRu: string;
+  textEn: string;
 }
 
-export type AboutParagraphCreationAttributes = Optional<
-  AboutParagraphAttributes,
-  'id'
->;
+export type BlockCreationAttributes = Optional<BlockAttributes, 'id'>;
 
 export interface BrandAttributes {
   id: number;

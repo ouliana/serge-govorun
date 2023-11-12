@@ -4,9 +4,9 @@ import { Brand } from '../db/models';
 import { utils, brandMapper } from '../mappers';
 
 export const create = async (payload: unknown): Promise<BrandAttributes> => {
-  const data = brandMapper.toBrandCreationAttributes(payload);
-  const brand = await Brand.create(data);
-  return brand.dataValues;
+  const typedPayload = brandMapper.toBrandCreationAttributes(payload);
+  const data = await Brand.create(typedPayload);
+  return data.dataValues;
 };
 
 export const update = async (
@@ -14,24 +14,24 @@ export const update = async (
   payload: unknown
 ): Promise<void> => {
   const id = utils.parseNumber(idStr);
-  const data = brandMapper.toBrandCreationAttributes(payload);
+  const values = brandMapper.toBrandCreationAttributes(payload);
 
-  const brand = await Brand.findByPk(id);
-  if (!brand) {
+  const data = await Brand.findByPk(id);
+  if (!data) {
     throw new NotFoundError('not found');
   }
-  await Brand.update(data, {
+  await Brand.update(values, {
     where: { id },
   });
 };
 
 export const getById = async (idStr: string): Promise<BrandAttributes> => {
   const id = utils.parseNumber(idStr);
-  const brand = await Brand.findByPk(id);
-  if (!brand) {
+  const data = await Brand.findByPk(id);
+  if (!data) {
     throw new Error('not found');
   }
-  return brand.dataValues;
+  return data.dataValues;
 };
 
 export const deleteById = async (idStr: string): Promise<boolean> => {
@@ -43,8 +43,8 @@ export const deleteById = async (idStr: string): Promise<boolean> => {
 };
 
 export const getAll = async (): Promise<BrandAttributes[]> => {
-  const response = await Brand.findAll();
+  const data = await Brand.findAll();
 
-  if (!response) throw new Error('');
-  return response.map(res => res.dataValues);
+  if (!data) throw new Error('');
+  return data.map(d => d.dataValues);
 };
