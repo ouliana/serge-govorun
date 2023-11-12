@@ -8,9 +8,9 @@ blocksRouter.get('/', async (_req, res) => {
   res.json(brands);
 });
 
-blocksRouter.get('/:id', async (req, res) => {
+blocksRouter.get('/:name', async (req, res) => {
   try {
-    const brand = await blocksService.getById(req.params.id);
+    const brand = await blocksService.getByName(req.params.name);
     res.json(brand);
   } catch (err) {
     return res.status(400).json({ err });

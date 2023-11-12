@@ -15,7 +15,7 @@ import {
   StyledHeader,
   StyledModal,
 } from '../adminStyles';
-import useAboutParagraph from '../../hooks/useAboutParagraphs';
+import useAboutParagraph from '../../hooks/useBlock';
 import { useContext } from 'react';
 import ToastMessageContext from '../../contexts/ToastMessageContext';
 

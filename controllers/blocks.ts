@@ -25,9 +25,12 @@ export const update = async (
   });
 };
 
-export const getById = async (idStr: string): Promise<BlockAttributes> => {
-  const id = utils.parseNumber(idStr);
-  const data = await Block.findByPk(id);
+export const getByName = async (name: string): Promise<BlockAttributes> => {
+  const data = await Block.findOne({
+    where: {
+      blockName: name,
+    },
+  });
   if (!data) {
     throw new Error('not found');
   }

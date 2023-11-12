@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Container, ProfileText } from './styles';
 import useLocaleRu from '../../hooks/useLocaleRu';
-import useAboutParagraphs from '../../hooks/useAboutParagraphs';
+import useBlock from '../../hooks/useBlock';
 
 const About = () => {
   const { t, isRu } = useLocaleRu();
-  const { paragraphs } = useAboutParagraphs();
+  const { block } = useBlock('about');
   const [text, setText] = useState<string>('');
   // const [text, setText] = useState<string[]>([]);
 
   useEffect(() => {
-    if (paragraphs.length) {
-      setText(isRu ? paragraphs[1].paragraph_ru : paragraphs[1].paragraph_en);
-    }
-  }, [paragraphs, isRu]);
+    if (block) setText(isRu ? block.textRu : block.textEn);
+  }, [block, isRu]);
 
   // let key = 0;
   return (

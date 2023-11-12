@@ -1,14 +1,15 @@
-import { Video } from '../types';
+import { videosService } from '../services';
+import { VideoClient } from '../types';
 import { useEffect, useState } from 'react';
 
 const useVideo = () => {
-  const [videos, setVideos] = useState<Video[]>([]);
+  console.log('in use videos');
+  const [videos, setVideos] = useState<VideoClient[]>([]);
 
   useEffect(() => {
-    const result = [] as Video[];
     (async () => {
-      // result = await remult.repo(Video).find();
-      setVideos(result);
+      const data = await videosService.getAll();
+      setVideos(data);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

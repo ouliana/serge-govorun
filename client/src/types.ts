@@ -1,21 +1,21 @@
 import { Dispatch, SetStateAction } from 'react';
 
 export type Brand = {
-  id: string;
-  brand_name_ru: string;
-  brand_name_en: string;
+  id: number;
+  brandNameRu: string;
+  brandNameEn: string;
 };
 
 export type Category = {
-  id: string;
-  category_name_ru: string;
-  category_name_en: string;
+  id: number;
+  categoryNameRu: string;
+  categoryNameEn: string;
   icon: string;
   route: string;
 };
 
-export type Video = {
-  id: string;
+export type VideoClient = {
+  id: number;
   url: string;
   titleRu: string;
   titleRn: string;
@@ -23,16 +23,30 @@ export type Video = {
   descriptionRn: string;
   brand: Brand;
   category: Category;
-  createdOn: Date;
+  createdon: Date;
   featured: boolean;
   videoOrder: number;
 };
 
-export type AboutParagraph = {
-  id: string;
-  paragraph_position: number;
-  paragraph_ru: string;
-  paragraph_en: string;
+export type VideoRequest = {
+  id: number;
+  url: string;
+  titleRu: string;
+  titleRn: string;
+  descriptionRu: string;
+  descriptionRn: string;
+  BrandId: number;
+  CategoryId: number;
+  createdon: Date;
+  featured: boolean;
+  videoOrder: number;
+};
+
+export type Block = {
+  id: number;
+  blockName: string;
+  textRu: string;
+  textEn: string;
 };
 
 export enum UserActionKind {
@@ -58,30 +72,30 @@ export interface UserCredentials {
 
 export interface VideoFormValues {
   url: string;
-  title_ru: string;
-  title_en: string;
-  description_ru: string;
-  description_en: string;
+  titleRu: string;
+  titleEn: string;
+  descriptionRu: string;
+  descriptionEn: string;
   category: string;
   brand: string;
 }
 
 export interface CategoryFormValues {
-  category_name_ru: string;
-  category_name_en: string;
+  categoryNameRu: string;
+  categoryNameEn: string;
   icon: string;
   route: string;
 }
 
 export interface BrandFormValues {
-  brand_name_ru: string;
-  brand_name_en: string;
+  brandNameRu: string;
+  brandNameEn: string;
 }
 
 export interface ModalProps {
   openModal: string | undefined;
   setOpenModal: Dispatch<SetStateAction<string | undefined>>;
-  video?: Video | null;
+  video?: VideoClient | null;
   category?: Category;
   brand?: Brand;
   newText?: boolean;
@@ -104,13 +118,9 @@ export interface Message {
   kind: MessageKind;
 }
 
-export type VideoData = Omit<Video, 'id'>;
+export type VideoData = Omit<VideoClient, 'id'>;
 
-export interface ParagraphFormValues {
-  paragraph_1_ru: string;
-  paragraph_1_en: string;
-  paragraph_2_ru: string;
-  paragraph_2_en: string;
-  paragraph_3_ru: string;
-  paragraph_3_en: string;
+export interface BlockFormValues {
+  textRu: string;
+  textEn: string;
 }

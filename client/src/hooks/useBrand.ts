@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Brand } from '../types';
+import { brandsService } from '../services';
 
 const useBrand = () => {
   const [brands, setBrands] = useState<Brand[]>([]);
 
   useEffect(() => {
-    let result;
     (async () => {
-      result = [] as Brand[]; //await remult.repo(Brand).find();
-      setBrands(result);
+      const data = await brandsService.getAll();
+      setBrands(data);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

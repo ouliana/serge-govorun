@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import useAboutParagraphs from '../hooks/useAboutParagraphs';
+import useAboutParagraphs from '../hooks/useBlock';
 // import About from '../components/About';
 // import { render } from '@testing-library/react';
 
