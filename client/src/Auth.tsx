@@ -17,22 +17,7 @@ export default function Auth() {
   const [signedIn, setSignedIn] = useState(false);
   const navigate = useNavigate();
 
-  const signIn = async (values: UserCredentials) => {
-    const result = await fetch('/api/signIn', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username: values.username }),
-    });
-    if (result.ok) {
-      // remult.user = await result.json();
-      setSignedIn(true);
-    } else {
-      alert(await result.json());
-    }
-  };
-
+  
   const signOut = async () => {
     await fetch('/api/signOut', {
       method: 'POST',

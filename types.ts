@@ -54,3 +54,12 @@ export interface VideoReturned {
   brand: BrandAttributes;
   category: CategoryAttributes;
 }
+
+export interface UserAttributes {
+  id: number;
+  fullName: string;
+  username: string;
+  passwordHash: string;
+}
+
+export type UserCreationAttributes = Optional<UserAttributes, 'id'>;
